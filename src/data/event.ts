@@ -90,9 +90,13 @@ export const perks = ["CERTIFICATES", "LUNCH WILL BE PROVIDED"];
  * Organizer logos. Drop real logo files in and set `src` to the asset URL —
  * leave `src` null to render a clean labelled placeholder container.
  */
+import jceCrest from "@/assets/jce-crest.png";
+
+export const jceLogo = jceCrest;
+
 export const associations: { name: string; src: string | null }[] = [
-  { name: "Jerusalem College of Engineering", src: null },
-  { name: "Nexos of Business and Tech Associates", src: null },
+  { name: "Jerusalem College of Engineering", src: jceLogo },
+  { name: "Nexus of Business and Tech Associates", src: null },
   { name: "Club Algobiz", src: null },
   { name: "Institution of Engineers (India) — IE(I)", src: null },
 ];

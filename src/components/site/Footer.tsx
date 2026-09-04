@@ -1,31 +1,33 @@
 import { motion } from "motion/react";
 import { associations, event, socials } from "@/data/event";
+import jceCrest from "@/assets/jce-crest.png";
 
 export function Footer() {
   return (
     <footer className="px-5 py-16 sm:px-8">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.8fr_1fr_1fr_auto]">
+      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_auto]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="min-w-0"
         >
           <p className="font-display text-2xl font-bold tracking-[0.14em]">{event.name}</p>
           <p className="mt-3 font-display text-[0.68rem] tracking-[0.3em] text-ember uppercase">
             {event.tagline}
           </p>
-          <div className="mt-7 flex items-center gap-4">
+          <div className="mt-6 flex flex-col gap-3.5 sm:flex-row sm:items-center sm:gap-4 min-w-0">
             <img
-              src="/jce-crest.png"
+              src={jceCrest}
               alt="Jerusalem College of Engineering Crest"
-              className="h-20 w-auto shrink-0 object-contain sm:h-24 md:h-28"
+              className="h-16 w-auto shrink-0 object-contain sm:h-20 md:h-22"
             />
-            <div className="font-serif text-foreground leading-snug">
-              <div className="text-base sm:text-lg md:text-xl font-extrabold tracking-wide uppercase text-foreground leading-tight">
+            <div className="min-w-0 font-serif leading-snug text-foreground">
+              <div className="text-sm font-extrabold tracking-wide uppercase text-foreground leading-tight sm:text-base md:text-lg">
                 JERUSALEM COLLEGE OF ENGINEERING
               </div>
-              <div className="mt-1 text-xs sm:text-sm font-semibold text-muted-foreground">
+              <div className="mt-1 text-xs font-semibold text-muted-foreground sm:text-sm">
                 (An Autonomous Institution)
               </div>
               <div className="mt-0.5 text-xs text-muted-foreground/80">
