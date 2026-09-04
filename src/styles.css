@@ -1,0 +1,264 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * SPARKORA'26 design system.
+ * Near-black canvas, electric blue primary, vibrant orange secondary.
+ * All colors are oklch tokens; never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-navy: var(--navy);
+  --color-ember: var(--ember);
+  --color-ember-foreground: var(--ember-foreground);
+  --color-spark: var(--spark);
+  --font-display: "Chakra Petch", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.375rem;
+  --background: oklch(0.06 0.006 265);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.1 0.012 265);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.1 0.012 265);
+  --popover-foreground: oklch(0.98 0 0);
+  /* electric blue */
+  --primary: oklch(0.68 0.19 245);
+  --primary-foreground: oklch(0.08 0.01 265);
+  --secondary: oklch(0.16 0.02 265);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.14 0.015 265);
+  --muted-foreground: oklch(0.68 0.012 265);
+  --accent: oklch(0.18 0.025 260);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.23 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.24 0.02 262);
+  --input: oklch(0.22 0.02 262);
+  --ring: oklch(0.68 0.19 245);
+  /* vibrant orange */
+  --ember: oklch(0.72 0.19 48);
+  --ember-foreground: oklch(0.08 0.01 265);
+  /* very subtle dark navy */
+  --navy: oklch(0.13 0.035 262);
+  --spark: oklch(0.86 0.1 245);
+
+  --gradient-spark: linear-gradient(
+    90deg,
+    var(--primary) 0%,
+    oklch(0.75 0.13 300) 50%,
+    var(--ember) 100%
+  );
+  --glow-blue: 0 0 40px -6px color-mix(in oklab, var(--primary) 55%, transparent);
+  --glow-ember: 0 0 44px -6px color-mix(in oklab, var(--ember) 60%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--ember) 40%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+@utility gradient-text {
+  background-image: var(--gradient-spark);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility rule-gradient {
+  background-image: var(--gradient-spark);
+}
+
+@utility glow-blue {
+  box-shadow: var(--glow-blue);
+}
+
+@utility glow-ember {
+  box-shadow: var(--glow-ember);
+}
+
+@utility label-eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.7rem;
+  color: var(--muted-foreground);
+}
+
+/* Subtle technical grid backdrop */
+@utility tech-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--border) 55%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--border) 55%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px;
+}
+
+@utility noise-overlay {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@utility streak {
+  animation: streak-move 9s linear infinite;
+}
+
+@keyframes streak-move {
+  0% {
+    transform: translateX(-30%) translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(130%) translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@utility sweep {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 35%,
+      color-mix(in oklab, var(--spark) 55%, transparent) 50%,
+      transparent 65%
+    );
+    mix-blend-mode: overlay;
+    animation: sweep-move 4.5s ease-in-out 0.9s 2;
+    pointer-events: none;
+  }
+}
+
+@keyframes sweep-move {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+@utility scanlines {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.12;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0 2px,
+      color-mix(in oklab, var(--foreground) 40%, transparent) 2px 3px
+    );
+  }
+}
+
+@utility float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
