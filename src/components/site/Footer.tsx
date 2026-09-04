@@ -1,15 +1,29 @@
+import { motion } from "motion/react";
 import { associations, event, socials } from "@/data/event";
 
 export function Footer() {
   return (
     <footer className="px-5 py-16 sm:px-8">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.2fr_1fr_1fr_auto]">
-        <div>
+      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.4fr_1fr_1fr_auto]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <p className="font-display text-2xl font-bold tracking-[0.14em]">{event.name}</p>
           <p className="mt-3 font-display text-[0.68rem] tracking-[0.3em] text-ember uppercase">
             {event.tagline}
           </p>
-        </div>
+          <div className="mt-6">
+            <img
+              src="/jce-logo.png"
+              alt="Jerusalem College of Engineering"
+              className="h-auto w-full max-w-[260px] sm:max-w-[300px] md:max-w-[350px] object-contain"
+              style={{ height: "auto", objectFit: "contain" }}
+            />
+          </div>
+        </motion.div>
 
         <div className="text-sm text-muted-foreground">
           <p className="label-eyebrow mb-4">Organized by</p>
