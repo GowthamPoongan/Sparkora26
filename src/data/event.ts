@@ -91,14 +91,17 @@ export const perks = ["CERTIFICATES", "LUNCH WILL BE PROVIDED"];
  * leave `src` null to render a clean labelled placeholder container.
  */
 import jceCrest from "@/assets/jce-crest.png";
+import nexusLogo from "@/assets/nexus-logo.jpg";
+import algobizLogo from "@/assets/club-algobiz-logo.jpg";
+import ieiLogo from "@/assets/iei-logo.jpg";
 
 export const jceLogo = jceCrest;
 
 export const associations: { name: string; src: string | null }[] = [
   { name: "Jerusalem College of Engineering", src: jceLogo },
-  { name: "Nexus of Business and Tech Associates", src: null },
-  { name: "Club Algobiz", src: null },
-  { name: "Institution of Engineers (India) — IE(I)", src: null },
+  { name: "Nexus of Business and Tech Associates", src: nexusLogo },
+  { name: "Club Algobiz", src: algobizLogo },
+  { name: "Institution of Engineers (India) — IE(I)", src: ieiLogo },
 ];
 
 export const faqs = [
