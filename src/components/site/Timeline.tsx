@@ -121,11 +121,6 @@ export function Timeline() {
         </ol>
       </div>
 
-      <Reveal>
-        <p className="mt-14 font-display text-[0.62rem] tracking-[0.24em] text-muted-foreground uppercase">
-          Schedule timings to be announced by the organizing team.
-        </p>
-      </Reveal>
     </Section>
   );
 }

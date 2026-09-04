@@ -84,7 +84,9 @@ export const prizes = [
   { no: "03", title: "3RD PRIZE", amount: "₹1,000" },
 ];
 
-export const perks = ["CERTIFICATES", "LUNCH WILL BE PROVIDED"];
+export const totalPrizePool = "₹5,000";
+
+export const perks: string[] = [];
 
 /**
  * Organizer logos. Drop real logo files in and set `src` to the asset URL —
