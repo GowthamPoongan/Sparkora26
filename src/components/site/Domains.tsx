@@ -1,13 +1,55 @@
 import { motion } from "motion/react";
-import { Activity, BrainCircuit, GraduationCap, LineChart, Lock } from "lucide-react";
 import { domains } from "@/data/event";
 import { Reveal, Section, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
 
-const icons = [Activity, GraduationCap, BrainCircuit, LineChart];
 // Asymmetric premium layout
 const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-5", "md:col-span-7"];
 const heights = ["md:min-h-72", "md:min-h-72", "md:min-h-80", "md:min-h-80"];
+
+// Domain-specific illustrations and accent colors
+const domainConfig = [
+  {
+    emoji: "❤️",
+    emojiLabel: "Red heart representing healthcare",
+    accent: "from-rose-500/25 via-transparent to-ember/15",
+    ring: "ring-rose-500/40 shadow-[0_0_60px_-10px_rgba(244,63,94,0.5)]",
+    topBar: "from-rose-500 via-ember to-rose-300",
+    numColor: "group-hover:text-rose-400",
+    tag: "bg-rose-500/10 text-rose-400 border-rose-500/30",
+    glowBg: "bg-[radial-gradient(circle_at_20%_20%,rgba(244,63,94,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(249,115,22,0.15),transparent_55%)]",
+  },
+  {
+    emoji: "📚",
+    emojiLabel: "Books representing education",
+    accent: "from-sky-500/25 via-transparent to-primary/15",
+    ring: "ring-sky-400/40 shadow-[0_0_60px_-10px_rgba(56,189,248,0.5)]",
+    topBar: "from-sky-400 via-primary to-blue-400",
+    numColor: "group-hover:text-sky-400",
+    tag: "bg-sky-500/10 text-sky-400 border-sky-500/30",
+    glowBg: "bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(99,102,241,0.15),transparent_55%)]",
+  },
+  {
+    emoji: "🤖",
+    emojiLabel: "Robot representing AI",
+    accent: "from-violet-500/25 via-transparent to-primary/15",
+    ring: "ring-violet-400/40 shadow-[0_0_60px_-10px_rgba(167,139,250,0.5)]",
+    topBar: "from-violet-400 via-primary to-indigo-400",
+    numColor: "group-hover:text-violet-400",
+    tag: "bg-violet-500/10 text-violet-400 border-violet-500/30",
+    glowBg: "bg-[radial-gradient(circle_at_20%_20%,rgba(167,139,250,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(99,102,241,0.15),transparent_55%)]",
+  },
+  {
+    emoji: "💰",
+    emojiLabel: "Money bag representing fintech",
+    accent: "from-amber-500/25 via-transparent to-ember/15",
+    ring: "ring-amber-400/40 shadow-[0_0_60px_-10px_rgba(251,191,36,0.5)]",
+    topBar: "from-amber-400 via-ember to-yellow-400",
+    numColor: "group-hover:text-amber-400",
+    tag: "bg-amber-500/10 text-amber-400 border-amber-500/30",
+    glowBg: "bg-[radial-gradient(circle_at_20%_20%,rgba(251,191,36,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(249,115,22,0.15),transparent_55%)]",
+  },
+];
 
 export function Domains() {
   return (
@@ -18,54 +60,75 @@ export function Domains() {
         subtitle="Four arenas. One challenge: build what matters."
       />
 
-      <div className="relative">
-      <div
-        aria-hidden="true"
-        className="grid gap-5 select-none blur-[10px] saturate-50 md:grid-cols-12"
-      >
+      <div className="grid gap-5 md:grid-cols-12">
         {domains.map((d, i) => {
-          const Icon = icons[i]!;
+          const cfg = domainConfig[i]!;
           return (
             <Reveal key={d.no} delay={i * 0.08} className={cn(spans[i], "group")}>
               <motion.article
-                whileHover={{ y: -6, scale: 1.012 }}
+                whileHover={{ y: -6, scale: 1.015 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
                 className={cn(
-                  "relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card/40 p-7 sm:p-9",
+                  "relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card/60 p-7 sm:p-9",
                   heights[i],
                 )}
               >
-                {/* moving gradient wash */}
+                {/* Always-on gradient wash */}
                 <span
                   aria-hidden="true"
-                  className="absolute -inset-24 bg-[radial-gradient(circle_at_20%_20%,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_55%),radial-gradient(circle_at_85%_80%,color-mix(in_oklab,var(--ember)_20%,transparent),transparent_55%)] opacity-0 transition-all duration-700 group-hover:translate-x-6 group-hover:opacity-100"
-                />
-                <span
-                  aria-hidden="true"
-                  className="rule-gradient absolute inset-x-0 top-0 h-px opacity-40 transition-opacity duration-500 group-hover:opacity-100"
-                />
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-primary/0 transition-all duration-500 group-hover:ring-primary/40 group-hover:shadow-[0_0_60px_-20px_color-mix(in_oklab,var(--primary)_70%,transparent)]"
+                  className={cn(
+                    "absolute -inset-24 opacity-60 transition-all duration-700 group-hover:opacity-100 group-hover:translate-x-4",
+                    cfg.glowBg,
+                  )}
                 />
 
-                <div className="relative flex items-start justify-between gap-6">
-                  <span className="font-display text-6xl leading-none font-bold text-muted-foreground/35 transition-colors duration-500 group-hover:text-foreground sm:text-7xl">
+                {/* Top accent bar — always visible */}
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r opacity-70 transition-opacity duration-500 group-hover:opacity-100",
+                    cfg.topBar,
+                  )}
+                />
+
+                {/* Always-on ring glow */}
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "pointer-events-none absolute inset-0 rounded-2xl ring-1 transition-all duration-500",
+                    cfg.ring,
+                  )}
+                />
+
+                {/* Header: number + emoji illustration */}
+                <div className="relative flex items-start justify-between gap-4">
+                  <span
+                    className={cn(
+                      "font-display text-6xl leading-none font-bold text-muted-foreground/40 transition-colors duration-500 sm:text-7xl",
+                      cfg.numColor,
+                    )}
+                  >
                     {d.no}
                   </span>
-                  <Icon
-                    aria-hidden="true"
-                    className="h-9 w-9 shrink-0 text-primary transition-all duration-500 group-hover:scale-110 group-hover:text-ember"
-                    strokeWidth={1.25}
-                  />
+
+                  {/* Domain illustration emoji */}
+                  <div className="flex flex-col items-center gap-2">
+                    <span
+                      aria-label={cfg.emojiLabel}
+                      className="text-5xl sm:text-6xl leading-none drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
+                    >
+                      {cfg.emoji}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="relative mt-10">
+                {/* Content */}
+                <div className="relative mt-8">
                   <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">{d.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground sm:text-base">{d.line}</p>
                   <span
                     aria-hidden="true"
-                    className="mt-5 inline-block font-display text-sm tracking-[0.2em] text-ember opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:opacity-100"
+                    className="mt-5 inline-block font-display text-sm tracking-[0.2em] text-ember transition-all duration-500 group-hover:translate-x-1"
                   >
                     →
                   </span>
@@ -74,37 +137,6 @@ export function Domains() {
             </Reveal>
           );
         })}
-      </div>
-
-        {/* locked overlay */}
-        <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-background/50 p-6">
-          <Reveal className="w-full max-w-md">
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-card/70 px-8 py-10 text-center backdrop-blur-md">
-              <span
-                aria-hidden="true"
-                className="rule-gradient absolute inset-x-0 top-0 h-px opacity-70"
-              />
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_oklab,var(--ember)_16%,transparent),transparent_65%)]"
-              />
-              <Lock
-                aria-hidden="true"
-                strokeWidth={1.25}
-                className="relative mx-auto h-10 w-10 text-ember"
-              />
-              <h3 className="relative mt-6 font-display text-2xl font-bold tracking-tight uppercase sm:text-3xl">
-                Domains Locked
-              </h3>
-              <p className="relative mt-3 text-sm text-muted-foreground sm:text-base">
-                The four arenas are encrypted for now. Will be releasing soon.
-              </p>
-              <p className="relative mt-6 font-display text-[0.65rem] tracking-[0.28em] text-primary uppercase">
-                Stay tuned
-              </p>
-            </div>
-          </Reveal>
-        </div>
       </div>
     </Section>
   );

@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { Banknote } from "lucide-react";
 import { event, nav } from "@/data/event";
 import { RegisterButton } from "./primitives";
 import { cn } from "@/lib/utils";
@@ -29,13 +30,26 @@ export function Navbar() {
         scrolled ? "border-b border-border/60 bg-background/75 backdrop-blur-xl" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-18 max-w-6xl items-center gap-4 px-5 sm:px-8">
-        <a
-          href="#top"
-          className="font-display text-lg font-bold tracking-[0.16em] whitespace-nowrap"
-        >
-          {event.name}
-        </a>
+      <div className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+        <div className="flex items-center gap-3.5">
+          <a
+            href="#top"
+            className="font-display text-lg font-bold tracking-[0.16em] whitespace-nowrap"
+          >
+            {event.name}
+          </a>
+
+          {/* Registration Fee beside SPARKORA'26 */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-base whitespace-nowrap">
+            <Banknote className="h-4 w-4 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
+            <span className="font-display font-bold tracking-wider text-foreground uppercase">
+              <span className="hidden min-[400px]:inline">Registration </span>Fee :
+            </span>
+            <span className="font-display text-sm sm:text-lg font-black tracking-wider text-orange-400">
+              ₹150
+            </span>
+          </div>
+        </div>
 
         <nav aria-label="Main" className="ml-auto hidden items-center gap-7 lg:flex">
           {nav.map((item) => (
@@ -49,7 +63,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="ml-auto hidden lg:ml-7 lg:block">
+        <div className="hidden lg:block lg:ml-4">
           <RegisterButton label="Register" />
         </div>
 
@@ -104,7 +118,16 @@ export function Navbar() {
                 </a>
               ))}
             </nav>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col gap-4">
+              <div className="flex items-center justify-center gap-2 text-base sm:text-lg whitespace-nowrap">
+                <Banknote className="h-5 w-5 text-orange-400 shrink-0" />
+                <span className="font-display font-bold tracking-wider text-foreground uppercase">
+                  Registration Fee :
+                </span>
+                <span className="font-display text-lg font-black tracking-wider text-orange-400">
+                  ₹150
+                </span>
+              </div>
               <RegisterButton className="w-full" size="lg" />
             </div>
           </motion.div>

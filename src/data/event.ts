@@ -17,7 +17,7 @@ export const event = {
   department: "Department of Computer Science and Business Systems",
   college: "Jerusalem College of Engineering",
   intro:
-    "Sparkora'26 is a hackathon for student innovators to transform real-world problems into technology-driven solutions.",
+    "SPARKORA is a platform for innovators, creators, and problem-solvers to turn ideas into impactful solutions. Join us for an exciting hackathon where you can ideate, build, collaborate, and innovate to solve real-world challenges using technology.",
   about:
     "The hackathon brings together technology, business thinking, creativity and innovation — one day where student teams move from an idea to a working solution, and defend it in front of judges.",
 };
@@ -43,7 +43,7 @@ export const domains = [
 export const timeline = [
   {
     time: "stage 1",
-    title: "REGISTRATION & CHECK-IN",
+    title: "Registration & Domain Selection",
     description: "Form your team and Choose your Domain",
   },
   {
@@ -53,7 +53,7 @@ export const timeline = [
   },
   {
     time: "stage 3",
-    title: "Abstract ( Idea Submission )",
+    title: "Idea Submission",
     description: "Develop your approach and submit your abstract before the deadline.",
   },
   {

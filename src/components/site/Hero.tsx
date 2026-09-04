@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
+import { Clock } from "lucide-react";
 import { event } from "@/data/event";
 import { ParticleField } from "./ParticleField";
 import { Countdown } from "./Countdown";
@@ -52,10 +53,10 @@ export function Hero() {
       <ParticleField />
 
       <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="label-eyebrow mb-8"
+        className="mb-8 font-display text-sm font-bold tracking-[0.22em] text-foreground uppercase sm:text-lg md:text-xl lg:text-2xl drop-shadow-sm"
       >
         {event.department}
       </motion.p>
@@ -71,6 +72,15 @@ export function Hero() {
         {event.tagline}
       </motion.p>
 
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.8 }}
+        className="mt-2.5 font-display text-sm sm:text-base md:text-lg font-bold tracking-[0.3em] text-foreground/90 uppercase drop-shadow-sm"
+      >
+        AN INTER-COLLEGIATE HACKATHON
+      </motion.p>
+
       <Countdown />
 
 
@@ -78,13 +88,18 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.9 }}
-        className="mt-8 flex flex-col items-center gap-2 font-display text-xs tracking-[0.28em] text-muted-foreground uppercase sm:text-sm"
+        className="mt-8 flex flex-col items-center gap-2.5 font-display text-xs tracking-[0.28em] text-muted-foreground uppercase sm:text-sm"
       >
         <p className="text-foreground">{event.date}</p>
         <p>
           {event.venue} • {event.city}
         </p>
-        <p className="text-primary">Offline Hackathon</p>
+        <p className="text-primary font-bold">Offline Hackathon</p>
+        <div className="mt-2 flex items-center justify-center gap-2.5 font-display text-sm sm:text-base md:text-lg font-bold tracking-[0.2em] uppercase whitespace-nowrap drop-shadow-sm">
+          <Clock className="h-5 w-5 text-ember shrink-0 animate-pulse" />
+          <span className="text-foreground">TIME : </span>
+          <span className="text-ember font-black">8:30 A.M. ONWARDS</span>
+        </div>
       </motion.div>
 
       <motion.div
