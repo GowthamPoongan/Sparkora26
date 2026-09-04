@@ -4,7 +4,7 @@ import { associations, event, socials } from "@/data/event";
 export function Footer() {
   return (
     <footer className="px-5 py-16 sm:px-8">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.4fr_1fr_1fr_auto]">
+      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.8fr_1fr_1fr_auto]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -15,13 +15,23 @@ export function Footer() {
           <p className="mt-3 font-display text-[0.68rem] tracking-[0.3em] text-ember uppercase">
             {event.tagline}
           </p>
-          <div className="mt-6">
+          <div className="mt-7 flex items-center gap-4">
             <img
-              src="/jce-logo.png"
-              alt="Jerusalem College of Engineering"
-              className="h-auto w-full max-w-[260px] sm:max-w-[300px] md:max-w-[350px] object-contain"
-              style={{ height: "auto", objectFit: "contain" }}
+              src="/jce-crest.png"
+              alt="Jerusalem College of Engineering Crest"
+              className="h-20 w-auto shrink-0 object-contain sm:h-24 md:h-28"
             />
+            <div className="font-serif text-foreground leading-snug">
+              <div className="text-base sm:text-lg md:text-xl font-extrabold tracking-wide uppercase text-foreground leading-tight">
+                JERUSALEM COLLEGE OF ENGINEERING
+              </div>
+              <div className="mt-1 text-xs sm:text-sm font-semibold text-muted-foreground">
+                (An Autonomous Institution)
+              </div>
+              <div className="mt-0.5 text-xs text-muted-foreground/80">
+                Pallikaranai, Chennai - 600100
+              </div>
+            </div>
           </div>
         </motion.div>
 
