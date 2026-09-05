@@ -3,6 +3,7 @@ import { Clock } from "lucide-react";
 import { event } from "@/data/event";
 import { ParticleField } from "./ParticleField";
 import { Countdown } from "./Countdown";
+import jceCrest from "@/assets/jce-crest.png";
 
 function Title() {
   const reduce = useReducedMotion();
@@ -52,10 +53,26 @@ export function Hero() {
       </div>
       <ParticleField />
 
-      <motion.p
+      <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        className="mb-4 flex items-center justify-center gap-3 sm:gap-4"
+      >
+        <img
+          src={jceCrest}
+          alt="Jerusalem College of Engineering Crest"
+          className="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow-md"
+        />
+        <span className="font-display text-lg font-bold tracking-[0.15em] text-foreground uppercase sm:text-2xl md:text-3xl lg:text-4xl drop-shadow-sm">
+          Jerusalem College of Engineering
+        </span>
+      </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
         className="mb-8 font-display text-sm font-bold tracking-[0.22em] text-foreground uppercase sm:text-lg md:text-xl lg:text-2xl drop-shadow-sm"
       >
         {event.department}
@@ -94,7 +111,6 @@ export function Hero() {
         <p>
           {event.venue} • {event.city}
         </p>
-        <p className="text-primary font-bold">Offline Hackathon</p>
         <div className="mt-2 flex items-center justify-center gap-2.5 font-display text-sm sm:text-base md:text-lg font-bold tracking-[0.2em] uppercase whitespace-nowrap drop-shadow-sm">
           <Clock className="h-5 w-5 text-ember shrink-0 animate-pulse" />
           <span className="text-foreground">TIME : </span>

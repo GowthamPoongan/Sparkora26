@@ -48,7 +48,7 @@ export const timeline = [
   },
   {
     time: "stage 2",
-    title: "Problem Statements Revealed",
+    title: "Revealing of Problem Statements",
     description: "Choose a challenge from your domain and understand the problem",
   },
   {
@@ -58,8 +58,8 @@ export const timeline = [
   },
   {
     time: "stage 4",
-    title: "MENTOR CHECKPOINT",
-    description: "Teams receive guidance and feedback.",
+    title: "RULES & GUIDELINES",
+    description: "Know the rules, submission requirements, judging criteria, and important instructions.",
   },
   {
     time: "stage 5",
