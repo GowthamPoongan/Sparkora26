@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
-import { Clock } from "lucide-react";
+import { Clock, Sparkles } from "lucide-react";
 import { event } from "@/data/event";
 import { Countdown } from "./Countdown";
 import { SkyCrackers } from "./SkyCrackers";
@@ -9,7 +9,7 @@ function Title() {
   const reduce = useReducedMotion();
   const letters = event.name.split("");
   return (
-    <h1 className="sweep scanlines relative font-display text-[9vw] sm:text-[11vw] lg:text-[11.5rem] leading-[0.88] font-bold tracking-tight whitespace-nowrap">
+    <h1 className="sweep scanlines relative font-display text-[13.5vw] sm:text-[11vw] lg:text-[11.5rem] leading-[0.88] font-black tracking-tight whitespace-nowrap">
       <span className="sr-only">{event.name}</span>
       <span aria-hidden="true" className="flex flex-nowrap justify-center whitespace-nowrap">
         {letters.map((ch, i) => (
@@ -41,30 +41,41 @@ export function Hero() {
     >
       <SkyCrackers />
 
+      {/* ═══ Prestigious College Showcase Badge ═══ */}
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="mb-3 flex flex-col items-center justify-center gap-2 sm:mb-4 sm:flex-row sm:gap-4"
+        className="group relative mb-3 sm:mb-4 flex flex-col items-center justify-center gap-2.5 sm:gap-4 rounded-2xl border border-amber-500/35 bg-gradient-to-r from-amber-500/10 via-zinc-950/80 to-amber-500/10 px-4 py-2.5 sm:px-8 sm:py-3.5 shadow-[0_0_35px_rgba(245,158,11,0.2)] backdrop-blur-xl sm:flex-row"
       >
         <img
           src={jceCrest}
           alt="Jerusalem College of Engineering Crest"
-          className="h-14 w-14 object-contain drop-shadow-md sm:h-20 sm:w-20"
+          className="h-12 w-12 sm:h-16 sm:w-16 object-contain drop-shadow-[0_0_16px_rgba(245,158,11,0.6)] transition-transform duration-300 group-hover:scale-105"
         />
-        <span className="text-center font-display text-base font-bold tracking-[0.1em] text-foreground uppercase drop-shadow-sm sm:text-2xl md:text-3xl lg:text-4xl sm:tracking-[0.15em]">
-          Jerusalem College of Engineering
-        </span>
+        <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+          <span className="bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-300 bg-clip-text text-transparent font-display text-base sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-[0.1em] sm:tracking-[0.14em] uppercase drop-shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+            Jerusalem College of Engineering
+          </span>
+          <span className="font-display text-[0.6rem] sm:text-xs font-bold tracking-[0.22em] text-amber-400/90 uppercase">
+            An Autonomous Institution • Accredited by NAAC & NBA
+          </span>
+        </div>
       </motion.div>
 
-      <motion.p
+      {/* ═══ High-Tech Glowing Department Badge ═══ */}
+      <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        className="mb-6 font-display text-xs font-bold tracking-[0.14em] text-foreground uppercase drop-shadow-sm sm:mb-8 sm:text-lg md:text-xl lg:text-2xl sm:tracking-[0.22em]"
+        transition={{ duration: 0.8, delay: 0.12 }}
+        className="mb-6 sm:mb-8 inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-950/60 via-blue-950/80 to-cyan-950/60 px-4 py-1.5 sm:px-6 sm:py-2 shadow-[0_0_25px_rgba(6,182,212,0.3)] backdrop-blur-md"
       >
-        {event.department}
-      </motion.p>
+        <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-cyan-300 animate-pulse shrink-0" />
+        <span className="bg-gradient-to-r from-cyan-300 via-sky-100 to-blue-300 bg-clip-text text-transparent font-display text-xs sm:text-sm md:text-base font-black tracking-[0.16em] sm:tracking-[0.24em] uppercase drop-shadow-[0_0_12px_rgba(6,182,212,0.6)]">
+          {event.department}
+        </span>
+        <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-cyan-300 animate-pulse shrink-0" />
+      </motion.div>
 
       <Title />
 

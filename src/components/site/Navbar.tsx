@@ -34,7 +34,7 @@ export function Navbar() {
         <div className="flex items-center gap-2 sm:gap-5 min-w-0">
           <a
             href="#top"
-            className="font-display text-[0.9rem] sm:text-lg font-black tracking-[0.12em] sm:tracking-[0.16em] whitespace-nowrap shrink-0"
+            className="font-display text-base sm:text-xl font-black tracking-[0.12em] sm:tracking-[0.16em] whitespace-nowrap shrink-0 bg-gradient-to-r from-foreground via-amber-200 to-ember bg-clip-text text-transparent drop-shadow-sm"
           >
             {event.name}
           </a>
