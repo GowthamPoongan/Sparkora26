@@ -9,40 +9,30 @@ const eventDetails = [
     label: "Format",
     value: "1 Day Hackathon",
     subtext: "Intense Build & Pitch",
-    iconColor: "text-amber-400",
-    badgeColor: "border-amber-500/40 text-amber-300 bg-amber-500/10",
   },
   {
     icon: Users,
     label: "Team Size",
     value: "2–3 Members",
     subtext: "Collaborate & Innovate",
-    iconColor: "text-orange-400",
-    badgeColor: "border-orange-500/40 text-orange-300 bg-orange-500/10",
   },
   {
     icon: Radio,
     label: "Event Mode",
     value: "Offline",
     subtext: "On-Campus Hackathon",
-    iconColor: "text-primary",
-    badgeColor: "border-blue-500/40 text-blue-300 bg-blue-500/10",
   },
   {
     icon: MapPin,
     label: "Venue",
-    value: "JCE Chennai",
-    subtext: "Jerusalem College of Engg",
-    iconColor: "text-rose-400",
-    badgeColor: "border-rose-500/40 text-rose-300 bg-rose-500/10",
+    value: "Jerusalem College of Engineering",
+    subtext: "Chennai, Tamil Nadu",
   },
   {
     icon: CalendarDays,
     label: "Event Date",
     value: event.date,
     subtext: "8:30 AM Onwards",
-    iconColor: "text-yellow-300",
-    badgeColor: "border-yellow-500/40 text-yellow-300 bg-yellow-500/10",
   },
 ];
 
@@ -79,30 +69,24 @@ export function About() {
                   <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-b from-amber-400/15 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                   {/* Corner sparkle */}
-                  <Sparkles className="absolute top-3.5 right-3.5 h-4 w-4 text-amber-400/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100 animate-pulse" />
+                  <Sparkles className="absolute top-3.5 right-3.5 h-4 w-4 text-amber-400/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 animate-pulse" />
 
                   <div>
                     <div className="flex items-center justify-between">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-700/80 bg-zinc-900/90 shadow-inner transition-all duration-300 group-hover:scale-110 group-hover:border-amber-400/50 group-hover:shadow-[0_0_18px_rgba(245,158,11,0.35)]">
-                        <Icon aria-hidden="true" strokeWidth={1.8} className={`h-5 w-5 ${it.iconColor} transition-transform duration-300 group-hover:rotate-6`} />
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-amber-500/25 bg-amber-500/10 shadow-inner transition-all duration-300 group-hover:scale-110 group-hover:border-amber-400/60 group-hover:bg-amber-500/15 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.35)]">
+                        <Icon aria-hidden="true" strokeWidth={1.8} className="h-5 w-5 text-amber-400 transition-transform duration-300 group-hover:rotate-6" />
                       </div>
-                      <span className={`rounded-full border px-2.5 py-0.5 font-display text-[0.58rem] font-bold tracking-[0.18em] uppercase ${it.badgeColor}`}>
+                      <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 font-display text-[0.58rem] font-bold tracking-[0.18em] uppercase text-amber-300">
                         {it.label}
                       </span>
                     </div>
 
-                    <h4 className="mt-4 font-display text-base font-black tracking-tight text-white transition-colors duration-200 group-hover:text-amber-300 uppercase sm:text-lg">
+                    <h4 className="mt-4 font-display text-sm sm:text-base lg:text-[1.05rem] font-black tracking-tight text-white transition-colors duration-200 group-hover:text-amber-300 uppercase leading-snug">
                       {it.value}
                     </h4>
-                    <p className="mt-1 text-xs text-zinc-400 transition-colors group-hover:text-zinc-300">
+                    <p className="mt-1.5 text-xs text-zinc-400 transition-colors group-hover:text-zinc-300">
                       {it.subtext}
                     </p>
-                  </div>
-
-                  {/* Bottom accent glow rule */}
-                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[0.62rem] font-display font-semibold tracking-wider text-zinc-500 uppercase group-hover:text-amber-400/90 transition-colors">
-                    <span>Sparkora'26</span>
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </div>
 
                   <span
