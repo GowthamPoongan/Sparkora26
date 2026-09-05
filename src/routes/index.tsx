@@ -62,60 +62,24 @@ function Index() {
         {/* Additional bottom glows */}
         <div className="absolute bottom-1/4 left-1/3 h-[22rem] w-[22rem] rounded-full bg-primary/12 blur-[100px]" />
         <div className="absolute bottom-1/6 right-1/4 h-[20rem] w-[20rem] rounded-full bg-ember/10 blur-[110px]" />
-        {/* Horizontal rule */}
-        <div className="absolute inset-x-0 top-1/2 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-        {/* Streaks */}
-        <div className="streak absolute top-[38%] left-0 h-[2px] w-40 bg-gradient-to-r from-transparent via-spark to-transparent opacity-60" />
-        <div
-          className="streak absolute top-[62%] left-0 h-[2px] w-28 bg-gradient-to-r from-transparent via-ember to-transparent opacity-50"
-          style={{ animationDelay: "3.5s" }}
-        />
-        <div
-          className="streak absolute top-[18%] left-0 h-[2px] w-32 bg-gradient-to-r from-transparent via-primary to-transparent opacity-40"
-          style={{ animationDelay: "6s" }}
-        />
         {/* Particle field — always visible behind content */}
         <ParticleField />
       </div>
 
-      {/* ═══ OVERLAY CONTENT — scrolls over the fixed background ═══ */}
+      {/* ═══ CONTENT — flows seamlessly over the static background ═══ */}
       <div className="relative z-10">
         <Navbar />
         <main>
           <Hero />
-
-          {/* Each section is an overlay "slide" with its own semi-transparent card styling */}
-          <div className="overlay-slide">
-            <About />
-          </div>
-
-          <div className="overlay-slide">
-            <Domains />
-          </div>
-
-          <div className="overlay-slide">
-            <Timeline />
-          </div>
-
-          <div className="overlay-slide">
-            <TeamInfo />
-          </div>
-
-          <div className="overlay-slide">
-            <Prizes />
-          </div>
-
-          <div className="overlay-slide">
-            <Organizers />
-          </div>
-
-          <div className="overlay-slide">
-            <RegistrationCTA />
-          </div>
+          <About />
+          <Domains />
+          <Timeline />
+          <TeamInfo />
+          <Prizes />
+          <Organizers />
+          <RegistrationCTA />
         </main>
-        <div className="overlay-slide">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </div>
   );

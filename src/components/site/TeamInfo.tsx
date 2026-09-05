@@ -11,7 +11,7 @@ export function TeamInfo() {
   ];
 
   return (
-    <Section className="border-y border-border bg-navy/30">
+    <Section className="bg-navy/20">
       <Reveal>
         <h2 className="text-3xl font-bold sm:text-5xl md:text-6xl">
           Build <span className="gradient-text">together.</span>

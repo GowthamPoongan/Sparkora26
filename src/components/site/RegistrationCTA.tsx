@@ -3,7 +3,7 @@ import { RegisterButton, Reveal, Section } from "./primitives";
 
 export function RegistrationCTA() {
   return (
-    <Section className="noise-overlay overflow-hidden border-y border-border text-center">
+    <Section className="noise-overlay overflow-hidden text-center">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="tech-grid absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
         <div className="absolute top-1/2 left-1/4 h-72 w-72 -translate-y-1/2 animate-pulse rounded-full bg-ember/15 blur-[110px]" />
