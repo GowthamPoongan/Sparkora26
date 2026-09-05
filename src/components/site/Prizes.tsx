@@ -12,7 +12,7 @@ export function Prizes() {
 
       <SectionHeading
         eyebrow="Rewards"
-        title="Cash Prizepool"
+        title="Prizepool"
         subtitle="Build. Solve. Stand out."
         align="center"
       />
