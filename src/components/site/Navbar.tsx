@@ -78,7 +78,7 @@ export function Navbar() {
           <div className="flex items-center gap-1.5 rounded-full border border-orange-500/50 bg-orange-500/20 px-2.5 py-1 sm:px-4 sm:py-1.5 whitespace-nowrap shadow-md shrink-0">
             <Banknote className="h-3.5 w-3.5 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
             <span className="font-display text-[0.7rem] sm:text-base font-extrabold tracking-wide sm:tracking-wider text-foreground uppercase">
-              Fee :
+              Registration Fee :
             </span>
             <span className="font-display text-[0.8rem] sm:text-lg font-black tracking-wide sm:tracking-wider text-orange-400">
               ₹150
