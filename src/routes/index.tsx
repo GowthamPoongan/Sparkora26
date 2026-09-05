@@ -30,12 +30,11 @@ export const Route = createFileRoute("/")({
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
   return (
     <motion.div
       aria-hidden="true"
-      style={{ scaleX }}
-      className="rule-gradient fixed inset-x-0 top-0 z-60 h-0.5 origin-left"
+      style={{ scaleX: scrollYProgress }}
+      className="rule-gradient fixed inset-x-0 top-0 z-60 h-0.5 origin-left will-change-transform"
     />
   );
 }
@@ -49,22 +48,22 @@ function Index() {
         <CustomCursor />
         <ScrollProgress />
 
-        {/* ═══ STATIC BACKGROUND — fixed behind everything ═══ */}
+        {/* ═══ STATIC BACKGROUND — hardware accelerated & fixed behind content ═══ */}
         <div
           aria-hidden="true"
-          className="fixed inset-0 z-0"
-          style={{ pointerEvents: "none" }}
+          className="fixed inset-0 z-0 transform-gpu overflow-hidden"
+          style={{ pointerEvents: "none", willChange: "transform", transform: "translateZ(0)" }}
         >
           {/* Tech grid */}
           <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
           {/* Ember glow */}
-          <div className="absolute top-1/4 -left-24 h-[26rem] w-[26rem] rounded-full bg-ember/18 blur-[120px]" />
-          {/* Primary glow — vibrant blue on PC as before, balanced for phone screens */}
-          <div className="absolute top-1/3 -right-24 h-[30rem] w-[30rem] rounded-full bg-primary/10 sm:bg-primary/20 blur-[130px]" />
+          <div className="absolute top-1/4 -left-24 h-[24rem] w-[24rem] rounded-full bg-ember/18 blur-[70px] sm:blur-[100px] transform-gpu" />
+          {/* Primary glow — vibrant blue */}
+          <div className="absolute top-1/3 -right-24 h-[26rem] w-[26rem] rounded-full bg-primary/10 sm:bg-primary/20 blur-[75px] sm:blur-[110px] transform-gpu" />
           {/* Additional bottom glows */}
-          <div className="absolute bottom-1/4 left-1/3 h-[22rem] w-[22rem] rounded-full bg-primary/7 sm:bg-primary/12 blur-[100px]" />
-          <div className="absolute bottom-1/6 right-1/4 h-[20rem] w-[20rem] rounded-full bg-ember/10 blur-[110px]" />
-          {/* Particle field — always visible behind content */}
+          <div className="absolute bottom-1/4 left-1/3 h-[20rem] w-[20rem] rounded-full bg-primary/7 sm:bg-primary/12 blur-[65px] sm:blur-[95px] transform-gpu" />
+          <div className="absolute bottom-1/6 right-1/4 h-[18rem] w-[18rem] rounded-full bg-ember/10 blur-[65px] sm:blur-[95px] transform-gpu" />
+          {/* Particle field */}
           <ParticleField />
         </div>
 

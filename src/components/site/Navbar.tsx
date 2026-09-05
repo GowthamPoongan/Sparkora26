@@ -17,37 +17,58 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Track active section on scroll
+  // Track active section on scroll with zero layout thrashing
   useEffect(() => {
     const sectionIds = ["top", "about", "domains", "timeline", "prizes", "organizers"];
+    let ticking = false;
+    let cachedOffsets: { id: string; top: number; bottom: number }[] = [];
 
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 180;
+    const measure = () => {
+      cachedOffsets = sectionIds.map((id) => {
+        const el = document.getElementById(id);
+        if (!el) return { id, top: 0, bottom: 0 };
+        const top = el.offsetTop;
+        return { id, top, bottom: top + el.offsetHeight };
+      });
+    };
+
+    measure();
+
+    const updateActive = () => {
+      ticking = false;
+      const scrollY = window.scrollY;
+      const scrollPos = scrollY + 180;
       let current = "#top";
 
-      // Check each section position
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            current = `#${id}`;
+      // Check if near page bottom
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 60) {
+        current = "#organizers";
+      } else {
+        for (const sec of cachedOffsets) {
+          if (scrollPos >= sec.top && scrollPos < sec.bottom) {
+            current = `#${sec.id}`;
+            break;
           }
         }
       }
 
-      // Check if at the bottom of the page
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
-        current = "#organizers";
-      }
+      setActiveSection((prev) => (prev !== current ? current : prev));
+    };
 
-      setActiveSection(current);
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateActive);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", measure, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   useEffect(() => {
