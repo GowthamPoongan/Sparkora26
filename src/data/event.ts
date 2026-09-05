@@ -133,7 +133,7 @@ export const leadership = [
 
 // Replace with real handles when available.
 export const socials = [
-  { label: "Instagram", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/jerusalem_csbs?igsi=bnd4ZGZtZ244Ynhw" },
   { label: "LinkedIn", href: "#" },
   { label: "Email", href: "mailto:example@jerusalemengg.ac.in" },
 ];

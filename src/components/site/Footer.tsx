@@ -102,6 +102,8 @@ export function Footer() {
             <a
               key={s.label}
               href={s.href}
+              target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="font-display tracking-[0.22em] uppercase transition-colors hover:text-foreground"
             >
               {s.label}
