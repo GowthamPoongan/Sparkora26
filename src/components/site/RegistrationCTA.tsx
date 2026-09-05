@@ -6,8 +6,8 @@ export function RegistrationCTA() {
     <Section className="noise-overlay overflow-hidden text-center">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="tech-grid absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-        <div className="absolute top-1/2 left-1/4 h-72 w-72 -translate-y-1/2 rounded-full bg-ember/12 blur-[110px]" />
-        <div className="absolute top-1/2 right-1/4 h-80 w-80 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/4 h-72 w-72 -translate-y-1/2 rounded-full bg-ember/15 blur-[110px]" />
+        <div className="absolute top-1/2 right-1/4 h-80 w-80 -translate-y-1/2 rounded-full bg-primary/8 sm:bg-primary/15 blur-[120px]" />
       </div>
 
       <Reveal>

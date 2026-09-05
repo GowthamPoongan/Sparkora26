@@ -37,12 +37,17 @@ export function SkyCrackers() {
     };
     resize();
 
-    // ── Palettes: Warm Gold, Fire Ember, Festive Ruby, Sunset Amber, Soft Sapphire ──
+    // ── Palettes: Fire/Ember, Electric Cyan, Pure Gold, Festive Ruby, Neon Blue ──
     const palettes = [
       {
         name: "fire-ember",
         hues: [20, 32, 42, 52, 16],
         rocketHue: 30,
+      },
+      {
+        name: "electric-cyan",
+        hues: [185, 200, 215, 240, 45],
+        rocketHue: 195,
       },
       {
         name: "pure-gold",
@@ -55,14 +60,9 @@ export function SkyCrackers() {
         rocketHue: 12,
       },
       {
-        name: "sunset-amber",
-        hues: [28, 38, 48, 58, 20],
-        rocketHue: 36,
-      },
-      {
-        name: "soft-sapphire",
-        hues: [205, 220, 235, 45, 195],
-        rocketHue: 215,
+        name: "neon-blue",
+        hues: [210, 225, 240, 255, 45],
+        rocketHue: 225,
       },
     ];
 

@@ -54,13 +54,13 @@ function Index() {
         style={{ pointerEvents: "none" }}
       >
         {/* Tech grid */}
-        <div className="tech-grid absolute inset-0 opacity-35 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+        <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
         {/* Ember glow */}
-        <div className="absolute top-1/4 -left-24 h-[26rem] w-[26rem] rounded-full bg-ember/15 blur-[120px]" />
-        {/* Subtle softened ambient glow (eliminated harsh high-contrast blue glare) */}
-        <div className="absolute top-1/3 -right-24 h-[30rem] w-[30rem] rounded-full bg-primary/6 blur-[140px]" />
-        {/* Additional subtle bottom glows */}
-        <div className="absolute bottom-1/4 left-1/3 h-[22rem] w-[22rem] rounded-full bg-primary/4 blur-[120px]" />
+        <div className="absolute top-1/4 -left-24 h-[26rem] w-[26rem] rounded-full bg-ember/18 blur-[120px]" />
+        {/* Primary glow — vibrant blue on PC as before, balanced for phone screens */}
+        <div className="absolute top-1/3 -right-24 h-[30rem] w-[30rem] rounded-full bg-primary/10 sm:bg-primary/20 blur-[130px]" />
+        {/* Additional bottom glows */}
+        <div className="absolute bottom-1/4 left-1/3 h-[22rem] w-[22rem] rounded-full bg-primary/7 sm:bg-primary/12 blur-[100px]" />
         <div className="absolute bottom-1/6 right-1/4 h-[20rem] w-[20rem] rounded-full bg-ember/10 blur-[110px]" />
         {/* Particle field — always visible behind content */}
         <ParticleField />
