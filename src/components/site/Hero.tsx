@@ -33,7 +33,11 @@ function Title() {
   );
 }
 
+import { useModal } from "@/context/ModalContext";
+
 export function Hero() {
+  const { openRegisterModal } = useModal();
+
   return (
     <section
       id="top"
@@ -131,18 +135,17 @@ export function Hero() {
         transition={{ duration: 0.7, delay: 1.05 }}
         className="mt-11 flex w-full max-w-sm flex-col items-center gap-4 sm:max-w-none sm:flex-row sm:justify-center"
       >
-        <a
-          href={event.registrationUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-ember px-9 py-4 font-display text-sm font-semibold tracking-[0.2em] text-ember-foreground uppercase glow-ember transition-all duration-300 hover:brightness-110 sm:w-auto"
+        <button
+          type="button"
+          onClick={openRegisterModal}
+          className="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-ember px-9 py-4 font-display text-sm font-semibold tracking-[0.2em] text-ember-foreground uppercase glow-ember transition-all duration-300 hover:brightness-110 sm:w-auto cursor-pointer active:scale-[0.98]"
         >
           <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
           <span className="relative">Register Now</span>
           <span className="relative transition-transform duration-300 group-hover:translate-x-1">
             →
           </span>
-        </a>
+        </button>
         <a
           href="#domains"
           className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-border px-9 py-4 font-display text-sm tracking-[0.2em] uppercase transition-colors duration-300 hover:border-primary hover:text-primary sm:w-auto"

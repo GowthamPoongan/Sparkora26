@@ -8,6 +8,8 @@ import imgEdtech from "@/assets/domain-edtech.jpg";
 import imgAI from "@/assets/domain-ai.jpg";
 import imgFintech from "@/assets/domain-fintech.jpg";
 
+import { useModal } from "@/context/ModalContext";
+
 // Asymmetric premium layout
 const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-5", "md:col-span-7"];
 const heights = [
@@ -66,6 +68,8 @@ const domainConfig = [
 ];
 
 export function Domains() {
+  const { openDomainModal } = useModal();
+
   return (
     <Section id="domains">
       <SectionHeading
@@ -80,10 +84,12 @@ export function Domains() {
           return (
             <Reveal key={d.no} delay={i * 0.08} className={cn(spans[i], "group")}>
               <motion.article
+                onClick={() => openDomainModal(d.title)}
                 whileHover={{ y: -6, scale: 1.015 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
                 className={cn(
-                  "relative flex h-full flex-col justify-end overflow-hidden rounded-2xl border border-border bg-card/60",
+                  "relative flex h-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl border border-border bg-card/60 transition-all duration-300 hover:border-amber-400/50 hover:shadow-[0_0_35px_rgba(245,158,11,0.2)]",
                   heights[i],
                 )}
               >
@@ -149,12 +155,12 @@ export function Domains() {
                   <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-base drop-shadow-md">
                     {d.line}
                   </p>
-                  <span
-                    aria-hidden="true"
-                    className="mt-3.5 inline-block font-display text-sm tracking-[0.2em] text-ember transition-all duration-500 group-hover:translate-x-1 sm:mt-5"
-                  >
-                    →
-                  </span>
+                  <div className="mt-3 sm:mt-4 flex items-center gap-1.5 text-xs font-display font-semibold tracking-[0.14em] uppercase text-ember transition-colors duration-300 group-hover:text-amber-300">
+                    <span>Problem Statement</span>
+                    <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </div>
                 </div>
               </motion.article>
             </Reveal>

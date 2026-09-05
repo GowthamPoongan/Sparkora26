@@ -40,45 +40,49 @@ function ScrollProgress() {
   );
 }
 
+import { ModalProvider } from "@/context/ModalContext";
+
 function Index() {
   return (
-    <div className="min-h-screen bg-background">
-      <CustomCursor />
-      <ScrollProgress />
+    <ModalProvider>
+      <div className="min-h-screen bg-background">
+        <CustomCursor />
+        <ScrollProgress />
 
-      {/* ═══ STATIC BACKGROUND — fixed behind everything ═══ */}
-      <div
-        aria-hidden="true"
-        className="fixed inset-0 z-0"
-        style={{ pointerEvents: "none" }}
-      >
-        {/* Tech grid */}
-        <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-        {/* Ember glow */}
-        <div className="absolute top-1/4 -left-24 h-[26rem] w-[26rem] rounded-full bg-ember/18 blur-[120px]" />
-        {/* Primary glow — vibrant blue on PC as before, balanced for phone screens */}
-        <div className="absolute top-1/3 -right-24 h-[30rem] w-[30rem] rounded-full bg-primary/10 sm:bg-primary/20 blur-[130px]" />
-        {/* Additional bottom glows */}
-        <div className="absolute bottom-1/4 left-1/3 h-[22rem] w-[22rem] rounded-full bg-primary/7 sm:bg-primary/12 blur-[100px]" />
-        <div className="absolute bottom-1/6 right-1/4 h-[20rem] w-[20rem] rounded-full bg-ember/10 blur-[110px]" />
-        {/* Particle field — always visible behind content */}
-        <ParticleField />
-      </div>
+        {/* ═══ STATIC BACKGROUND — fixed behind everything ═══ */}
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 z-0"
+          style={{ pointerEvents: "none" }}
+        >
+          {/* Tech grid */}
+          <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+          {/* Ember glow */}
+          <div className="absolute top-1/4 -left-24 h-[26rem] w-[26rem] rounded-full bg-ember/18 blur-[120px]" />
+          {/* Primary glow — vibrant blue on PC as before, balanced for phone screens */}
+          <div className="absolute top-1/3 -right-24 h-[30rem] w-[30rem] rounded-full bg-primary/10 sm:bg-primary/20 blur-[130px]" />
+          {/* Additional bottom glows */}
+          <div className="absolute bottom-1/4 left-1/3 h-[22rem] w-[22rem] rounded-full bg-primary/7 sm:bg-primary/12 blur-[100px]" />
+          <div className="absolute bottom-1/6 right-1/4 h-[20rem] w-[20rem] rounded-full bg-ember/10 blur-[110px]" />
+          {/* Particle field — always visible behind content */}
+          <ParticleField />
+        </div>
 
-      {/* ═══ CONTENT — flows seamlessly over the static background ═══ */}
-      <div className="relative z-10">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Domains />
-          <Timeline />
-          <Prizes />
-          <Organizers />
-          <RegistrationCTA />
-        </main>
-        <Footer />
+        {/* ═══ CONTENT — flows seamlessly over the static background ═══ */}
+        <div className="relative z-10">
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Domains />
+            <Timeline />
+            <Prizes />
+            <Organizers />
+            <RegistrationCTA />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </ModalProvider>
   );
 }
