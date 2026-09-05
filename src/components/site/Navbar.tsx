@@ -40,12 +40,12 @@ export function Navbar() {
           </a>
 
           {/* Registration Fee beside SPARKORA'26 */}
-          <div className="flex items-center gap-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 px-2.5 py-0.5 text-xs sm:px-3 sm:py-1 sm:text-sm whitespace-nowrap">
-            <Banknote className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-orange-400 shrink-0" />
+          <div className="flex items-center gap-2 rounded-full border border-orange-500/40 bg-orange-500/15 px-3.5 py-1 sm:px-4.5 sm:py-1.5 text-sm sm:text-base whitespace-nowrap shadow-sm">
+            <Banknote className="h-4 w-4 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
             <span className="font-display font-bold tracking-wider text-foreground uppercase">
-              Fee:
+              Registration Fee :
             </span>
-            <span className="font-display font-black tracking-wider text-orange-400">
+            <span className="font-display text-base sm:text-lg font-black tracking-wider text-orange-400">
               ₹150
             </span>
           </div>
