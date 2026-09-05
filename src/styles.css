@@ -250,6 +250,45 @@
   }
 }
 
+@keyframes shimmer-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@utility text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f59e0b 0%,
+    #fbbf24 25%,
+    #fff7ed 50%,
+    #ea580c 75%,
+    #f59e0b 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-gradient 4s linear infinite;
+}
+
+@utility border-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(245, 158, 11, 0.4),
+    rgba(251, 191, 36, 0.9),
+    rgba(249, 115, 22, 0.5),
+    rgba(245, 158, 11, 0.4)
+  );
+  background-size: 200% 200%;
+  animation: shimmer-gradient 3s ease infinite;
+}
 
 /* ═══ Custom cursor — hide native cursor only on fine pointer (mouse/trackpad) devices ═══ */
 @media (pointer: fine) {

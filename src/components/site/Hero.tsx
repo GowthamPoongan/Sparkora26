@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Clock } from "lucide-react";
 import { event } from "@/data/event";
 import { Countdown } from "./Countdown";
+import { SkyCrackers } from "./SkyCrackers";
 import jceCrest from "@/assets/jce-crest.png";
 
 function Title() {
@@ -38,6 +39,8 @@ export function Hero() {
       id="top"
       className="noise-overlay relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-4 pt-24 pb-16 text-center sm:px-5 sm:pt-28 sm:pb-20"
     >
+      <SkyCrackers />
+
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
