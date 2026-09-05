@@ -64,23 +64,23 @@ export function Navbar() {
         scrolled ? "border-b border-border/60 bg-background/75 backdrop-blur-xl" : "bg-transparent",
       )}
     >
-      <div className="flex h-16 sm:h-18 w-full items-center justify-between gap-2 px-3 sm:px-10 lg:px-14">
-        <div className="flex items-center gap-2 sm:gap-5 min-w-0">
+      <div className="flex h-14 sm:h-18 w-full items-center justify-between gap-1.5 px-2.5 sm:px-10 lg:px-14">
+        <div className="flex items-center gap-1.5 sm:gap-5 min-w-0">
           <a
             href="#top"
             onClick={() => setActiveSection("#top")}
-            className="font-display text-base sm:text-xl font-black tracking-[0.12em] sm:tracking-[0.16em] whitespace-nowrap shrink-0 bg-gradient-to-r from-foreground via-amber-200 to-ember bg-clip-text text-transparent drop-shadow-sm"
+            className="font-display text-[0.8rem] sm:text-xl font-black tracking-[0.1em] sm:tracking-[0.16em] whitespace-nowrap shrink-0 bg-gradient-to-r from-foreground via-amber-200 to-ember bg-clip-text text-transparent drop-shadow-sm"
           >
             {event.name}
           </a>
 
           {/* Registration Fee Badge */}
-          <div className="flex items-center gap-1.5 rounded-full border border-orange-500/50 bg-orange-500/20 px-2.5 py-1 sm:px-4 sm:py-1.5 whitespace-nowrap shadow-md shrink-0">
-            <Banknote className="h-3.5 w-3.5 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
-            <span className="font-display text-[0.7rem] sm:text-base font-extrabold tracking-wide sm:tracking-wider text-foreground uppercase">
+          <div className="flex items-center gap-1 sm:gap-1.5 rounded-full border border-orange-500/50 bg-orange-500/20 px-2 py-0.5 sm:px-4 sm:py-1.5 whitespace-nowrap shadow-md shrink-0">
+            <Banknote className="h-3 w-3 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
+            <span className="font-display text-[0.6rem] sm:text-base font-extrabold tracking-wide sm:tracking-wider text-foreground uppercase">
               Registration Fee :
             </span>
-            <span className="font-display text-[0.8rem] sm:text-lg font-black tracking-wide sm:tracking-wider text-orange-400">
+            <span className="font-display text-[0.65rem] sm:text-lg font-black tracking-wide sm:tracking-wider text-orange-400">
               ₹150
             </span>
           </div>
