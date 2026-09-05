@@ -59,7 +59,7 @@ export function Hero() {
           </span>
         </div>
         <div className="flex w-full items-center justify-center">
-          <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-0.5 text-center font-display text-[0.62rem] sm:text-xs font-bold tracking-[0.25em] text-amber-300 uppercase shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+          <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1 text-center font-display text-xs sm:text-sm md:text-base font-extrabold tracking-[0.22em] sm:tracking-[0.26em] text-amber-300 uppercase shadow-[0_0_15px_rgba(245,158,11,0.25)]">
             (An Autonomous Institution)
           </span>
         </div>
@@ -70,17 +70,17 @@ export function Hero() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.12 }}
-        className="relative mb-6 sm:mb-8 inline-flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-orange-500/40 bg-gradient-to-r from-amber-500/10 via-zinc-950/90 to-orange-500/10 px-5 py-2.5 sm:px-8 sm:py-3 shadow-[0_0_30px_rgba(249,115,22,0.25)] backdrop-blur-xl"
+        className="relative mb-6 sm:mb-8 inline-flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-orange-500/40 bg-gradient-to-r from-amber-500/10 via-zinc-950/90 to-orange-500/10 px-5 py-3 sm:px-9 sm:py-3.5 shadow-[0_0_30px_rgba(249,115,22,0.25)] backdrop-blur-xl"
       >
         <div className="flex items-center gap-2">
-          <Sparkles className="h-3.5 w-3.5 text-amber-400 animate-pulse shrink-0" />
-          <span className="font-display text-[0.62rem] sm:text-[0.7rem] font-extrabold tracking-[0.3em] text-amber-300 uppercase">
+          <Sparkles className="h-4 w-4 text-amber-400 animate-pulse shrink-0" />
+          <span className="font-display text-xs sm:text-sm font-extrabold tracking-[0.28em] text-amber-300 uppercase">
             Department of
           </span>
-          <Sparkles className="h-3.5 w-3.5 text-amber-400 animate-pulse shrink-0" />
+          <Sparkles className="h-4 w-4 text-amber-400 animate-pulse shrink-0" />
         </div>
-        <p className="font-display text-xs sm:text-base md:text-lg font-black tracking-[0.16em] sm:tracking-[0.22em] uppercase text-center">
-          <span className="text-shimmer inline-block drop-shadow-[0_0_20px_rgba(245,158,11,0.5)]">
+        <p className="font-display text-sm sm:text-lg md:text-xl lg:text-2xl font-black tracking-[0.12em] sm:tracking-[0.18em] uppercase text-center">
+          <span className="text-shimmer inline-block drop-shadow-[0_0_22px_rgba(245,158,11,0.55)]">
             Computer Science and Business Systems
           </span>
         </p>
