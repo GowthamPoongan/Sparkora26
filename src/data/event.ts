@@ -93,9 +93,9 @@ export const perks: string[] = [];
  * leave `src` null to render a clean labelled placeholder container.
  */
 import jceCrest from "@/assets/jce-crest.png";
-import nexusLogo from "@/assets/nexus-logo.jpg";
-import algobizLogo from "@/assets/club-algobiz-logo.jpg";
-import ieiLogo from "@/assets/iei-logo.jpg";
+import nexusLogo from "@/assets/nexus-logo.png";
+import algobizLogo from "@/assets/club-algobiz-logo.png";
+import ieiLogo from "@/assets/iei-logo.png";
 
 export const jceLogo = jceCrest;
 
