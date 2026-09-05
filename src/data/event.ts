@@ -135,7 +135,6 @@ export const leadership = [
 export const socials = [
   { label: "Instagram", href: "https://www.instagram.com/jerusalem_csbs?igsi=bnd4ZGZtZ244Ynhw" },
   { label: "LinkedIn", href: "#" },
-  { label: "Email", href: "mailto:example@jerusalemengg.ac.in" },
 ];
 
 export const nav = [
