@@ -171,10 +171,16 @@ export function ModalProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useModal() {
+export function useModal(): ModalContextType {
   const context = useContext(ModalContext);
   if (!context) {
-    throw new Error("useModal must be used within a ModalProvider");
+    return {
+      openModal: () => {},
+      closeModal: () => {},
+      openDomainModal: () => {},
+      openRegisterModal: () => {},
+    };
   }
   return context;
 }
+

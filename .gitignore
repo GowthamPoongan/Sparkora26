@@ -5,6 +5,8 @@ node_modules/
 dist/
 .output/
 .vinxi/
+.vercel/
+.wrangler/
 
 # Environment
 .env

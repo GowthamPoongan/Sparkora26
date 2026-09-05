@@ -39,49 +39,45 @@ function ScrollProgress() {
   );
 }
 
-import { ModalProvider } from "@/context/ModalContext";
-
 function Index() {
   return (
-    <ModalProvider>
-      <div className="min-h-screen bg-background">
-        <CustomCursor />
-        <ScrollProgress />
+    <div className="min-h-screen bg-background">
+      <CustomCursor />
+      <ScrollProgress />
 
-        {/* ═══ STATIC BACKGROUND — hardware accelerated & fixed behind content ═══ */}
-        <div
-          aria-hidden="true"
-          className="fixed inset-0 z-0 transform-gpu overflow-hidden"
-          style={{ pointerEvents: "none", willChange: "transform", transform: "translateZ(0)" }}
-        >
-          {/* Tech grid */}
-          <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-          {/* Ember glow */}
-          <div className="absolute top-1/4 -left-24 h-[24rem] w-[24rem] rounded-full bg-ember/18 blur-[70px] sm:blur-[100px] transform-gpu" />
-          {/* Primary glow — vibrant blue */}
-          <div className="absolute top-1/3 -right-24 h-[26rem] w-[26rem] rounded-full bg-primary/10 sm:bg-primary/20 blur-[75px] sm:blur-[110px] transform-gpu" />
-          {/* Additional bottom glows */}
-          <div className="absolute bottom-1/4 left-1/3 h-[20rem] w-[20rem] rounded-full bg-primary/7 sm:bg-primary/12 blur-[65px] sm:blur-[95px] transform-gpu" />
-          <div className="absolute bottom-1/6 right-1/4 h-[18rem] w-[18rem] rounded-full bg-ember/10 blur-[65px] sm:blur-[95px] transform-gpu" />
-          {/* Particle field */}
-          <ParticleField />
-        </div>
-
-        {/* ═══ CONTENT — flows seamlessly over the static background ═══ */}
-        <div className="relative z-10">
-          <Navbar />
-          <main>
-            <Hero />
-            <About />
-            <Domains />
-            <Timeline />
-            <Prizes />
-            <Organizers />
-            <RegistrationCTA />
-          </main>
-          <Footer />
-        </div>
+      {/* ═══ STATIC BACKGROUND — hardware accelerated & fixed behind content ═══ */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 z-0 transform-gpu overflow-hidden"
+        style={{ pointerEvents: "none", willChange: "transform", transform: "translateZ(0)" }}
+      >
+        {/* Tech grid */}
+        <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+        {/* Ember glow */}
+        <div className="absolute top-1/4 -left-24 h-[24rem] w-[24rem] rounded-full bg-ember/18 blur-[70px] sm:blur-[100px] transform-gpu" />
+        {/* Primary glow — vibrant blue */}
+        <div className="absolute top-1/3 -right-24 h-[26rem] w-[26rem] rounded-full bg-primary/10 sm:bg-primary/20 blur-[75px] sm:blur-[110px] transform-gpu" />
+        {/* Additional bottom glows */}
+        <div className="absolute bottom-1/4 left-1/3 h-[20rem] w-[20rem] rounded-full bg-primary/7 sm:bg-primary/12 blur-[65px] sm:blur-[95px] transform-gpu" />
+        <div className="absolute bottom-1/6 right-1/4 h-[18rem] w-[18rem] rounded-full bg-ember/10 blur-[65px] sm:blur-[95px] transform-gpu" />
+        {/* Particle field */}
+        <ParticleField />
       </div>
-    </ModalProvider>
+
+      {/* ═══ CONTENT — flows seamlessly over the static background ═══ */}
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Domains />
+          <Timeline />
+          <Prizes />
+          <Organizers />
+          <RegistrationCTA />
+        </main>
+        <Footer />
+      </div>
+    </div>
   );
 }
