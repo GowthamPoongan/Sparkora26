@@ -13,7 +13,7 @@ export const event = {
   mode: "Offline",
   teamSize: "2–3 members",
   // Replace with the live Google Form link.
-  registrationUrl: "GOOGLE_FORM_URL_HERE",
+  registrationUrl: "https://forms.gle/bWW1HiE93HW6o18CA",
   department: "Department of Computer Science and Business Systems",
   college: "Jerusalem College of Engineering",
   intro:
@@ -106,35 +106,6 @@ export const associations: { name: string; src: string | null }[] = [
   { name: "Institution of Engineers (India) — IE(I)", src: ieiLogo },
 ];
 
-export const faqs = [
-  {
-    q: "Who can participate?",
-    a: "Sparkora'26 is a college hackathon open to student innovators who register through the official registration form.",
-  },
-  { q: "What is the team size?", a: "Teams must have 2–3 members." },
-  {
-    q: "Where is the hackathon conducted?",
-    a: "At Jerusalem College of Engineering, Chennai.",
-  },
-  {
-    q: "Is the hackathon online or offline?",
-    a: "The hackathon is conducted fully offline, on campus.",
-  },
-  {
-    q: "What are the hackathon domains?",
-    a: "Healthcare, EdTech, AI for Business and FinTech.",
-  },
-  { q: "Will meals be provided?", a: "Yes, meals are provided to participants." },
-  {
-    q: "Will participants receive certificates?",
-    a: "Yes, certificates are provided.",
-  },
-  {
-    q: "How do I register?",
-    a: "Use any Register Now button on this page — it opens the official registration form in a new tab.",
-  },
-];
-
 // Replace with real handles when available.
 export const socials = [
   { label: "Instagram", href: "#" },
@@ -148,5 +119,4 @@ export const nav = [
   { label: "TIMELINE", to: "#timeline" },
   { label: "PRIZES", to: "#prizes" },
   { label: "ORGANIZERS", to: "#organizers" },
-  { label: "FAQ", to: "#faq" },
 ];

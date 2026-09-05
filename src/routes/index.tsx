@@ -8,7 +8,6 @@ import { Timeline } from "@/components/site/Timeline";
 import { Prizes } from "@/components/site/Prizes";
 import { TeamInfo } from "@/components/site/TeamInfo";
 import { Organizers } from "@/components/site/Organizers";
-import { FAQ } from "@/components/site/FAQ";
 import { RegistrationCTA } from "@/components/site/RegistrationCTA";
 import { Footer } from "@/components/site/Footer";
 
@@ -50,10 +49,9 @@ function Index() {
         <About />
         <Domains />
         <Timeline />
-        <Prizes />
         <TeamInfo />
+        <Prizes />
         <Organizers />
-        <FAQ />
         <RegistrationCTA />
       </main>
       <Footer />
