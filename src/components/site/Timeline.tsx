@@ -28,7 +28,7 @@ function Item({ item, index }: { item: (typeof timeline)[number]; index: number 
       </div>
 
       {/* node */}
-      <div className="absolute top-1.5 left-[0.4375rem] md:static md:col-start-2 md:row-start-1 md:left-auto">
+      <div className="absolute top-1.5 left-[0.25rem] sm:left-[0.4375rem] md:static md:col-start-2 md:row-start-1 md:left-auto">
         <motion.span
           initial={{ scale: 0.4, opacity: 0.3 }}
           whileInView={{ scale: 1, opacity: 1 }}
@@ -39,7 +39,7 @@ function Item({ item, index }: { item: (typeof timeline)[number]; index: number 
       </div>
 
       {/* mobile / single-sided */}
-      <div className="pl-10 md:hidden md:row-start-1">
+      <div className="pl-7 sm:pl-10 md:hidden md:row-start-1">
         <Reveal>
           <Card item={item} Icon={Icon} alignRight={false} />
         </Reveal>
@@ -60,23 +60,23 @@ function Card({
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-xl border border-border bg-card/40 p-6 transition-colors duration-500 hover:border-primary/50",
+        "group relative overflow-hidden rounded-xl border border-border bg-card/40 p-4 transition-colors duration-500 hover:border-primary/50 sm:p-6",
         alignRight && "md:text-right",
       )}
     >
       <div
         className={cn(
-          "flex items-center gap-3",
+          "flex items-center gap-2.5 sm:gap-3",
           alignRight && "md:flex-row-reverse md:justify-start",
         )}
       >
-        <Icon aria-hidden="true" strokeWidth={1.3} className="h-5 w-5 shrink-0 text-primary" />
-        <span className="font-display text-[0.65rem] tracking-[0.28em] text-ember uppercase">
+        <Icon aria-hidden="true" strokeWidth={1.3} className="h-4 w-4 shrink-0 text-primary sm:h-5 sm:w-5" />
+        <span className="font-display text-[0.62rem] tracking-[0.2em] text-ember uppercase sm:text-[0.65rem] sm:tracking-[0.28em]">
           {item.time}
         </span>
       </div>
-      <h3 className="mt-3 text-lg font-bold tracking-tight sm:text-xl">{item.title}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
+      <h3 className="mt-2 text-base font-bold tracking-tight sm:mt-3 sm:text-xl">{item.title}</h3>
+      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm">{item.description}</p>
       <span
         aria-hidden="true"
         className="rule-gradient absolute inset-x-0 bottom-0 h-px scale-x-0 transition-transform duration-700 group-hover:scale-x-100"
@@ -106,7 +106,7 @@ export function Timeline() {
         {/* rail */}
         <div
           aria-hidden="true"
-          className="absolute top-0 bottom-0 left-3 w-px bg-border md:left-1/2 md:-translate-x-1/2"
+          className="absolute top-0 bottom-0 left-2.5 w-px bg-border sm:left-3 md:left-1/2 md:-translate-x-1/2"
         >
           <motion.div
             style={{ height }}
@@ -114,7 +114,7 @@ export function Timeline() {
           />
         </div>
 
-        <ol className="relative space-y-10 md:space-y-6">
+        <ol className="relative space-y-5 sm:space-y-6">
           {timeline.map((item, i) => (
             <Item key={item.title} item={item} index={i} />
           ))}

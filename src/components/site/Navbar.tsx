@@ -30,22 +30,22 @@ export function Navbar() {
         scrolled ? "border-b border-border/60 bg-background/75 backdrop-blur-xl" : "bg-transparent",
       )}
     >
-      <div className="flex h-18 w-full items-center justify-between gap-4 px-6 sm:px-10 lg:px-14">
-        <div className="flex items-center gap-4 sm:gap-6">
+      <div className="flex h-18 w-full items-center justify-between gap-3 px-4 sm:px-10 lg:px-14">
+        <div className="flex items-center gap-2.5 sm:gap-6">
           <a
             href="#top"
-            className="font-display text-lg font-bold tracking-[0.16em] whitespace-nowrap"
+            className="font-display text-base sm:text-lg font-bold tracking-[0.12em] sm:tracking-[0.16em] whitespace-nowrap"
           >
             {event.name}
           </a>
 
           {/* Registration Fee beside SPARKORA'26 */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 text-xs sm:text-base whitespace-nowrap">
-            <Banknote className="h-4 w-4 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
+          <div className="flex items-center gap-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 px-2.5 py-0.5 text-xs sm:px-3 sm:py-1 sm:text-sm whitespace-nowrap">
+            <Banknote className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-orange-400 shrink-0" />
             <span className="font-display font-bold tracking-wider text-foreground uppercase">
-              <span className="hidden min-[400px]:inline">Registration </span>Fee :
+              Fee:
             </span>
-            <span className="font-display text-sm sm:text-lg font-black tracking-wider text-orange-400">
+            <span className="font-display font-black tracking-wider text-orange-400">
               ₹150
             </span>
           </div>
@@ -72,7 +72,7 @@ export function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="ml-auto flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-1.5 rounded-full border border-border lg:hidden"
+          className="ml-auto flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-1.5 rounded-full border border-border sm:h-11 sm:w-11 lg:hidden"
         >
           <motion.span
             animate={open ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
@@ -104,7 +104,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.28 }}
-            className="border-b border-border bg-background/97 px-5 py-8 backdrop-blur-xl lg:hidden"
+            className="max-h-[calc(100svh-4.5rem)] overflow-y-auto border-b border-border bg-background/97 px-6 py-7 backdrop-blur-xl lg:hidden"
           >
             <nav aria-label="Mobile" className="flex flex-col gap-5">
               {nav.map((item) => (
@@ -112,13 +112,13 @@ export function Navbar() {
                   key={item.label}
                   href={item.to}
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-semibold tracking-[0.08em] uppercase"
+                  className="font-display text-xl font-semibold tracking-[0.08em] uppercase sm:text-2xl"
                 >
                   {item.label}
                 </a>
               ))}
             </nav>
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="mt-7 flex flex-col gap-4">
               <div className="flex items-center justify-center gap-2 text-base sm:text-lg whitespace-nowrap">
                 <Banknote className="h-5 w-5 text-orange-400 shrink-0" />
                 <span className="font-display font-bold tracking-wider text-foreground uppercase">

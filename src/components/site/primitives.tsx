@@ -15,7 +15,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("relative scroll-mt-24 px-5 py-24 sm:px-8 md:py-32", className)}
+      className={cn("relative scroll-mt-20 px-4 py-16 sm:scroll-mt-24 sm:px-8 sm:py-24 md:py-32", className)}
     >
       <div className="mx-auto w-full max-w-6xl">{children}</div>
     </section>
@@ -63,20 +63,20 @@ export function SectionHeading({
   align?: "left" | "center";
 }) {
   return (
-    <Reveal className={cn("mb-14", align === "center" && "text-center")}>
+    <Reveal className={cn("mb-10 sm:mb-14", align === "center" && "text-center")}>
       {eyebrow ? (
-        <p className="label-eyebrow mb-5 flex items-center gap-3">
+        <p className={cn("label-eyebrow mb-4 flex items-center gap-3 sm:mb-5", align === "center" && "justify-center")}>
           <span className="rule-gradient inline-block h-px w-10" aria-hidden="true" />
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-5xl leading-[0.9] font-bold sm:text-6xl md:text-7xl lg:text-8xl">
+      <h2 className="text-3xl leading-[1] font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
         {title}
       </h2>
       {subtitle ? (
         <p
           className={cn(
-            "mt-5 max-w-xl text-base text-muted-foreground sm:text-lg",
+            "mt-3 max-w-xl text-sm text-muted-foreground sm:mt-5 sm:text-lg",
             align === "center" && "mx-auto",
           )}
         >

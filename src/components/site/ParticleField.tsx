@@ -83,11 +83,13 @@ export function ParticleField() {
     window.addEventListener("resize", resize);
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerleave", onLeave);
+    window.addEventListener("touchend", onLeave, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerleave", onLeave);
+      window.removeEventListener("touchend", onLeave);
     };
   }, []);
 

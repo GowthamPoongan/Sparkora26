@@ -17,20 +17,20 @@ export function Footer() {
           <p className="mt-3 font-display text-[0.68rem] tracking-[0.3em] text-ember uppercase">
             {event.tagline}
           </p>
-          <div className="mt-6 flex flex-col gap-3.5 sm:flex-row sm:items-center sm:gap-4 min-w-0">
+          <div className="mt-6 flex flex-row items-center gap-3 sm:gap-4 min-w-0">
             <img
               src={jceCrest}
               alt="Jerusalem College of Engineering Crest"
-              className="h-16 w-auto shrink-0 object-contain sm:h-20 md:h-22"
+              className="h-14 w-14 shrink-0 object-contain sm:h-20 md:h-22"
             />
             <div className="min-w-0 font-serif leading-snug text-foreground">
-              <div className="text-sm font-extrabold tracking-wide uppercase text-foreground leading-tight sm:text-base md:text-lg">
+              <div className="text-xs font-extrabold tracking-wide uppercase text-foreground leading-tight sm:text-base md:text-lg">
                 JERUSALEM COLLEGE OF ENGINEERING
               </div>
-              <div className="mt-1 text-xs font-semibold text-muted-foreground sm:text-sm">
+              <div className="mt-0.5 text-[0.7rem] font-semibold text-muted-foreground sm:text-sm">
                 (An Autonomous Institution)
               </div>
-              <div className="mt-0.5 text-xs text-muted-foreground/80">
+              <div className="mt-0.5 text-[0.65rem] text-muted-foreground/80 sm:text-xs">
                 Pallikaranai, Chennai - 600100
               </div>
             </div>
@@ -54,17 +54,17 @@ export function Footer() {
 
         <div className="text-sm">
           <p className="label-eyebrow mb-4">Location</p>
-          <div className="relative overflow-hidden rounded-xl" style={{ width: 260, height: 180 }}>
+          <div className="relative h-44 w-full max-w-sm overflow-hidden rounded-xl sm:h-48 sm:w-64">
             <iframe
               title="Event Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.4!2d80.2077491!3d12.9456381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dcaf1158b69%3A0x2faed53a93b675d8!2sJerusalem%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1700000000000"
-              width="260"
-              height="180"
+              width="100%"
+              height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-xl"
+              className="h-full w-full rounded-xl"
             />
             <a
               href="https://maps.app.goo.gl/Yn6DKoJAYaCU14i49"
@@ -102,8 +102,6 @@ export function Footer() {
             <a
               key={s.label}
               href={s.href}
-              target={s.href.startsWith("http") ? "_blank" : undefined}
-              rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="font-display tracking-[0.22em] uppercase transition-colors hover:text-foreground"
             >
               {s.label}

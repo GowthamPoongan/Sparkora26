@@ -11,16 +11,16 @@ export function RegistrationCTA() {
       </div>
 
       <Reveal>
-        <h2 className="mx-auto max-w-3xl text-4xl leading-[0.95] font-bold sm:text-6xl md:text-7xl">
+        <h2 className="mx-auto max-w-3xl text-3xl leading-tight font-bold sm:text-6xl md:text-7xl">
           Ready to spark <span className="gradient-text">something?</span>
         </h2>
-        <p className="mt-6 font-display text-sm tracking-[0.3em] text-muted-foreground uppercase sm:text-base">
+        <p className="mt-4 font-display text-xs tracking-[0.2em] text-muted-foreground uppercase sm:mt-6 sm:text-base sm:tracking-[0.3em]">
           {event.date}
         </p>
-        <div className="mt-10 flex justify-center">
-          <RegisterButton size="lg" />
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <RegisterButton size="lg" className="w-full max-w-xs sm:w-auto" />
         </div>
-        <p className="mx-auto mt-8 max-w-md text-sm text-muted-foreground sm:text-base">
+        <p className="mx-auto mt-6 max-w-md text-xs text-muted-foreground sm:mt-8 sm:text-base">
           Bring your team. Choose your domain. Build something that matters.
         </p>
       </Reveal>

@@ -5,27 +5,27 @@ export function About() {
   return (
     <Section id="about">
       <SectionHeading eyebrow="About" title="The Spark" />
-      <div className="grid gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
+      <div className="grid gap-6 md:grid-cols-[1.1fr_1fr] md:gap-16">
         <Reveal>
-          <p className="text-xl leading-relaxed text-foreground sm:text-2xl">{event.intro}</p>
+          <p className="text-lg leading-relaxed text-foreground sm:text-2xl">{event.intro}</p>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="text-sm leading-relaxed text-muted-foreground sm:text-lg">
             {event.about}
           </p>
         </Reveal>
       </div>
 
-      <dl className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-4">
+      <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:mt-20 md:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08} className="bg-background">
-            <div className="group relative h-full bg-card/40 px-5 py-9 text-center transition-colors duration-300 hover:bg-card">
+            <div className="group relative h-full bg-card/40 px-3 py-6 text-center transition-colors duration-300 hover:bg-card sm:px-5 sm:py-9">
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className="block font-display text-4xl font-bold tracking-tight sm:text-5xl">
+                <span className="block font-display text-3xl font-bold tracking-tight sm:text-5xl">
                   {s.value}
                 </span>
-                <span className="mt-3 block font-display text-[0.62rem] tracking-[0.24em] text-muted-foreground uppercase sm:text-[0.7rem]">
+                <span className="mt-2 block font-display text-[0.58rem] tracking-[0.16em] text-muted-foreground uppercase sm:mt-3 sm:text-[0.7rem] sm:tracking-[0.24em]">
                   {s.label}
                 </span>
               </dd>

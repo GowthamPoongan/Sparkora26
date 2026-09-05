@@ -1,7 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Clock } from "lucide-react";
 import { event } from "@/data/event";
-import { ParticleField } from "./ParticleField";
 import { Countdown } from "./Countdown";
 import jceCrest from "@/assets/jce-crest.png";
 
@@ -9,7 +8,7 @@ function Title() {
   const reduce = useReducedMotion();
   const letters = event.name.split("");
   return (
-    <h1 className="sweep scanlines relative font-display text-[12vw] leading-[0.85] font-bold tracking-tight sm:text-[12vw] lg:text-[11.5rem] whitespace-nowrap">
+    <h1 className="sweep scanlines relative font-display text-[9vw] sm:text-[11vw] lg:text-[11.5rem] leading-[0.88] font-bold tracking-tight whitespace-nowrap">
       <span className="sr-only">{event.name}</span>
       <span aria-hidden="true" className="flex flex-nowrap justify-center whitespace-nowrap">
         {letters.map((ch, i) => (
@@ -37,34 +36,20 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="noise-overlay relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-5 pt-28 pb-20 text-center"
+      className="noise-overlay relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-4 pt-24 pb-16 text-center sm:px-5 sm:pt-28 sm:pb-20"
     >
-      {/* backdrop layers */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10">
-        <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-        <div className="absolute top-1/4 -left-24 h-[26rem] w-[26rem] rounded-full bg-ember/18 blur-[120px]" />
-        <div className="absolute top-1/3 -right-24 h-[30rem] w-[30rem] rounded-full bg-primary/20 blur-[130px]" />
-        <div className="absolute inset-x-0 top-1/2 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-        <div className="streak absolute top-[38%] left-0 h-[2px] w-40 bg-gradient-to-r from-transparent via-spark to-transparent opacity-60" />
-        <div
-          className="streak absolute top-[62%] left-0 h-[2px] w-28 bg-gradient-to-r from-transparent via-ember to-transparent opacity-50"
-          style={{ animationDelay: "3.5s" }}
-        />
-      </div>
-      <ParticleField />
-
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="mb-4 flex items-center justify-center gap-3 sm:gap-4"
+        className="mb-3 flex flex-col items-center justify-center gap-2 sm:mb-4 sm:flex-row sm:gap-4"
       >
         <img
           src={jceCrest}
           alt="Jerusalem College of Engineering Crest"
-          className="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow-md"
+          className="h-14 w-14 object-contain drop-shadow-md sm:h-20 sm:w-20"
         />
-        <span className="font-display text-lg font-bold tracking-[0.15em] text-foreground uppercase sm:text-2xl md:text-3xl lg:text-4xl drop-shadow-sm">
+        <span className="text-center font-display text-base font-bold tracking-[0.1em] text-foreground uppercase drop-shadow-sm sm:text-2xl md:text-3xl lg:text-4xl sm:tracking-[0.15em]">
           Jerusalem College of Engineering
         </span>
       </motion.div>
@@ -73,7 +58,7 @@ export function Hero() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="mb-8 font-display text-sm font-bold tracking-[0.22em] text-foreground uppercase sm:text-lg md:text-xl lg:text-2xl drop-shadow-sm"
+        className="mb-6 font-display text-xs font-bold tracking-[0.14em] text-foreground uppercase drop-shadow-sm sm:mb-8 sm:text-lg md:text-xl lg:text-2xl sm:tracking-[0.22em]"
       >
         {event.department}
       </motion.p>
@@ -84,7 +69,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.75 }}
-        className="mt-6 font-display text-lg tracking-[0.4em] text-ember sm:text-2xl"
+        className="mt-5 font-display text-base font-semibold tracking-[0.22em] text-ember sm:mt-6 sm:text-2xl sm:tracking-[0.4em]"
       >
         {event.tagline}
       </motion.p>
@@ -93,28 +78,27 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.8 }}
-        className="mt-2.5 font-display text-sm sm:text-base md:text-lg font-bold tracking-[0.3em] text-foreground/90 uppercase drop-shadow-sm"
+        className="mt-2 font-display text-xs font-bold tracking-[0.16em] text-foreground/90 uppercase drop-shadow-sm sm:text-base md:text-lg sm:tracking-[0.3em]"
       >
         AN INTER-COLLEGIATE HACKATHON
       </motion.p>
 
       <Countdown />
 
-
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.9 }}
-        className="mt-8 flex flex-col items-center gap-2.5 font-display text-xs tracking-[0.28em] text-muted-foreground uppercase sm:text-sm"
+        className="mt-7 flex flex-col items-center gap-2 font-display text-xs tracking-[0.2em] text-muted-foreground uppercase sm:mt-8 sm:gap-2.5 sm:text-sm sm:tracking-[0.28em]"
       >
         <p className="text-foreground">{event.date}</p>
         <p>
           {event.venue} • {event.city}
         </p>
-        <div className="mt-2 flex items-center justify-center gap-2.5 font-display text-sm sm:text-base md:text-lg font-bold tracking-[0.2em] uppercase whitespace-nowrap drop-shadow-sm">
-          <Clock className="h-5 w-5 text-ember shrink-0 animate-pulse" />
+        <div className="mt-2 flex items-center justify-center gap-2 font-display text-xs font-bold tracking-[0.12em] uppercase whitespace-nowrap drop-shadow-sm sm:text-base md:text-lg sm:tracking-[0.2em]">
+          <Clock className="h-4 w-4 shrink-0 animate-pulse text-ember sm:h-5 sm:w-5" />
           <span className="text-foreground">TIME : </span>
-          <span className="text-ember font-black">8:30 A.M. ONWARDS</span>
+          <span className="font-black text-ember">8:30 A.M. ONWARDS</span>
         </div>
       </motion.div>
 

@@ -40,13 +40,13 @@ export function Countdown() {
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.85 }}
-      className="mt-10 grid w-full max-w-2xl grid-cols-4 gap-2.5 sm:gap-4"
+      className="mt-8 grid w-full max-w-2xl grid-cols-4 gap-2 sm:mt-10 sm:gap-4"
       aria-label="Countdown to SPARKORA'26"
     >
       {cells.map((c) => (
         <div
           key={c.label}
-          className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 px-2 py-4 backdrop-blur-sm sm:px-4 sm:py-6"
+          className="group relative overflow-hidden rounded-xl border border-border bg-card/40 px-1.5 py-3 backdrop-blur-sm sm:rounded-2xl sm:px-4 sm:py-6"
         >
           <span
             aria-hidden="true"
@@ -56,10 +56,10 @@ export function Countdown() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_65%)] opacity-70"
           />
-          <p className="relative font-display text-4xl leading-none font-bold tabular-nums sm:text-6xl">
+          <p className="relative font-display text-3xl leading-none font-bold tabular-nums sm:text-6xl">
             {mounted ? pad(c.value) : "00"}
           </p>
-          <p className="relative mt-2.5 font-display text-[0.6rem] tracking-[0.28em] text-muted-foreground uppercase sm:text-xs">
+          <p className="relative mt-2 font-display text-[0.55rem] tracking-[0.14em] text-muted-foreground uppercase sm:mt-2.5 sm:text-xs sm:tracking-[0.28em]">
             {c.label}
           </p>
         </div>
