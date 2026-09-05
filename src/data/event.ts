@@ -109,7 +109,7 @@ export const associations: { name: string; src: string | null }[] = [
 export const studentCoordinators = [
   { name: "SHARAN SRIDHARAN", yearDept: "IV CS&BS", phone: "+91 82487824337" },
   { name: "USHA RANI DIVYA B", yearDept: "III CS&BS", phone: "+91 8124133570" },
-  { name: "DHANYA SHREE S V", yearDept: "II CS&BS", phone: "+91 XXXXX XXXXX" },
+  { name: "DHANYA SHREE S V", yearDept: "II CS&BS", phone: "+91 8015323916" },
 ];
 
 export const presidents = [
