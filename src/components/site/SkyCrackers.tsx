@@ -248,27 +248,10 @@ export function SkyCrackers() {
     // Continuous launcher interval:
     // Mobile: 10 to 14 seconds (relaxed, zero lag)
     // Desktop: 7.5 to 10 seconds
-    let isVisible = true;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        const visible = entry.isIntersecting;
-        if (visible && !isVisible) {
-          isVisible = true;
-          lastLaunch = Date.now();
-          raf = requestAnimationFrame(tick);
-        } else if (!visible && isVisible) {
-          isVisible = false;
-          cancelAnimationFrame(raf);
-        }
-      },
-      { threshold: 0.05 }
-    );
-    observer.observe(canvas);
+    let lastLaunch = Date.now();
+    let nextLaunchDelay = isMobile ? 11000 : 8000;
 
     const tick = () => {
-      if (!isVisible) return;
       ctx.clearRect(0, 0, w, h);
 
       // Check pending rockets
@@ -418,9 +401,7 @@ export function SkyCrackers() {
       }
       if (!isMobile) ctx.shadowBlur = 0;
 
-      if (isVisible) {
-        raf = requestAnimationFrame(tick);
-      }
+      raf = requestAnimationFrame(tick);
     };
 
     tick();
@@ -455,7 +436,6 @@ export function SkyCrackers() {
 
     return () => {
       cancelAnimationFrame(raf);
-      observer.disconnect();
       clearTimeout(initTimer);
       window.removeEventListener("click", handleClick);
       window.removeEventListener("touchstart", handleClick);

@@ -26,7 +26,7 @@ export function ParticleField() {
     let h = 0;
     let particles: P[] = [];
     const mouse = { x: -9999, y: -9999 };
-    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.25);
+    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
 
     const resize = () => {
       w = canvas.clientWidth;
@@ -35,15 +35,15 @@ export function ParticleField() {
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = isMobile
-        ? Math.min(16, Math.round((w * h) / 45000))
-        : Math.min(38, Math.round((w * h) / 32000));
+        ? Math.min(26, Math.round((w * h) / 32000))
+        : Math.min(60, Math.round((w * h) / 26000));
 
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.16,
-        vy: (Math.random() - 0.5) * 0.16,
-        r: Math.random() * 1.5 + 0.6,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
+        r: Math.random() * 1.6 + 0.6,
         ember: Math.random() < 0.4,
       }));
     };
@@ -60,18 +60,17 @@ export function ParticleField() {
 
     const tick = () => {
       ctx.clearRect(0, 0, w, h);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i]!;
+      for (const p of particles) {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const d2 = dx * dx + dy * dy;
-        if (d2 < 12000) {
-          const f = (1 - d2 / 12000) * 0.28;
-          p.vx += (dx / Math.sqrt(d2 || 1)) * f * 0.35;
-          p.vy += (dy / Math.sqrt(d2 || 1)) * f * 0.35;
+        if (d2 < 16000) {
+          const f = (1 - d2 / 16000) * 0.32;
+          p.vx += (dx / Math.sqrt(d2 || 1)) * f * 0.4;
+          p.vy += (dy / Math.sqrt(d2 || 1)) * f * 0.4;
         }
-        p.vx = Math.max(-0.6, Math.min(0.6, p.vx * 0.99));
-        p.vy = Math.max(-0.6, Math.min(0.6, p.vy * 0.99));
+        p.vx = Math.max(-0.7, Math.min(0.7, p.vx * 0.99));
+        p.vy = Math.max(-0.7, Math.min(0.7, p.vy * 0.99));
         p.x += p.vx;
         p.y += p.vy;
         if (p.x < 0) p.x = w;
@@ -82,26 +81,35 @@ export function ParticleField() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
 
-        // Vibrant colors with zero-overhead alpha (no GPU-choking shadowBlur)
-        ctx.fillStyle = p.ember
-          ? "rgba(255, 155, 60, 0.72)"
-          : "rgba(90, 175, 255, 0.68)";
+        // Electric blue & fire orange as before
+        if (p.ember) {
+          ctx.fillStyle = isMobile ? "rgba(255,150,60,0.6)" : "rgba(255,150,60,0.75)";
+        } else {
+          ctx.fillStyle = isMobile ? "rgba(80,160,255,0.48)" : "rgba(90,170,255,0.75)";
+        }
+
+        if (!isMobile) {
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = p.ember ? "rgba(255,140,40,0.6)" : "rgba(70,150,255,0.6)";
+        }
         ctx.fill();
       }
+      if (!isMobile) ctx.shadowBlur = 0;
       raf = requestAnimationFrame(tick);
     };
 
     resize();
     tick();
-    window.addEventListener("resize", resize, { passive: true });
-    window.addEventListener("pointermove", onMove, { passive: true });
-    window.addEventListener("pointerleave", onLeave, { passive: true });
-
+    window.addEventListener("resize", resize);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerleave", onLeave);
+    window.addEventListener("touchend", onLeave, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerleave", onLeave);
+      window.removeEventListener("touchend", onLeave);
     };
   }, []);
 
