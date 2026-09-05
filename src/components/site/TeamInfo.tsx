@@ -18,20 +18,22 @@ export function TeamInfo() {
         </h2>
       </Reveal>
 
-      <div className="mt-8 grid grid-cols-2 gap-px bg-border sm:mt-12 lg:grid-cols-4">
-        {items.map((it, i) => (
-          <Reveal key={it.label} delay={i * 0.07} className="bg-background">
-            <div className="flex h-full flex-col sm:flex-row items-start gap-3 sm:gap-4 bg-card/25 p-4 sm:px-6 sm:py-8">
-              <it.icon aria-hidden="true" strokeWidth={1.3} className="h-5 w-5 sm:h-6 sm:w-6 shrink-0 text-primary" />
-              <div className="min-w-0">
-                <p className="label-eyebrow !text-[0.55rem] sm:!text-[0.7rem]">{it.label}</p>
-                <p className="mt-1 sm:mt-2 font-display text-xs sm:text-base font-semibold tracking-[0.08em] uppercase">
-                  {it.value}
-                </p>
+      <div className="mt-8 overflow-hidden rounded-2xl border border-border/30 bg-card/10 backdrop-blur-sm sm:mt-12">
+        <div className="grid grid-cols-2 divide-x divide-y divide-border/30 lg:divide-y-0 lg:grid-cols-4">
+          {items.map((it, i) => (
+            <Reveal key={it.label} delay={i * 0.07}>
+              <div className="flex h-full flex-col items-start gap-3 p-5 sm:flex-row sm:gap-4 sm:px-6 sm:py-8">
+                <it.icon aria-hidden="true" strokeWidth={1.3} className="h-5 w-5 shrink-0 text-primary sm:h-6 sm:w-6" />
+                <div className="min-w-0">
+                  <p className="label-eyebrow !text-[0.55rem] sm:!text-[0.7rem]">{it.label}</p>
+                  <p className="mt-1 font-display text-xs font-semibold tracking-[0.08em] uppercase sm:mt-2 sm:text-base">
+                    {it.value}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Reveal>
-        ))}
+            </Reveal>
+          ))}
+        </div>
       </div>
     </Section>
   );
