@@ -87,8 +87,6 @@ export function SectionHeading({
   );
 }
 
-import { useModal } from "@/context/ModalContext";
-
 export function RegisterButton({
   className,
   label = "REGISTER NOW",
@@ -98,13 +96,12 @@ export function RegisterButton({
   label?: string;
   size?: "md" | "lg";
 }) {
-  const { openRegisterModal } = useModal();
-
   return (
-    <button
-      type="button"
-      onClick={openRegisterModal}
-      aria-label={`${label} — view registration status`}
+    <a
+      href={event.registrationUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${label} — register on Google Form`}
       className={cn(
         "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-ember font-display font-semibold tracking-[0.18em] text-ember-foreground uppercase transition-all duration-300 hover:glow-ember hover:brightness-110 focus-visible:glow-ember cursor-pointer active:scale-[0.98]",
         size === "lg" ? "px-10 py-5 text-sm sm:text-base" : "px-7 py-3.5 text-xs sm:text-sm",
@@ -116,6 +113,6 @@ export function RegisterButton({
       <span className="relative transition-transform duration-300 group-hover:translate-x-1">
         →
       </span>
-    </button>
+    </a>
   );
 }
