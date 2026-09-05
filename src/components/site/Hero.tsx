@@ -23,7 +23,7 @@ function Title() {
               ease: [0.16, 1, 0.3, 1],
             }}
             className="inline-block"
-            style={{ textShadow: "0 0 60px rgba(80,150,255,0.28)" }}
+            style={{ textShadow: "0 0 50px rgba(255,140,50,0.22), 0 0 70px rgba(120,170,240,0.14)" }}
           >
             {ch}
           </motion.span>

@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react";
 
 /**
  * Sky Crackers / Fireworks Multi-Rocket Salvo animation.
- * Launches 5 to 6 rockets at a time from the bottom of the viewport,
- * ascending in synchrony with streaming spark trails, and detonating
- * into a spectacular multi-blast firework show!
+ * Mobile-optimized with adaptive particle counts, zero shadowBlur on mobile,
+ * clamped DPR, and relaxed launch delay intervals to ensure 60fps performance
+ * without battery drain or lag on phones.
  */
 export function SkyCrackers() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -17,8 +17,13 @@ export function SkyCrackers() {
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    const isMobile =
+      typeof window !== "undefined" &&
+      (window.innerWidth < 768 || window.navigator.maxTouchPoints > 0);
+
     let raf = 0;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Clamp DPR to 1 on mobile to prevent massive fill-rate overhead
+    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
     let w = canvas.clientWidth;
     let h = canvas.clientHeight;
 
@@ -32,32 +37,32 @@ export function SkyCrackers() {
     };
     resize();
 
-    // ── Palettes: Fire/Ember, Electric Cyan, Pure Gold, Festive Ruby, Violet Neon ──
+    // ── Palettes: Warm Gold, Fire Ember, Festive Ruby, Sunset Amber, Soft Sapphire ──
     const palettes = [
       {
         name: "fire-ember",
-        hues: [20, 32, 44, 55, 12],
-        rocketHue: 32,
-      },
-      {
-        name: "electric-cyan",
-        hues: [185, 200, 215, 240, 45],
-        rocketHue: 195,
+        hues: [20, 32, 42, 52, 16],
+        rocketHue: 30,
       },
       {
         name: "pure-gold",
-        hues: [40, 48, 52, 60, 35],
+        hues: [40, 48, 55, 60, 36],
         rocketHue: 48,
       },
       {
         name: "festive-ruby",
-        hues: [345, 5, 22, 45, 335],
-        rocketHue: 10,
+        hues: [348, 8, 24, 42, 335],
+        rocketHue: 12,
       },
       {
-        name: "neon-violet",
-        hues: [275, 290, 310, 45, 260],
-        rocketHue: 285,
+        name: "sunset-amber",
+        hues: [28, 38, 48, 58, 20],
+        rocketHue: 36,
+      },
+      {
+        name: "soft-sapphire",
+        hues: [205, 220, 235, 45, 195],
+        rocketHue: 215,
       },
     ];
 
@@ -70,6 +75,7 @@ export function SkyCrackers() {
       palette: (typeof palettes)[number];
       exploded: boolean;
       trail: { x: number; y: number; alpha: number; size: number }[];
+      frameCounter: number;
     }
 
     interface Spark {
@@ -104,31 +110,34 @@ export function SkyCrackers() {
     const pendingRockets: PendingRocket[] = [];
     const sparks: Spark[] = [];
     const flashes: Flash[] = [];
+    let lastUserLaunch = 0;
 
-    // Detonate rocket into 60-80 explosive sparks
+    // Detonate rocket into sparks (lightweight particle count on mobile)
     const detonate = (x: number, y: number, palette: (typeof palettes)[number]) => {
       // 1. Flash
       flashes.push({
         x,
         y,
         radius: 6,
-        maxRadius: 70 + Math.random() * 30,
-        alpha: 0.95,
+        maxRadius: isMobile ? 45 : 70,
+        alpha: isMobile ? 0.75 : 0.9,
         hue: palette.rocketHue,
       });
 
-      // 2. Blast sparks (radial explosion)
-      const sparkCount = 60 + Math.floor(Math.random() * 22);
+      // 2. Blast sparks (reduced count on mobile for smooth 60fps)
+      const sparkCount = isMobile
+        ? 24 + Math.floor(Math.random() * 8) // 24-32 on mobile
+        : 55 + Math.floor(Math.random() * 18); // 55-73 on desktop
+
       for (let i = 0; i < sparkCount; i++) {
         const angle = Math.random() * Math.PI * 2;
-        // Inner and outer burst shells
         const force =
           i % 3 === 0
-            ? 1.5 + Math.random() * 3.2
-            : 3.5 + Math.random() * 4.2;
+            ? 1.4 + Math.random() * (isMobile ? 2.4 : 3.2)
+            : 3.0 + Math.random() * (isMobile ? 3.2 : 4.0);
         const hue =
           palette.hues[Math.floor(Math.random() * palette.hues.length)]!;
-        const isTwinkle = Math.random() < 0.35;
+        const isTwinkle = Math.random() < 0.3;
 
         sparks.push({
           x,
@@ -136,27 +145,30 @@ export function SkyCrackers() {
           vx: Math.cos(angle) * force,
           vy: Math.sin(angle) * force,
           alpha: 1,
-          decay: 0.012 + Math.random() * 0.016,
-          size: 1.5 + Math.random() * 2.5,
+          decay: isMobile
+            ? 0.018 + Math.random() * 0.02
+            : 0.013 + Math.random() * 0.016,
+          size: isMobile ? 1.4 + Math.random() * 1.6 : 1.6 + Math.random() * 2.4,
           hue,
           lightness: 55 + Math.random() * 35,
           twinkle: isTwinkle,
-          gravity: 0.07 + Math.random() * 0.03,
+          gravity: 0.075 + Math.random() * 0.03,
         });
       }
 
-      // 3. Crackle micro-bursts (delayed pop sparks)
-      for (let i = 0; i < 6; i++) {
+      // 3. Crackle micro-bursts
+      const crackleCount = isMobile ? 3 : 6;
+      for (let i = 0; i < crackleCount; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const force = 1.8 + Math.random() * 2.4;
+        const force = 1.6 + Math.random() * 2.2;
         sparks.push({
           x,
           y,
           vx: Math.cos(angle) * force,
           vy: Math.sin(angle) * force - 0.4,
           alpha: 1,
-          decay: 0.008 + Math.random() * 0.01,
-          size: 2.2 + Math.random() * 1.8,
+          decay: 0.01 + Math.random() * 0.012,
+          size: 2.0 + Math.random() * 1.5,
           hue: 45, // Gold
           lightness: 90, // White-hot
           twinkle: true,
@@ -166,14 +178,19 @@ export function SkyCrackers() {
     };
 
     /**
-     * Launch a salvo of 5 to 6 sky crackers at a time!
+     * Launch a salvo of sky crackers.
+     * Desktop: 5 to 6 rockets.
+     * Mobile: 3 to 4 rockets to prevent lag while looking full on smaller screens.
      */
     const launchSalvo = (
-      count = 5 + (Math.random() > 0.5 ? 1 : 0), // 5 or 6 crackers
+      customCount?: number,
       clickX?: number,
       clickTargetY?: number
     ) => {
-      const actualCount = count;
+      const defaultCount = isMobile
+        ? 3 + (Math.random() > 0.5 ? 1 : 0) // 3 or 4 on mobile
+        : 5 + (Math.random() > 0.5 ? 1 : 0); // 5 or 6 on desktop
+      const actualCount = customCount ?? defaultCount;
 
       for (let i = 0; i < actualCount; i++) {
         let x: number;
@@ -181,34 +198,29 @@ export function SkyCrackers() {
         let vx: number;
 
         if (clickX !== undefined) {
-          // Spread in fan around clicked position
-          const spreadWidth = Math.min(w * 0.5, 360);
-          const offset = ((i - (actualCount - 1) / 2) / (actualCount - 1)) * spreadWidth;
-          x = Math.max(w * 0.08, Math.min(w * 0.92, clickX + offset + (Math.random() - 0.5) * 25));
+          const spreadWidth = Math.min(w * 0.45, 300);
+          const offset = ((i - (actualCount - 1) / 2) / Math.max(1, actualCount - 1)) * spreadWidth;
+          x = Math.max(w * 0.08, Math.min(w * 0.92, clickX + offset + (Math.random() - 0.5) * 20));
           targetY = Math.max(
             h * 0.12,
-            Math.min(h * 0.45, (clickTargetY ?? h * 0.25) + (Math.random() - 0.5) * 60)
+            Math.min(h * 0.45, (clickTargetY ?? h * 0.25) + (Math.random() - 0.5) * 50)
           );
-          vx = ((i - (actualCount - 1) / 2) / (actualCount - 1)) * 3.0 + (Math.random() - 0.5) * 0.8;
+          vx = ((i - (actualCount - 1) / 2) / Math.max(1, actualCount - 1)) * 2.6 + (Math.random() - 0.5) * 0.6;
         } else {
-          // Evenly spaced across the screen width (12% to 88%)
           const margin = w * 0.12;
           const usableWidth = w - margin * 2;
-          const step = usableWidth / (actualCount - 1);
-          x = margin + i * step + (Math.random() - 0.5) * (step * 0.35);
-          targetY = h * (0.15 + Math.random() * 0.28);
-          // Slight inward convergence or natural trajectory
+          const step = usableWidth / Math.max(1, actualCount - 1);
+          x = margin + i * step + (Math.random() - 0.5) * (step * 0.3);
+          targetY = h * (0.16 + Math.random() * 0.26);
           const centerDist = (x - w / 2) / (w / 2);
-          vx = -centerDist * 0.8 + (Math.random() - 0.5) * 1.4;
+          vx = -centerDist * 0.7 + (Math.random() - 0.5) * 1.2;
         }
 
         const palette = palettes[i % palettes.length]!;
         const distance = h - targetY;
         const speed = Math.sqrt(2 * 0.22 * distance);
         const vy = -speed;
-
-        // Slight organic delay (0 to 6 frames) so they shoot like a real volley of crackers
-        const delay = Math.floor(Math.random() * 7);
+        const delay = Math.floor(Math.random() * 6);
 
         pendingRockets.push({
           delay,
@@ -221,24 +233,28 @@ export function SkyCrackers() {
             palette,
             exploded: false,
             trail: [],
+            frameCounter: 0,
           },
         });
       }
     };
 
-    // Initial festive blast of 5-6 crackers on mount!
+    // Initial festive blast after smooth page load
+    // Longer delay on mobile (2.2s) so the browser completes hydration first
     const initTimer = setTimeout(() => {
-      launchSalvo(6);
-    }, 450);
+      launchSalvo();
+    }, isMobile ? 2200 : 1400);
 
-    // Continuous launcher interval (launch a 5-6 cracker volley every ~3 seconds)
+    // Continuous launcher interval:
+    // Mobile: 10 to 14 seconds (relaxed, zero lag)
+    // Desktop: 7.5 to 10 seconds
     let lastLaunch = Date.now();
-    let nextLaunchDelay = 3200;
+    let nextLaunchDelay = isMobile ? 11000 : 8000;
 
     const tick = () => {
       ctx.clearRect(0, 0, w, h);
 
-      // Check pending rockets waiting on stagger
+      // Check pending rockets
       for (let i = 0; i < pendingRockets.length; i++) {
         const p = pendingRockets[i]!;
         p.delay--;
@@ -253,15 +269,17 @@ export function SkyCrackers() {
       const now = Date.now();
       if (now - lastLaunch > nextLaunchDelay) {
         lastLaunch = now;
-        nextLaunchDelay = 2800 + Math.random() * 1200; // between 2.8s and 4.0s
-        launchSalvo(Math.random() > 0.5 ? 6 : 5);
+        nextLaunchDelay = isMobile
+          ? 10000 + Math.random() * 4000 // 10s - 14s on mobile
+          : 7500 + Math.random() * 2500; // 7.5s - 10s on desktop
+        launchSalvo();
       }
 
       // ── Update & Render Flashes ──
       for (let i = 0; i < flashes.length; i++) {
         const f = flashes[i]!;
         f.radius += (f.maxRadius - f.radius) * 0.28;
-        f.alpha *= 0.84;
+        f.alpha *= 0.82;
 
         if (f.alpha < 0.02) {
           flashes.splice(i, 1);
@@ -270,8 +288,8 @@ export function SkyCrackers() {
         }
 
         const fg = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.radius);
-        fg.addColorStop(0, `hsla(${f.hue}, 100%, 85%, ${f.alpha * 0.7})`);
-        fg.addColorStop(0.35, `hsla(${f.hue}, 100%, 55%, ${f.alpha * 0.4})`);
+        fg.addColorStop(0, `hsla(${f.hue}, 100%, 85%, ${f.alpha * 0.6})`);
+        fg.addColorStop(0.4, `hsla(${f.hue}, 100%, 55%, ${f.alpha * 0.3})`);
         fg.addColorStop(1, `hsla(${f.hue}, 100%, 40%, 0)`);
 
         ctx.beginPath();
@@ -285,17 +303,20 @@ export function SkyCrackers() {
         const r = rockets[i]!;
         r.x += r.vx;
         r.y += r.vy;
-        r.vy += 0.22; // gravity deceleration
+        r.vy += 0.22;
+        r.frameCounter++;
 
-        // Add trail spark
-        r.trail.push({
-          x: r.x + (Math.random() - 0.5) * 2,
-          y: r.y + (Math.random() - 0.5) * 2,
-          alpha: 1,
-          size: 2.0 + Math.random() * 2.2,
-        });
+        // Add trail spark (every 2nd frame on mobile to cut particle count in half)
+        if (!isMobile || r.frameCounter % 2 === 0) {
+          r.trail.push({
+            x: r.x + (Math.random() - 0.5) * 2,
+            y: r.y + (Math.random() - 0.5) * 2,
+            alpha: 1,
+            size: isMobile ? 1.6 : 2.0 + Math.random() * 2.0,
+          });
+        }
 
-        // Detonation condition: apex reached or passed target altitude
+        // Detonation condition
         if (r.vy >= -1.0 || r.y <= r.targetY) {
           detonate(r.x, r.y, r.palette);
           rockets.splice(i, 1);
@@ -306,9 +327,9 @@ export function SkyCrackers() {
         // Draw trail sparks
         for (let j = 0; j < r.trail.length; j++) {
           const t = r.trail[j]!;
-          t.alpha -= 0.055;
-          t.y += 1.2; // drift down
-          t.size *= 0.96;
+          t.alpha -= isMobile ? 0.075 : 0.055;
+          t.y += 1.2;
+          t.size *= 0.95;
 
           if (t.alpha <= 0) {
             r.trail.splice(j, 1);
@@ -318,18 +339,20 @@ export function SkyCrackers() {
 
           ctx.beginPath();
           ctx.arc(t.x, t.y, t.size, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${r.palette.rocketHue}, 100%, 65%, ${t.alpha * 0.85})`;
+          ctx.fillStyle = `hsla(${r.palette.rocketHue}, 100%, 65%, ${t.alpha * 0.8})`;
           ctx.fill();
         }
 
-        // Draw rocket head flare
+        // Draw rocket head flare (no expensive shadowBlur on mobile!)
         ctx.beginPath();
-        ctx.arc(r.x, r.y, 3.2, 0, Math.PI * 2);
+        ctx.arc(r.x, r.y, isMobile ? 2.5 : 3.2, 0, Math.PI * 2);
         ctx.fillStyle = "#ffffff";
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = `hsla(${r.palette.rocketHue}, 100%, 60%, 0.95)`;
+        if (!isMobile) {
+          ctx.shadowBlur = 14;
+          ctx.shadowColor = `hsla(${r.palette.rocketHue}, 100%, 60%, 0.9)`;
+        }
         ctx.fill();
-        ctx.shadowBlur = 0;
+        if (!isMobile) ctx.shadowBlur = 0;
       }
 
       // ── Update & Render Blast Sparks ──
@@ -337,9 +360,9 @@ export function SkyCrackers() {
         const s = sparks[i]!;
         s.x += s.vx;
         s.y += s.vy;
-        s.vx *= 0.965; // air drag
+        s.vx *= 0.965;
         s.vy *= 0.965;
-        s.vy += s.gravity; // downward pull
+        s.vy += s.gravity;
         s.alpha -= s.decay;
 
         if (s.alpha <= 0) {
@@ -348,10 +371,9 @@ export function SkyCrackers() {
           continue;
         }
 
-        // Twinkle factor
         let currentAlpha = s.alpha;
         if (s.twinkle && Math.random() < 0.25) {
-          currentAlpha = Math.min(1, s.alpha * 1.5);
+          currentAlpha = Math.min(1, s.alpha * 1.4);
         }
 
         const size = s.size * (0.4 + s.alpha * 0.6);
@@ -359,28 +381,37 @@ export function SkyCrackers() {
         ctx.beginPath();
         ctx.arc(s.x, s.y, size, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${s.hue}, 100%, ${s.lightness}%, ${currentAlpha})`;
-        ctx.shadowBlur = s.alpha > 0.4 ? 12 : 5;
-        ctx.shadowColor = `hsla(${s.hue}, 100%, 55%, ${currentAlpha * 0.8})`;
+
+        // Crucial performance optimization:
+        // NEVER run shadowBlur on mobile devices (causes 400+ blur passes/frame).
+        if (!isMobile) {
+          ctx.shadowBlur = s.alpha > 0.4 ? 8 : 3;
+          ctx.shadowColor = `hsla(${s.hue}, 100%, 55%, ${currentAlpha * 0.7})`;
+        }
         ctx.fill();
 
-        // Hot white sparkling core
+        // Hot white sparkling core on brighter sparks (desktop or large sparks)
         if (size > 1.8 && s.alpha > 0.45) {
           ctx.beginPath();
           ctx.arc(s.x, s.y, size * 0.35, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha * 0.9})`;
-          ctx.shadowBlur = 0;
+          ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha * 0.85})`;
+          if (!isMobile) ctx.shadowBlur = 0;
           ctx.fill();
         }
       }
-      ctx.shadowBlur = 0;
+      if (!isMobile) ctx.shadowBlur = 0;
 
       raf = requestAnimationFrame(tick);
     };
 
     tick();
 
-    // Click/tap interaction: launch 5-6 crackers towards clicked area!
+    // Click/tap interaction: throttle to prevent spam lag on phones
     const handleClick = (e: MouseEvent | TouchEvent) => {
+      const now = Date.now();
+      const minInterval = isMobile ? 2200 : 1500;
+      if (now - lastUserLaunch < minInterval) return;
+
       const clientX = "touches" in e ? e.touches[0]?.clientX : e.clientX;
       const clientY = "touches" in e ? e.touches[0]?.clientY : e.clientY;
       if (clientX === undefined || clientY === undefined) return;
@@ -392,9 +423,10 @@ export function SkyCrackers() {
         clientY >= rect.top &&
         clientY <= rect.bottom
       ) {
+        lastUserLaunch = now;
         const x = clientX - rect.left;
         const targetY = Math.max(h * 0.12, clientY - rect.top);
-        launchSalvo(5 + (Math.random() > 0.5 ? 1 : 0), x, targetY);
+        launchSalvo(undefined, x, targetY);
       }
     };
 

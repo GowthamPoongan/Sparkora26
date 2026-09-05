@@ -1,8 +1,11 @@
 import { useEffect, useRef } from "react";
 
-type P = { x: number; y: number; vx: number; vy: number; r: number; ember: boolean };
+type P = { x: number; y: number; vx: number; vy: number; r: number; colorType: number };
 
-/** Low-density interactive particle field. Blue + orange, mouse-reactive. */
+/**
+ * Low-density interactive particle field.
+ * Harmonious warm embers with subtle soft accents, mobile-optimized for 60fps.
+ */
 export function ParticleField() {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -13,12 +16,16 @@ export function ParticleField() {
     if (!ctx) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    const isMobile =
+      typeof window !== "undefined" &&
+      (window.innerWidth < 768 || window.navigator.maxTouchPoints > 0);
+
     let raf = 0;
     let w = 0;
     let h = 0;
     let particles: P[] = [];
     const mouse = { x: -9999, y: -9999 };
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
 
     const resize = () => {
       w = canvas.clientWidth;
@@ -26,15 +33,23 @@ export function ParticleField() {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(70, Math.round((w * h) / 26000));
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.18,
-        r: Math.random() * 1.6 + 0.6,
-        ember: Math.random() < 0.32,
-      }));
+      const count = isMobile
+        ? Math.min(22, Math.round((w * h) / 38000))
+        : Math.min(48, Math.round((w * h) / 28000));
+
+      particles = Array.from({ length: count }, () => {
+        const rand = Math.random();
+        // 0 = warm orange ember (60%), 1 = gold sparkle (28%), 2 = soft muted cyan tint (12%)
+        const colorType = rand < 0.6 ? 0 : rand < 0.88 ? 1 : 2;
+        return {
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.16,
+          vy: (Math.random() - 0.5) * 0.16,
+          r: Math.random() * 1.5 + 0.6,
+          colorType,
+        };
+      });
     };
 
     const onMove = (e: PointerEvent) => {
@@ -53,13 +68,13 @@ export function ParticleField() {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const d2 = dx * dx + dy * dy;
-        if (d2 < 18000) {
-          const f = (1 - d2 / 18000) * 0.35;
-          p.vx += (dx / Math.sqrt(d2 || 1)) * f * 0.4;
-          p.vy += (dy / Math.sqrt(d2 || 1)) * f * 0.4;
+        if (d2 < 14000) {
+          const f = (1 - d2 / 14000) * 0.3;
+          p.vx += (dx / Math.sqrt(d2 || 1)) * f * 0.35;
+          p.vy += (dy / Math.sqrt(d2 || 1)) * f * 0.35;
         }
-        p.vx = Math.max(-0.7, Math.min(0.7, p.vx * 0.99));
-        p.vy = Math.max(-0.7, Math.min(0.7, p.vy * 0.99));
+        p.vx = Math.max(-0.6, Math.min(0.6, p.vx * 0.99));
+        p.vy = Math.max(-0.6, Math.min(0.6, p.vy * 0.99));
         p.x += p.vx;
         p.y += p.vy;
         if (p.x < 0) p.x = w;
@@ -69,12 +84,28 @@ export function ParticleField() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.ember ? "rgba(255,150,60,0.75)" : "rgba(90,170,255,0.7)";
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = p.ember ? "rgba(255,140,40,0.6)" : "rgba(70,150,255,0.6)";
+
+        // Harmonious colors without high-contrast blue glare
+        if (p.colorType === 0) {
+          ctx.fillStyle = "rgba(255, 145, 50, 0.65)";
+        } else if (p.colorType === 1) {
+          ctx.fillStyle = "rgba(255, 205, 85, 0.55)";
+        } else {
+          ctx.fillStyle = "rgba(120, 170, 225, 0.22)"; // soft muted ethereal tint
+        }
+
+        if (!isMobile) {
+          ctx.shadowBlur = 6;
+          ctx.shadowColor =
+            p.colorType === 0
+              ? "rgba(255, 130, 30, 0.5)"
+              : p.colorType === 1
+                ? "rgba(255, 195, 60, 0.4)"
+                : "rgba(100, 160, 220, 0.15)";
+        }
         ctx.fill();
       }
-      ctx.shadowBlur = 0;
+      if (!isMobile) ctx.shadowBlur = 0;
       raf = requestAnimationFrame(tick);
     };
 
@@ -97,7 +128,7 @@ export function ParticleField() {
     <canvas
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-70"
+      className="pointer-events-none absolute inset-0 h-full w-full opacity-65"
     />
   );
 }
