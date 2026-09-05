@@ -179,9 +179,12 @@ export function Organizers() {
         </div>
       </Reveal>
 
-      {/* Leadership / Dignitaries */}
+      {/* Leadership / Academic Patrons */}
       <Reveal delay={0.32} className="mt-5 sm:mt-8">
         <div className="w-full rounded-2xl border border-border/40 bg-card/20 p-5 sm:p-10">
+          <p className="mb-6 sm:mb-8 font-display text-center text-xs font-bold tracking-[0.22em] text-primary uppercase sm:text-sm">
+            ACADEMIC PATRONS
+          </p>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
             {leadership.map((item) => (
               <div key={item.title} className="flex flex-col items-center px-4 py-2 text-center">

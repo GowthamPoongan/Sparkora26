@@ -126,8 +126,8 @@ export const facultyCoordinators = [
 ];
 
 export const leadership = [
-  { title: "DEAN STUDENT AFFAIRS", name: "Dr V JAMUNA" },
   { title: "HOD CS&BS", name: "Dr MAYA EAPEN" },
+  { title: "DEAN STUDENT AFFAIRS", name: "Dr V JAMUNA" },
   { title: "PRINCIPAL", name: "Dr S SATHIYAMURTHY" },
 ];
 
