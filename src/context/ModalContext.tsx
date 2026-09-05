@@ -44,7 +44,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
       badge: "PROBLEM STATEMENTS",
       title: domainTitle,
       message: "Problem statement are not yet released",
-      subtext: "Problem statements will be officially revealed on the hackathon day. Prepare your team and get ready to innovate!",
+      subtext: "Problem statements will be officially revealed shortly. Prepare your team and get ready to innovate!",
     });
   };
 
