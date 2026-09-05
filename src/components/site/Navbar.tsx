@@ -31,21 +31,21 @@ export function Navbar() {
       )}
     >
       <div className="flex h-18 w-full items-center justify-between gap-2 sm:gap-4 px-3 sm:px-10 lg:px-14">
-        <div className="flex items-center gap-1.5 min-[400px]:gap-2.5 sm:gap-6 min-w-0">
+        <div className="flex items-center gap-2 sm:gap-6 min-w-0">
           <a
             href="#top"
-            className="font-display text-xs min-[400px]:text-sm sm:text-lg font-bold tracking-[0.08em] min-[400px]:tracking-[0.12em] sm:tracking-[0.16em] whitespace-nowrap shrink-0"
+            className="font-display text-sm sm:text-lg font-bold tracking-[0.1em] sm:tracking-[0.16em] whitespace-nowrap shrink-0"
           >
             {event.name}
           </a>
 
           {/* Registration Fee beside SPARKORA'26 */}
-          <div className="flex items-center gap-1 min-[400px]:gap-1.5 sm:gap-2 rounded-full border border-orange-500/40 bg-orange-500/15 px-2 py-0.5 min-[400px]:px-3 min-[400px]:py-1 sm:px-4.5 sm:py-1.5 whitespace-nowrap shadow-sm shrink-0">
-            <Banknote className="h-3.5 w-3.5 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
-            <span className="font-display text-[0.68rem] min-[400px]:text-xs sm:text-base font-bold tracking-wider text-foreground uppercase">
-              <span className="hidden min-[480px]:inline">Registration </span>Fee :
+          <div className="flex items-center gap-1.5 rounded-full border border-orange-500/50 bg-orange-500/20 px-2.5 py-1 sm:px-4 sm:py-1.5 whitespace-nowrap shadow-md shrink-0">
+            <Banknote className="h-4 w-4 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
+            <span className="font-display text-xs sm:text-base font-extrabold tracking-wider text-foreground uppercase">
+              <span className="hidden min-[540px]:inline">Registration </span>Fee:
             </span>
-            <span className="font-display text-xs min-[400px]:text-sm sm:text-lg font-black tracking-wider text-orange-400">
+            <span className="font-display text-sm sm:text-lg font-black tracking-wider text-orange-400">
               ₹150
             </span>
           </div>
