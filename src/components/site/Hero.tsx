@@ -46,35 +46,44 @@ export function Hero() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="group relative mb-3 sm:mb-4 flex flex-col items-center justify-center gap-2.5 sm:gap-4 rounded-2xl border border-amber-500/35 bg-gradient-to-r from-amber-500/10 via-zinc-950/80 to-amber-500/10 px-4 py-2.5 sm:px-8 sm:py-3.5 shadow-[0_0_35px_rgba(245,158,11,0.2)] backdrop-blur-xl sm:flex-row"
+        className="group relative mb-3 sm:mb-4 flex flex-col items-center justify-center gap-2 sm:gap-2.5 rounded-2xl border border-amber-500/35 bg-gradient-to-r from-amber-500/10 via-zinc-950/85 to-amber-500/10 px-5 py-3 sm:px-9 sm:py-3.5 shadow-[0_0_35px_rgba(245,158,11,0.2)] backdrop-blur-xl text-center"
       >
-        <img
-          src={jceCrest}
-          alt="Jerusalem College of Engineering Crest"
-          className="h-12 w-12 sm:h-16 sm:w-16 object-contain drop-shadow-[0_0_16px_rgba(245,158,11,0.6)] transition-transform duration-300 group-hover:scale-105"
-        />
-        <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-          <span className="bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-300 bg-clip-text text-transparent font-display text-base sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-[0.1em] sm:tracking-[0.14em] uppercase drop-shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4">
+          <img
+            src={jceCrest}
+            alt="Jerusalem College of Engineering Crest"
+            className="h-12 w-12 sm:h-16 sm:w-16 object-contain drop-shadow-[0_0_16px_rgba(245,158,11,0.6)] transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-300 bg-clip-text text-transparent font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-[0.1em] sm:tracking-[0.14em] uppercase drop-shadow-[0_0_20px_rgba(245,158,11,0.4)] text-center">
             Jerusalem College of Engineering
           </span>
-          <span className="font-display text-[0.6rem] sm:text-xs font-bold tracking-[0.22em] text-amber-400/90 uppercase">
-            An Autonomous Institution • Accredited by NAAC & NBA
+        </div>
+        <div className="flex w-full items-center justify-center">
+          <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-0.5 text-center font-display text-[0.62rem] sm:text-xs font-bold tracking-[0.25em] text-amber-300 uppercase shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+            (An Autonomous Institution)
           </span>
         </div>
       </motion.div>
 
-      {/* ═══ High-Tech Glowing Department Badge ═══ */}
+      {/* ═══ Attractive Glowing Department Highlight ═══ */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.12 }}
-        className="mb-6 sm:mb-8 inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-950/60 via-blue-950/80 to-cyan-950/60 px-4 py-1.5 sm:px-6 sm:py-2 shadow-[0_0_25px_rgba(6,182,212,0.3)] backdrop-blur-md"
+        className="relative mb-6 sm:mb-8 inline-flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-orange-500/40 bg-gradient-to-r from-amber-500/10 via-zinc-950/90 to-orange-500/10 px-5 py-2.5 sm:px-8 sm:py-3 shadow-[0_0_30px_rgba(249,115,22,0.25)] backdrop-blur-xl"
       >
-        <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-cyan-300 animate-pulse shrink-0" />
-        <span className="bg-gradient-to-r from-cyan-300 via-sky-100 to-blue-300 bg-clip-text text-transparent font-display text-xs sm:text-sm md:text-base font-black tracking-[0.16em] sm:tracking-[0.24em] uppercase drop-shadow-[0_0_12px_rgba(6,182,212,0.6)]">
-          {event.department}
-        </span>
-        <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-cyan-300 animate-pulse shrink-0" />
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-3.5 w-3.5 text-amber-400 animate-pulse shrink-0" />
+          <span className="font-display text-[0.62rem] sm:text-[0.7rem] font-extrabold tracking-[0.3em] text-amber-300 uppercase">
+            Department of
+          </span>
+          <Sparkles className="h-3.5 w-3.5 text-amber-400 animate-pulse shrink-0" />
+        </div>
+        <p className="font-display text-xs sm:text-base md:text-lg font-black tracking-[0.16em] sm:tracking-[0.22em] uppercase text-center">
+          <span className="text-shimmer inline-block drop-shadow-[0_0_20px_rgba(245,158,11,0.5)]">
+            Computer Science and Business Systems
+          </span>
+        </p>
       </motion.div>
 
       <Title />
