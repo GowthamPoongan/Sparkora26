@@ -30,8 +30,8 @@ export function Navbar() {
         scrolled ? "border-b border-border/60 bg-background/75 backdrop-blur-xl" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-        <div className="flex items-center gap-3.5">
+      <div className="flex h-18 w-full items-center justify-between gap-4 px-6 sm:px-10 lg:px-14">
+        <div className="flex items-center gap-4 sm:gap-6">
           <a
             href="#top"
             className="font-display text-lg font-bold tracking-[0.16em] whitespace-nowrap"

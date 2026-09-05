@@ -1,4 +1,12 @@
-import { associations, event } from "@/data/event";
+import { Phone, User } from "lucide-react";
+import {
+  associations,
+  event,
+  studentCoordinators,
+  presidents,
+  facultyCoordinators,
+  leadership,
+} from "@/data/event";
 import { Reveal, Section, SectionHeading } from "./primitives";
 
 export function Organizers() {
@@ -59,6 +67,135 @@ export function Organizers() {
           </div>
         );
       })()}
+
+      {/* Event Co-ordinators */}
+      <Reveal delay={0.2} className="mt-20 text-center">
+        <h3 className="font-display text-2xl font-bold tracking-[0.15em] text-foreground uppercase sm:text-3xl">
+          Event Co-ordinators
+        </h3>
+      </Reveal>
+
+      {/* Student Co-ordinators */}
+      <Reveal delay={0.25} className="mt-8">
+        <div className="w-full rounded-2xl border border-border/40 bg-card/20 p-8 sm:p-10">
+          <p className="mb-8 font-display text-center text-xs font-bold tracking-[0.22em] text-primary uppercase sm:text-sm">
+            STUDENT CO-ORDINATORS
+          </p>
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
+            {studentCoordinators.map((c) => (
+              <div key={c.name} className="flex flex-col items-center px-6 py-2 text-center">
+                <p className="font-display text-base font-bold tracking-wider text-foreground uppercase sm:text-lg">
+                  {c.name}
+                </p>
+                <p className="mt-1.5 font-display text-xs font-semibold tracking-widest text-muted-foreground uppercase sm:text-sm">
+                  {c.yearDept}
+                </p>
+                <a
+                  href={`tel:${c.phone.replace(/\s/g, "")}`}
+                  className="mt-3.5 flex items-center gap-2 font-display text-sm sm:text-base font-semibold tracking-wider text-foreground/90 transition-colors hover:text-primary"
+                >
+                  <Phone className="h-4 w-4 shrink-0 text-primary" />
+                  {c.phone}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Presidents */}
+      <Reveal delay={0.28} className="mt-6 sm:mt-8">
+        <div className="w-full rounded-2xl border border-border/40 bg-card/20 p-8 sm:p-10">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
+            {presidents.map((p) => (
+              <div key={p.title} className="flex flex-col items-center px-6 py-2 text-center">
+                <p className="font-display text-xs font-bold tracking-[0.22em] text-primary uppercase sm:text-sm">
+                  {p.title}
+                </p>
+                <p className="mt-5 font-display text-base font-bold tracking-wider text-foreground uppercase sm:text-lg">
+                  {p.name}
+                </p>
+                <p className="mt-1.5 font-display text-xs font-semibold tracking-widest text-muted-foreground uppercase sm:text-sm">
+                  {p.yearDept}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Faculty Co-ordinators */}
+      <Reveal delay={0.3} className="mt-6 sm:mt-8">
+        <div className="w-full rounded-2xl border border-border/40 bg-card/20 p-8 sm:p-10">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-4 sm:gap-0 sm:divide-x sm:divide-border/50">
+            {/* Faculty Co-ordinators Group (3 cols) */}
+            <div className="flex flex-col items-center sm:col-span-3 sm:pr-6">
+              <p className="font-display text-xs font-bold tracking-[0.22em] text-primary uppercase sm:text-sm">
+                FACULTY CO-ORDINATORS
+              </p>
+              <div className="mt-8 grid w-full grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
+                {facultyCoordinators.slice(0, 3).map((f) => (
+                  <div key={f.name} className="flex flex-col items-center px-4 py-2 text-center">
+                    <p className="font-display text-sm font-bold tracking-wider text-foreground uppercase sm:text-base">
+                      {f.name}
+                    </p>
+                    <p className="mt-1.5 font-display text-xs font-semibold tracking-widest text-muted-foreground uppercase sm:text-sm">
+                      {f.designation}
+                    </p>
+                    <a
+                      href={`tel:${f.phone.replace(/\s/g, "")}`}
+                      className="mt-3.5 flex items-center gap-2 font-display text-sm sm:text-base font-semibold tracking-wider text-foreground/90 transition-colors hover:text-primary"
+                    >
+                      <Phone className="h-4 w-4 shrink-0 text-primary" />
+                      {f.phone}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* IE(I) Co-ordinator Group (1 col) */}
+            <div className="flex flex-col items-center sm:col-span-1 sm:pl-6">
+              <p className="font-display text-xs font-bold tracking-[0.22em] text-primary uppercase sm:text-sm">
+                IE(I) CO-ORDINATOR
+              </p>
+              <div className="mt-8 flex flex-col items-center px-4 py-2 text-center">
+                <p className="font-display text-sm font-bold tracking-wider text-foreground uppercase sm:text-base">
+                  {facultyCoordinators[3].name}
+                </p>
+                <p className="mt-1.5 font-display text-xs font-semibold tracking-widest text-muted-foreground uppercase sm:text-sm">
+                  {facultyCoordinators[3].designation}
+                </p>
+                <a
+                  href={`tel:${facultyCoordinators[3].phone.replace(/\s/g, "")}`}
+                  className="mt-3.5 flex items-center gap-2 font-display text-sm sm:text-base font-semibold tracking-wider text-foreground/90 transition-colors hover:text-primary"
+                >
+                  <Phone className="h-4 w-4 shrink-0 text-primary" />
+                  {facultyCoordinators[3].phone}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Leadership / Dignitaries */}
+      <Reveal delay={0.32} className="mt-6 sm:mt-8">
+        <div className="w-full rounded-2xl border border-border/40 bg-card/20 p-8 sm:p-10">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
+            {leadership.map((item) => (
+              <div key={item.title} className="flex flex-col items-center px-6 py-2 text-center">
+                <p className="font-display text-base font-bold tracking-wider text-foreground uppercase sm:text-lg">
+                  {item.name}
+                </p>
+                <p className="mt-1.5 font-display text-xs font-bold tracking-[0.2em] text-primary uppercase sm:text-sm">
+                  {item.title}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
     </Section>
   );
 }

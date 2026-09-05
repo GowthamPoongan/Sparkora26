@@ -106,6 +106,31 @@ export const associations: { name: string; src: string | null }[] = [
   { name: "Institution of Engineers (India) — IE(I)", src: ieiLogo },
 ];
 
+export const studentCoordinators = [
+  { name: "SHARAN SRIDHARAN", yearDept: "IV CS&BS", phone: "+91 82487824337" },
+  { name: "USHA RANI DIVYA B", yearDept: "III CS&BS", phone: "+91 8124133570" },
+  { name: "DHANYA SHREE S V", yearDept: "II CS&BS", phone: "+91 XXXXX XXXXX" },
+];
+
+export const presidents = [
+  { title: "NBTA PRESIDENT", name: "RENUKA V", yearDept: "IV CS&BS" },
+  { title: "ALGOBIZ PRESIDENT", name: "GOWTHAM P", yearDept: "IV CS&BS" },
+  { title: "IE(I) PRESIDENT", name: "ARJUN A", yearDept: "IV CS&BS" },
+];
+
+export const facultyCoordinators = [
+  { name: "Ms G PREETHI WILSON", designation: "AP, CS&BS", phone: "+91 8610301713", group: "FACULTY CO-ORDINATORS" },
+  { name: "Ms B LAKSHMI ROOPA", designation: "AP, CS&BS", phone: "+91 9985812700", group: "FACULTY CO-ORDINATORS" },
+  { name: "Ms A SINDHU DEVI", designation: "AP, CS&BS", phone: "+91 9176339602", group: "FACULTY CO-ORDINATORS" },
+  { name: "Ms B MALATHY", designation: "AP, CS&BS", phone: "+91 9677435875", group: "IE(I) CO-ORDINATOR" },
+];
+
+export const leadership = [
+  { title: "DEAN STUDENT AFFAIRS", name: "Dr V JAMUNA" },
+  { title: "HOD CS&BS", name: "Dr MAYA EAPEN" },
+  { title: "PRINCIPAL", name: "Dr S SATHIYAMURTHY" },
+];
+
 // Replace with real handles when available.
 export const socials = [
   { label: "Instagram", href: "#" },
@@ -114,6 +139,7 @@ export const socials = [
 ];
 
 export const nav = [
+  { label: "HOME", to: "#top" },
   { label: "ABOUT", to: "#about" },
   { label: "DOMAINS", to: "#domains" },
   { label: "TIMELINE", to: "#timeline" },
