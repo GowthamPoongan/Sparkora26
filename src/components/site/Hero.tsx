@@ -9,7 +9,7 @@ function Title() {
   const reduce = useReducedMotion();
   const letters = event.name.split("");
   return (
-    <h1 className="sweep scanlines relative font-display text-[9.5vw] leading-[0.85] font-bold tracking-tight sm:text-[12vw] lg:text-[11.5rem] whitespace-nowrap">
+    <h1 className="sweep scanlines relative font-display text-[12vw] leading-[0.85] font-bold tracking-tight sm:text-[12vw] lg:text-[11.5rem] whitespace-nowrap">
       <span className="sr-only">{event.name}</span>
       <span aria-hidden="true" className="flex flex-nowrap justify-center whitespace-nowrap">
         {letters.map((ch, i) => (
