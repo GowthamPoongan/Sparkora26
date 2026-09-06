@@ -2,6 +2,7 @@ import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 import {
   Award,
+  ExternalLink,
   Flag,
   MessagesSquare,
   Mic,
@@ -74,9 +75,27 @@ function Card({
         <span className="font-display text-[0.62rem] tracking-[0.2em] text-ember uppercase sm:text-[0.65rem] sm:tracking-[0.28em]">
           {item.time}
         </span>
+        {item.date && (
+          <span className="inline-flex items-center rounded-md bg-blue-600 px-2.5 py-0.5 font-mono text-[0.7rem] font-bold text-white shadow-[0_0_10px_rgba(37,99,235,0.4)] border border-blue-400/30">
+            {item.date}
+          </span>
+        )}
       </div>
       <h3 className="mt-2 text-base font-bold tracking-tight sm:mt-3 sm:text-xl">{item.title}</h3>
       <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm">{item.description}</p>
+      {item.link && (
+        <div className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ember px-7 py-2.5 text-xs font-bold tracking-wider text-ember-foreground uppercase shadow-[0_0_20px_rgba(255,140,40,0.35)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(255,140,40,0.55)] hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span>{item.linkText || "Register Now"}</span>
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
+      )}
       <span
         aria-hidden="true"
         className="rule-gradient absolute inset-x-0 bottom-0 h-px scale-x-0 transition-transform duration-700 group-hover:scale-x-100"
