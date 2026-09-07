@@ -15,7 +15,10 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("relative scroll-mt-20 px-4 py-16 sm:scroll-mt-24 sm:px-8 sm:py-24 md:py-32", className)}
+      className={cn(
+        "relative scroll-mt-20 px-4 py-16 sm:scroll-mt-24 sm:px-8 sm:py-24 md:py-32",
+        className,
+      )}
     >
       <div className="mx-auto w-full max-w-6xl">{children}</div>
     </section>
@@ -44,7 +47,11 @@ export function Reveal({
       initial={reduce ? "show" : "hidden"}
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: reduce ? 0 : 0.7, delay: reduce ? 0 : delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: reduce ? 0 : 0.7,
+        delay: reduce ? 0 : delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
     >
       {children}
     </motion.div>
@@ -63,10 +70,20 @@ export function SectionHeading({
   align?: "left" | "center";
 }) {
   return (
-    <Reveal className={cn("mb-10 sm:mb-14", align === "center" && "text-center")}>
+    <Reveal
+      className={cn("mb-10 sm:mb-14", align === "center" && "text-center")}
+    >
       {eyebrow ? (
-        <p className={cn("label-eyebrow mb-4 flex items-center gap-3 sm:mb-5", align === "center" && "justify-center")}>
-          <span className="rule-gradient inline-block h-px w-10" aria-hidden="true" />
+        <p
+          className={cn(
+            "label-eyebrow mb-4 flex items-center gap-3 sm:mb-5",
+            align === "center" && "justify-center",
+          )}
+        >
+          <span
+            className="rule-gradient inline-block h-px w-10"
+            aria-hidden="true"
+          />
           {eyebrow}
         </p>
       ) : null}
@@ -104,7 +121,9 @@ export function RegisterButton({
       aria-label={`${label} — register on Google Form`}
       className={cn(
         "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-ember font-display font-semibold tracking-[0.18em] text-ember-foreground uppercase transition-all duration-300 hover:glow-ember hover:brightness-110 focus-visible:glow-ember cursor-pointer active:scale-[0.98]",
-        size === "lg" ? "px-10 py-5 text-sm sm:text-base" : "px-7 py-3.5 text-xs sm:text-sm",
+        size === "lg"
+          ? "px-10 py-5 text-sm sm:text-base"
+          : "px-7 py-3.5 text-xs sm:text-sm",
         className,
       )}
     >

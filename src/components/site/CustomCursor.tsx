@@ -81,11 +81,20 @@ export function CustomCursor() {
       }
     };
 
-    const spawnSparks = (cx: number, cy: number, speed: number, dx: number, dy: number) => {
+    const spawnSparks = (
+      cx: number,
+      cy: number,
+      speed: number,
+      dx: number,
+      dy: number,
+    ) => {
       const maxParticles = isTouchDevice ? 80 : 120;
 
       // ── Type 1: Flying sparks (fast, small, sharp) ──
-      const sparkCount = Math.min(Math.floor(speed * 0.6 + 1.5), isTouchDevice ? 4 : 6);
+      const sparkCount = Math.min(
+        Math.floor(speed * 0.6 + 1.5),
+        isTouchDevice ? 4 : 6,
+      );
       for (let i = 0; i < sparkCount; i++) {
         if (particles.length > maxParticles) break;
         const angle = Math.random() * Math.PI * 2;
@@ -259,12 +268,25 @@ export function CustomCursor() {
         if (p.type === "flame") {
           // Soft flame wisp — radial gradient blob
           const fg = ctx.createRadialGradient(
-            p.x, p.y, 0,
-            p.x, p.y, currentSize
+            p.x,
+            p.y,
+            0,
+            p.x,
+            p.y,
+            currentSize,
           );
-          fg.addColorStop(0, `hsla(${p.hue + 15}, 100%, ${p.lightness + 15}%, ${alpha * 0.35})`);
-          fg.addColorStop(0.5, `hsla(${p.hue}, 100%, ${p.lightness}%, ${alpha * 0.15})`);
-          fg.addColorStop(1, `hsla(${p.hue - 5}, 100%, ${p.lightness - 10}%, 0)`);
+          fg.addColorStop(
+            0,
+            `hsla(${p.hue + 15}, 100%, ${p.lightness + 15}%, ${alpha * 0.35})`,
+          );
+          fg.addColorStop(
+            0.5,
+            `hsla(${p.hue}, 100%, ${p.lightness}%, ${alpha * 0.15})`,
+          );
+          fg.addColorStop(
+            1,
+            `hsla(${p.hue - 5}, 100%, ${p.lightness - 10}%, 0)`,
+          );
           ctx.beginPath();
           ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
           ctx.fillStyle = fg;
@@ -296,8 +318,12 @@ export function CustomCursor() {
 
         // Heat aura
         const aura = ctx.createRadialGradient(
-          cursor.x, cursor.y, 0,
-          cursor.x, cursor.y, 45
+          cursor.x,
+          cursor.y,
+          0,
+          cursor.x,
+          cursor.y,
+          45,
         );
         aura.addColorStop(0, "hsla(30, 100%, 55%, 0.12)");
         aura.addColorStop(0.3, "hsla(25, 100%, 48%, 0.05)");
@@ -309,8 +335,12 @@ export function CustomCursor() {
 
         // Dot gradient — white hot center to deep orange
         const dg = ctx.createRadialGradient(
-          cursor.x - 1, cursor.y - 1, 0,
-          cursor.x, cursor.y, dotR
+          cursor.x - 1,
+          cursor.y - 1,
+          0,
+          cursor.x,
+          cursor.y,
+          dotR,
         );
         dg.addColorStop(0, "hsla(50, 100%, 97%, 1)");
         dg.addColorStop(0.35, "hsla(40, 100%, 70%, 0.95)");

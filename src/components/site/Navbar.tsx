@@ -19,7 +19,14 @@ export function Navbar() {
 
   // Track active section on scroll
   useEffect(() => {
-    const sectionIds = ["top", "about", "domains", "timeline", "prizes", "organizers"];
+    const sectionIds = [
+      "top",
+      "about",
+      "domains",
+      "timeline",
+      "prizes",
+      "organizers",
+    ];
 
     const handleScroll = () => {
       const scrollPos = window.scrollY + 180;
@@ -38,7 +45,10 @@ export function Navbar() {
       }
 
       // Check if at the bottom of the page
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 60
+      ) {
         current = "#organizers";
       }
 
@@ -61,7 +71,9 @@ export function Navbar() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
-        scrolled ? "border-b border-border/60 bg-background/75 backdrop-blur-xl" : "bg-transparent",
+        scrolled
+          ? "border-b border-border/60 bg-background/75 backdrop-blur-xl"
+          : "bg-transparent",
       )}
     >
       <div className="flex h-15 sm:h-18 w-full items-center justify-between gap-1.5 px-2.5 sm:px-10 lg:px-14">
@@ -87,7 +99,10 @@ export function Navbar() {
         </div>
 
         {/* ═══ Desktop Nav with Active Glowing Underline ═══ */}
-        <nav aria-label="Main" className="ml-auto hidden items-center gap-7 lg:flex">
+        <nav
+          aria-label="Main"
+          className="ml-auto hidden items-center gap-7 lg:flex"
+        >
           {nav.map((item) => {
             const isActive = activeSection === item.to;
             return (

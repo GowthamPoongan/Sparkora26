@@ -11,7 +11,12 @@ import imgFintech from "@/assets/domain-fintech.jpg";
 import { useModal } from "@/context/ModalContext";
 
 // Asymmetric premium layout
-const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-5", "md:col-span-7"];
+const spans = [
+  "md:col-span-7",
+  "md:col-span-5",
+  "md:col-span-5",
+  "md:col-span-7",
+];
 const heights = [
   "min-h-[260px] sm:min-h-[300px] md:min-h-80",
   "min-h-[260px] sm:min-h-[300px] md:min-h-80",
@@ -30,7 +35,8 @@ const domainConfig = [
     numColor: "group-hover:text-rose-400",
     tag: "bg-rose-500/10 text-rose-400 border-rose-500/30",
     fadeColor: "from-rose-900/60 via-card/90 to-card/95",
-    glowBg: "bg-[radial-gradient(circle_at_20%_20%,rgba(244,63,94,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(249,115,22,0.15),transparent_55%)]",
+    glowBg:
+      "bg-[radial-gradient(circle_at_20%_20%,rgba(244,63,94,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(249,115,22,0.15),transparent_55%)]",
   },
   {
     image: imgEdtech,
@@ -41,7 +47,8 @@ const domainConfig = [
     numColor: "group-hover:text-sky-400",
     tag: "bg-sky-500/10 text-sky-400 border-sky-500/30",
     fadeColor: "from-sky-900/60 via-card/90 to-card/95",
-    glowBg: "bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(99,102,241,0.15),transparent_55%)]",
+    glowBg:
+      "bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(99,102,241,0.15),transparent_55%)]",
   },
   {
     image: imgAI,
@@ -52,7 +59,8 @@ const domainConfig = [
     numColor: "group-hover:text-violet-400",
     tag: "bg-violet-500/10 text-violet-400 border-violet-500/30",
     fadeColor: "from-violet-900/60 via-card/90 to-card/95",
-    glowBg: "bg-[radial-gradient(circle_at_20%_20%,rgba(167,139,250,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(99,102,241,0.15),transparent_55%)]",
+    glowBg:
+      "bg-[radial-gradient(circle_at_20%_20%,rgba(167,139,250,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(99,102,241,0.15),transparent_55%)]",
   },
   {
     image: imgFintech,
@@ -63,7 +71,8 @@ const domainConfig = [
     numColor: "group-hover:text-amber-400",
     tag: "bg-amber-500/10 text-amber-400 border-amber-500/30",
     fadeColor: "from-amber-900/60 via-card/90 to-card/95",
-    glowBg: "bg-[radial-gradient(circle_at_20%_20%,rgba(251,191,36,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(249,115,22,0.15),transparent_55%)]",
+    glowBg:
+      "bg-[radial-gradient(circle_at_20%_20%,rgba(251,191,36,0.2),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(249,115,22,0.15),transparent_55%)]",
   },
 ];
 
@@ -82,7 +91,11 @@ export function Domains() {
         {domains.map((d, i) => {
           const cfg = domainConfig[i]!;
           return (
-            <Reveal key={d.no} delay={i * 0.08} className={cn(spans[i], "group")}>
+            <Reveal
+              key={d.no}
+              delay={i * 0.08}
+              className={cn(spans[i], "group")}
+            >
               <motion.article
                 onClick={() => openDomainModal(d.title)}
                 whileHover={{ y: -6, scale: 1.015 }}
@@ -157,7 +170,10 @@ export function Domains() {
                   </p>
                   <div className="mt-3 sm:mt-4 flex items-center gap-1.5 text-xs font-display font-semibold tracking-[0.14em] uppercase text-ember transition-colors duration-300 group-hover:text-amber-300">
                     <span>Problem Statement</span>
-                    <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    >
                       →
                     </span>
                   </div>

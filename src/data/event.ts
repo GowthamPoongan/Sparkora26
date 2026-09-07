@@ -32,7 +32,11 @@ export const stats = [
 export const domains = [
   { no: "01", title: "HEALTHCARE", line: "Code that saves lives." },
   { no: "02", title: "EDTECH", line: "Reimagine how we learn." },
-  { no: "03", title: "AI FOR BUSINESS", line: "Intelligence meets enterprise." },
+  {
+    no: "03",
+    title: "AI FOR BUSINESS",
+    line: "Intelligence meets enterprise.",
+  },
   { no: "04", title: "FINTECH", line: "Build the future of finance." },
 ];
 
@@ -51,19 +55,22 @@ export const timeline = [
   {
     time: "stage 2",
     title: "RULES & GUIDELINES",
-    description: "Rules & guidelines will be released on 08/09/2026. Know the submission requirements, judging criteria, and important instructions.",
+    description:
+      "Rules & guidelines will be released on 08/09/2026. Know the submission requirements, judging criteria, and important instructions.",
     date: "08/09/2026",
   },
   {
     time: "stage 3",
     title: "Revealing of Problem Statements",
-    description: "Problem statements will be revealed on 09/09/2026. Choose a challenge from your domain and understand the problem.",
+    description:
+      "Problem statements will be revealed on 09/09/2026. Choose a challenge from your domain and understand the problem.",
     date: "09/09/2026",
   },
   {
     time: "stage 4",
     title: "Idea Submission",
-    description: "Develop your approach and submit your abstract before the deadline.",
+    description:
+      "Develop your approach and submit your abstract before the deadline.",
   },
   {
     time: "stage 5",
@@ -73,7 +80,8 @@ export const timeline = [
   {
     time: "stage 6",
     title: "Evaluation",
-    description: "Judges evaluate the submissions based on creativity, technical complexity, business impact, and presentation.",
+    description:
+      "Judges evaluate the submissions based on creativity, technical complexity, business impact, and presentation.",
   },
   {
     time: "stage 7",
@@ -123,10 +131,30 @@ export const presidents = [
 ];
 
 export const facultyCoordinators = [
-  { name: "Ms G PREETHI WILSON", designation: "AP, CS&BS", phone: "+91 8610301713", group: "FACULTY CO-ORDINATORS" },
-  { name: "Ms B LAKSHMI ROOPA", designation: "AP, CS&BS", phone: "+91 9985812700", group: "FACULTY CO-ORDINATORS" },
-  { name: "Ms A SINDHU DEVI", designation: "AP, CS&BS", phone: "+91 9176339602", group: "FACULTY CO-ORDINATORS" },
-  { name: "Ms B MALATHY", designation: "AP, CS&BS", phone: "+91 9677435875", group: "IE(I) CO-ORDINATOR" },
+  {
+    name: "Ms G PREETHI WILSON",
+    designation: "AP, CS&BS",
+    phone: "+91 8610301713",
+    group: "FACULTY CO-ORDINATORS",
+  },
+  {
+    name: "Ms B LAKSHMI ROOPA",
+    designation: "AP, CS&BS",
+    phone: "+91 9985812700",
+    group: "FACULTY CO-ORDINATORS",
+  },
+  {
+    name: "Ms A SINDHU DEVI",
+    designation: "AP, CS&BS",
+    phone: "+91 9176339602",
+    group: "FACULTY CO-ORDINATORS",
+  },
+  {
+    name: "Ms B MALATHY",
+    designation: "AP, CS&BS",
+    phone: "+91 9677435875",
+    group: "IE(I) CO-ORDINATOR",
+  },
 ];
 
 export const leadership = [
@@ -137,7 +165,10 @@ export const leadership = [
 
 // Replace with real handles when available.
 export const socials = [
-  { label: "Instagram", href: "https://www.instagram.com/jerusalem_csbs?igsi=bnd4ZGZtZ244Ynhw" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/jerusalem_csbs?igsi=bnd4ZGZtZ244Ynhw",
+  },
   { label: "LinkedIn", href: "#" },
 ];
 

@@ -12,14 +12,20 @@ import { Reveal, Section, SectionHeading } from "./primitives";
 export function Organizers() {
   return (
     <Section id="organizers">
-      <SectionHeading eyebrow="Organizers" title="Powered by community" align="center" />
+      <SectionHeading
+        eyebrow="Organizers"
+        title="Powered by community"
+        align="center"
+      />
 
       <Reveal className="text-center">
         <p className="label-eyebrow">Organized by</p>
         <p className="mt-4 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
           {event.department}
         </p>
-        <p className="mt-2 text-base text-muted-foreground sm:text-lg">{event.college}</p>
+        <p className="mt-2 text-base text-muted-foreground sm:text-lg">
+          {event.college}
+        </p>
       </Reveal>
 
       <Reveal delay={0.1} className="mt-16 text-center">
@@ -28,10 +34,10 @@ export function Organizers() {
 
       {(() => {
         const glowColors = [
-          "rgba(59, 130, 246, 0.45)",   // blue
-          "rgba(234, 179, 8, 0.45)",    // golden
-          "rgba(239, 68, 68, 0.45)",    // red
-          "rgba(255, 255, 255, 0.35)",  // white
+          "rgba(59, 130, 246, 0.45)", // blue
+          "rgba(234, 179, 8, 0.45)", // golden
+          "rgba(239, 68, 68, 0.45)", // red
+          "rgba(255, 255, 255, 0.35)", // white
         ];
         return (
           <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
@@ -83,7 +89,10 @@ export function Organizers() {
           </p>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
             {studentCoordinators.map((c) => (
-              <div key={c.name} className="flex flex-col items-center px-4 py-2 text-center">
+              <div
+                key={c.name}
+                className="flex flex-col items-center px-4 py-2 text-center"
+              >
                 <p className="font-display text-base font-bold tracking-wider text-foreground uppercase sm:text-lg">
                   {c.name}
                 </p>
@@ -108,7 +117,10 @@ export function Organizers() {
         <div className="w-full rounded-2xl border border-border/40 bg-card/20 p-5 sm:p-10">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
             {presidents.map((p) => (
-              <div key={p.title} className="flex flex-col items-center px-4 py-2 text-center">
+              <div
+                key={p.title}
+                className="flex flex-col items-center px-4 py-2 text-center"
+              >
                 <p className="font-display text-xs font-bold tracking-[0.2em] text-primary uppercase sm:text-sm sm:tracking-[0.22em]">
                   {p.title}
                 </p>
@@ -135,7 +147,10 @@ export function Organizers() {
               </p>
               <div className="mt-6 grid w-full grid-cols-1 gap-6 sm:mt-8 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
                 {facultyCoordinators.slice(0, 3).map((f) => (
-                  <div key={f.name} className="flex flex-col items-center px-3 py-2 text-center">
+                  <div
+                    key={f.name}
+                    className="flex flex-col items-center px-3 py-2 text-center"
+                  >
                     <p className="font-display text-sm font-bold tracking-wider text-foreground uppercase sm:text-base">
                       {f.name}
                     </p>
@@ -187,7 +202,10 @@ export function Organizers() {
           </p>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-border/50">
             {leadership.map((item) => (
-              <div key={item.title} className="flex flex-col items-center px-4 py-2 text-center">
+              <div
+                key={item.title}
+                className="flex flex-col items-center px-4 py-2 text-center"
+              >
                 <p className="font-display text-base font-bold tracking-wider text-foreground uppercase sm:text-lg">
                   {item.name}
                 </p>

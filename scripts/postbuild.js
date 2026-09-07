@@ -33,5 +33,7 @@ if (sourceDir) {
   fs.cpSync(sourceDir, distDir, { recursive: true });
   console.log(`[postbuild] Copied ${sourceDir} -> ${distDir} successfully.`);
 } else {
-  console.warn("[postbuild] Warning: No static build directory found to copy to dist.");
+  console.warn(
+    "[postbuild] Warning: No static build directory found to copy to dist.",
+  );
 }
