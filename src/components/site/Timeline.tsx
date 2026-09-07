@@ -15,14 +15,33 @@ import { timeline } from "@/data/event";
 import { Reveal, Section, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
 
-const icons: LucideIcon[] = [Flag, Mic, Rocket, MessagesSquare, UploadCloud, Terminal, Award];
+const icons: LucideIcon[] = [
+  Flag,
+  Mic,
+  Rocket,
+  MessagesSquare,
+  UploadCloud,
+  Terminal,
+  Award,
+];
 
-function Item({ item, index }: { item: (typeof timeline)[number]; index: number }) {
+function Item({
+  item,
+  index,
+}: {
+  item: (typeof timeline)[number];
+  index: number;
+}) {
   const Icon = icons[index % icons.length]!;
   const left = index % 2 === 0;
   return (
     <li className="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8">
-      <div className={cn("hidden md:row-start-1 md:block", left ? "md:col-start-1" : "md:col-start-3")}>
+      <div
+        className={cn(
+          "hidden md:row-start-1 md:block",
+          left ? "md:col-start-1" : "md:col-start-3",
+        )}
+      >
         <Reveal delay={0.05}>
           <Card item={item} Icon={Icon} alignRight={left} />
         </Reveal>
@@ -71,7 +90,11 @@ function Card({
           alignRight && "md:flex-row-reverse md:justify-start",
         )}
       >
-        <Icon aria-hidden="true" strokeWidth={1.3} className="h-4 w-4 shrink-0 text-primary sm:h-5 sm:w-5" />
+        <Icon
+          aria-hidden="true"
+          strokeWidth={1.3}
+          className="h-4 w-4 shrink-0 text-primary sm:h-5 sm:w-5"
+        />
         <span className="font-display text-[0.62rem] tracking-[0.2em] text-ember uppercase sm:text-[0.65rem] sm:tracking-[0.28em]">
           {item.time}
         </span>
@@ -81,10 +104,16 @@ function Card({
           </span>
         )}
       </div>
-      <h3 className="mt-2 text-base font-bold tracking-tight sm:mt-3 sm:text-xl">{item.title}</h3>
-      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm">{item.description}</p>
+      <h3 className="mt-2 text-base font-bold tracking-tight sm:mt-3 sm:text-xl">
+        {item.title}
+      </h3>
+      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm">
+        {item.description}
+      </p>
       {item.link && (
-        <div className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}>
+        <div
+          className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}
+        >
           <a
             href={item.link}
             target="_blank"
@@ -139,7 +168,6 @@ export function Timeline() {
           ))}
         </ol>
       </div>
-
     </Section>
   );
 }

@@ -11,7 +11,10 @@ function Title() {
   return (
     <h1 className="sweep scanlines relative font-display text-[13.5vw] sm:text-[11vw] lg:text-[11.5rem] leading-[0.88] font-black tracking-tight whitespace-nowrap">
       <span className="sr-only">{event.name}</span>
-      <span aria-hidden="true" className="flex flex-nowrap justify-center whitespace-nowrap">
+      <span
+        aria-hidden="true"
+        className="flex flex-nowrap justify-center whitespace-nowrap"
+      >
         {letters.map((ch, i) => (
           <motion.span
             key={`${ch}-${i}`}

@@ -113,7 +113,11 @@ export function SkyCrackers() {
     let lastUserLaunch = 0;
 
     // Detonate rocket into sparks (lightweight particle count on mobile)
-    const detonate = (x: number, y: number, palette: (typeof palettes)[number]) => {
+    const detonate = (
+      x: number,
+      y: number,
+      palette: (typeof palettes)[number],
+    ) => {
       // 1. Flash
       flashes.push({
         x,
@@ -148,7 +152,9 @@ export function SkyCrackers() {
           decay: isMobile
             ? 0.018 + Math.random() * 0.02
             : 0.013 + Math.random() * 0.016,
-          size: isMobile ? 1.4 + Math.random() * 1.6 : 1.6 + Math.random() * 2.4,
+          size: isMobile
+            ? 1.4 + Math.random() * 1.6
+            : 1.6 + Math.random() * 2.4,
           hue,
           lightness: 55 + Math.random() * 35,
           twinkle: isTwinkle,
@@ -185,7 +191,7 @@ export function SkyCrackers() {
     const launchSalvo = (
       customCount?: number,
       clickX?: number,
-      clickTargetY?: number
+      clickTargetY?: number,
     ) => {
       const defaultCount = isMobile
         ? 3 + (Math.random() > 0.5 ? 1 : 0) // 3 or 4 on mobile
@@ -199,13 +205,23 @@ export function SkyCrackers() {
 
         if (clickX !== undefined) {
           const spreadWidth = Math.min(w * 0.45, 300);
-          const offset = ((i - (actualCount - 1) / 2) / Math.max(1, actualCount - 1)) * spreadWidth;
-          x = Math.max(w * 0.08, Math.min(w * 0.92, clickX + offset + (Math.random() - 0.5) * 20));
+          const offset =
+            ((i - (actualCount - 1) / 2) / Math.max(1, actualCount - 1)) *
+            spreadWidth;
+          x = Math.max(
+            w * 0.08,
+            Math.min(w * 0.92, clickX + offset + (Math.random() - 0.5) * 20),
+          );
           targetY = Math.max(
             h * 0.12,
-            Math.min(h * 0.45, (clickTargetY ?? h * 0.25) + (Math.random() - 0.5) * 50)
+            Math.min(
+              h * 0.45,
+              (clickTargetY ?? h * 0.25) + (Math.random() - 0.5) * 50,
+            ),
           );
-          vx = ((i - (actualCount - 1) / 2) / Math.max(1, actualCount - 1)) * 2.6 + (Math.random() - 0.5) * 0.6;
+          vx =
+            ((i - (actualCount - 1) / 2) / Math.max(1, actualCount - 1)) * 2.6 +
+            (Math.random() - 0.5) * 0.6;
         } else {
           const margin = w * 0.12;
           const usableWidth = w - margin * 2;
@@ -241,9 +257,12 @@ export function SkyCrackers() {
 
     // Initial festive blast after smooth page load
     // Longer delay on mobile (2.2s) so the browser completes hydration first
-    const initTimer = setTimeout(() => {
-      launchSalvo();
-    }, isMobile ? 2200 : 1400);
+    const initTimer = setTimeout(
+      () => {
+        launchSalvo();
+      },
+      isMobile ? 2200 : 1400,
+    );
 
     // Continuous launcher interval:
     // Mobile: 10 to 14 seconds (relaxed, zero lag)

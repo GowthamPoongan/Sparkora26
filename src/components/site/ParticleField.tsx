@@ -1,6 +1,13 @@
 import { useEffect, useRef } from "react";
 
-type P = { x: number; y: number; vx: number; vy: number; r: number; ember: boolean };
+type P = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  r: number;
+  ember: boolean;
+};
 
 /**
  * Low-density interactive particle field.
@@ -83,14 +90,20 @@ export function ParticleField() {
 
         // Electric blue & fire orange as before
         if (p.ember) {
-          ctx.fillStyle = isMobile ? "rgba(255,150,60,0.6)" : "rgba(255,150,60,0.75)";
+          ctx.fillStyle = isMobile
+            ? "rgba(255,150,60,0.6)"
+            : "rgba(255,150,60,0.75)";
         } else {
-          ctx.fillStyle = isMobile ? "rgba(80,160,255,0.48)" : "rgba(90,170,255,0.75)";
+          ctx.fillStyle = isMobile
+            ? "rgba(80,160,255,0.48)"
+            : "rgba(90,170,255,0.75)";
         }
 
         if (!isMobile) {
           ctx.shadowBlur = 10;
-          ctx.shadowColor = p.ember ? "rgba(255,140,40,0.6)" : "rgba(70,150,255,0.6)";
+          ctx.shadowColor = p.ember
+            ? "rgba(255,140,40,0.6)"
+            : "rgba(70,150,255,0.6)";
         }
         ctx.fill();
       }
