@@ -89,10 +89,11 @@ export function Navbar() {
           {/* Registration Fee Badge */}
           <div className="flex items-center gap-1 sm:gap-1.5 rounded-full border border-orange-500/50 bg-orange-500/20 px-2.5 py-0.5 sm:px-4 sm:py-1.5 whitespace-nowrap shadow-md shrink-0">
             <Banknote className="h-3.5 w-3.5 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
-            <span className="font-display text-[0.65rem] sm:text-base font-extrabold tracking-wide sm:tracking-wider text-foreground uppercase">
-              Registration Fee (Per Team) :
+            <span className="font-display text-[0.6rem] sm:text-base font-extrabold tracking-wide sm:tracking-wider text-foreground uppercase">
+              <span className="hidden sm:inline">Registration Fee (Per Team) :</span>
+              <span className="inline sm:hidden">Fee/Team :</span>
             </span>
-            <span className="font-display text-[0.72rem] sm:text-lg font-black tracking-wide sm:tracking-wider text-orange-400">
+            <span className="font-display text-[0.65rem] sm:text-lg font-black tracking-wide sm:tracking-wider text-orange-400">
               ₹150
             </span>
           </div>
@@ -200,12 +201,12 @@ export function Navbar() {
               })}
             </nav>
             <div className="mt-7 flex flex-col gap-4">
-              <div className="flex items-center justify-center gap-2 rounded-xl border border-orange-500/30 bg-orange-500/10 py-2.5 px-4 text-base sm:text-lg whitespace-nowrap">
-                <Banknote className="h-5 w-5 text-orange-400 shrink-0" />
-                <span className="font-display font-bold tracking-wider text-foreground uppercase">
+              <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 rounded-xl border border-orange-500/30 bg-orange-500/10 py-2.5 px-4 text-center">
+                <Banknote className="h-4 w-4 sm:h-5 sm:w-5 text-orange-400 shrink-0 hidden xs:block" />
+                <span className="font-display text-sm sm:text-base font-bold tracking-wider text-foreground uppercase">
                   Registration Fee (Per Team) :
                 </span>
-                <span className="font-display text-lg font-black tracking-wider text-orange-400">
+                <span className="font-display text-base sm:text-lg font-black tracking-wider text-orange-400">
                   ₹150
                 </span>
               </div>
