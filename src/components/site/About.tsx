@@ -13,7 +13,7 @@ import { Reveal, Section, SectionHeading } from "./primitives";
 const eventDetails = [
   {
     icon: Zap,
-    label: "Format",
+    label: "",
     value: "1 Day Hackathon",
     subtext: "Intense Build & Pitch",
     iconColor: "text-amber-400",
@@ -152,11 +152,13 @@ export function About() {
                           className={`h-5 w-5 ${it.iconColor} transition-transform duration-300 group-hover:rotate-6`}
                         />
                       </div>
-                      <span
-                        className={`rounded-full border px-2.5 py-0.5 font-display text-[0.58rem] font-bold tracking-[0.18em] uppercase ${it.badgeClass}`}
-                      >
-                        {it.label}
-                      </span>
+                      {it.label && (
+                        <span
+                          className={`rounded-full border px-2.5 py-0.5 font-display text-[0.58rem] font-bold tracking-[0.18em] uppercase ${it.badgeClass}`}
+                        >
+                          {it.label}
+                        </span>
+                      )}
                     </div>
 
                     <h4
