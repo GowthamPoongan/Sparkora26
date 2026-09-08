@@ -70,9 +70,11 @@ export const timeline = [
   },
   {
     time: "stage 4",
-    title: "Idea Submission",
-    description:
-      "Develop your approach and submit your abstract before the deadline.",
+    title: "Registration Deadline & Idea Submission",
+    description: "Register online and submit your A3-size abstract. A sample format will be provided.",
+    deadlineAlert: "Both Registration & Idea Submission Deadline: 15 September 2026",
+    date: "15/09/2026",
+    importantDate: true,
   },
   {
     time: "stage 5",
@@ -140,7 +142,7 @@ export const hackathonRules = [
   {
     no: "04",
     title: "Registration Deadline",
-    desc: "Interested participants must register through the official online portal on or before 13 September 2026.",
+    desc: "Interested participants must register through the official online portal on or before 15 September 2026.",
   },
   {
     no: "05",

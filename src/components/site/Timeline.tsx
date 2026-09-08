@@ -115,7 +115,14 @@ function Card({
           {item.time}
         </span>
         {item.date && (
-          <span className="inline-flex items-center rounded-md bg-blue-600 px-2.5 py-0.5 font-mono text-[0.7rem] font-bold text-white shadow-[0_0_10px_rgba(37,99,235,0.4)] border border-blue-400/30">
+          <span
+            className={cn(
+              "inline-flex items-center rounded-md px-2.5 py-0.5 font-mono text-[0.7rem] font-bold text-white shadow-md border",
+              "importantDate" in item && item.importantDate
+                ? "bg-red-600 border-red-400/30 shadow-[0_0_15px_rgba(220,38,38,0.5)] animate-pulse"
+                : "bg-blue-600 border-blue-400/30 shadow-[0_0_10px_rgba(37,99,235,0.4)]"
+            )}
+          >
             {item.date}
           </span>
         )}
@@ -123,9 +130,21 @@ function Card({
       <h3 className="mt-2 text-base font-bold tracking-tight sm:mt-3 sm:text-xl">
         {item.title}
       </h3>
-      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm">
+      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm whitespace-pre-line">
         {item.description}
       </p>
+      {"deadlineAlert" in item && item.deadlineAlert && (
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <span className="font-display text-sm font-bold text-white tracking-wide">
+            🚨 {(item.deadlineAlert as string).split(": ")[0]}:
+          </span>
+          <div className="inline-block rounded-md border-2 border-red-500 bg-red-500/20 px-3 py-1 shadow-[0_0_20px_rgba(220,38,38,0.6)] animate-pulse">
+            <span className="font-display text-sm font-bold text-white tracking-wide" style={{ textShadow: "0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5)" }}>
+              {(item.deadlineAlert as string).split(": ")[1]}
+            </span>
+          </div>
+        </div>
+      )}
       {item.link && (
         <div
           className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}
