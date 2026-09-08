@@ -90,7 +90,7 @@ export function Navbar() {
           <div className="flex items-center gap-1 sm:gap-1.5 rounded-full border border-orange-500/50 bg-orange-500/20 px-2.5 py-0.5 sm:px-4 sm:py-1.5 whitespace-nowrap shadow-md shrink-0">
             <Banknote className="h-3.5 w-3.5 sm:h-5 sm:w-5 text-orange-400 shrink-0" />
             <span className="font-display text-[0.65rem] sm:text-base font-extrabold tracking-wide sm:tracking-wider text-foreground uppercase">
-              Registration Fee :
+              Registration Fee (Per Team) :
             </span>
             <span className="font-display text-[0.72rem] sm:text-lg font-black tracking-wide sm:tracking-wider text-orange-400">
               ₹150
@@ -203,7 +203,7 @@ export function Navbar() {
               <div className="flex items-center justify-center gap-2 rounded-xl border border-orange-500/30 bg-orange-500/10 py-2.5 px-4 text-base sm:text-lg whitespace-nowrap">
                 <Banknote className="h-5 w-5 text-orange-400 shrink-0" />
                 <span className="font-display font-bold tracking-wider text-foreground uppercase">
-                  Registration Fee :
+                  Registration Fee (Per Team) :
                 </span>
                 <span className="font-display text-lg font-black tracking-wider text-orange-400">
                   ₹150
