@@ -13,7 +13,9 @@ export function Footer() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="min-w-0"
         >
-          <p className="font-display text-2xl font-bold tracking-[0.14em]">{event.name}</p>
+          <p className="font-display text-2xl font-bold tracking-[0.14em]">
+            {event.name}
+          </p>
           <p className="mt-3 font-display text-[0.68rem] tracking-[0.3em] text-ember uppercase">
             {event.tagline}
           </p>
@@ -93,7 +95,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="rule-gradient mx-auto mt-14 h-px max-w-6xl opacity-60" aria-hidden="true" />
+      <div
+        className="rule-gradient mx-auto mt-14 h-px max-w-6xl opacity-60"
+        aria-hidden="true"
+      />
 
       <div className="mx-auto mt-6 flex max-w-6xl flex-col gap-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
         <p>© 2026 {event.name}</p>
@@ -103,7 +108,9 @@ export function Footer() {
               key={s.label}
               href={s.href}
               target={s.href.startsWith("http") ? "_blank" : undefined}
-              rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              rel={
+                s.href.startsWith("http") ? "noopener noreferrer" : undefined
+              }
               className="font-display tracking-[0.22em] uppercase transition-colors hover:text-foreground"
             >
               {s.label}

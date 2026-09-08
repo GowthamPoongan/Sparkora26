@@ -32,7 +32,11 @@ export const stats = [
 export const domains = [
   { no: "01", title: "HEALTHCARE", line: "Code that saves lives." },
   { no: "02", title: "EDTECH", line: "Reimagine how we learn." },
-  { no: "03", title: "AI FOR BUSINESS", line: "Intelligence meets enterprise." },
+  {
+    no: "03",
+    title: "AI FOR BUSINESS",
+    line: "Intelligence meets enterprise.",
+  },
   { no: "04", title: "FINTECH", line: "Build the future of finance." },
 ];
 
@@ -51,19 +55,24 @@ export const timeline = [
   {
     time: "stage 2",
     title: "RULES & GUIDELINES",
-    description: "Rules & guidelines will be released on 08/09/2026. Know the submission requirements, judging criteria, and important instructions.",
+    description:
+      "Rules & guidelines are available. Know the submission requirements, judging criteria, and important instructions.",
     date: "08/09/2026",
+    pdfUrl: sparkoraGuidelinesPdf,
+    pdfText: "View Rules & Guidelines",
   },
   {
     time: "stage 3",
     title: "Revealing of Problem Statements",
-    description: "Problem statements will be revealed on 09/09/2026. Choose a challenge from your domain and understand the problem.",
+    description:
+      "Problem statements will be revealed on 09/09/2026. Choose a challenge from your domain and understand the problem.",
     date: "09/09/2026",
   },
   {
     time: "stage 4",
     title: "Idea Submission",
-    description: "Develop your approach and submit your abstract before the deadline.",
+    description:
+      "Develop your approach and submit your abstract before the deadline.",
   },
   {
     time: "stage 5",
@@ -73,12 +82,110 @@ export const timeline = [
   {
     time: "stage 6",
     title: "Evaluation",
-    description: "Judges evaluate the submissions based on creativity, technical complexity, business impact, and presentation.",
+    description:
+      "Judges evaluate the submissions based on creativity, technical complexity, business impact, and presentation.",
   },
   {
     time: "stage 7",
     title: "WINNER ANNOUNCEMENT & AWARDS",
     description: "Winners are announced and prizes are presented.",
+  },
+];
+
+export const rulesAndGuidelines = [
+  {
+    round: "ROUND 1",
+    title: "IDEA PRESENTATION",
+    badge: "PITCHING ROUND",
+    description:
+      "Pitch your idea and technical approach using the provided template.",
+    points: [
+      "Teams will present their proposed solution for 4–5 minutes using the PPT format provided by the organizers as idea pitching.",
+      "The PPT format will be shared with participants before the offline hackathon.",
+      "The presentation should clearly explain the problem, proposed solution, key features, SDG, and technical approach.",
+      "This round will encourage participants to analyze challenges and formulate creative, technology-driven solutions.",
+    ],
+  },
+  {
+    round: "ROUND 2",
+    title: "PROTOTYPE DEVELOPMENT & FINAL EVALUATION",
+    badge: "BUILD & EVALUATE",
+    description:
+      "Develop working prototype, refine with mentors, and present to judges.",
+    points: [
+      "Teams may develop their submitted ideas into a working prototype either before or during the hackathon.",
+      "Teams must complete their prototype by incorporating the suggestions provided by the mentors and be ready to present it to the Judging Panel from the 6th hour of the hackathon onwards for final evaluation.",
+      "The Judging Panel will evaluate each team based on the submitted idea, technical implementation, working prototype, and quality of the final presentation.",
+      "The top three teams will be selected based on their overall performance in the final evaluation.",
+    ],
+  },
+];
+
+export const hackathonRules = [
+  {
+    no: "01",
+    title: "College ID",
+    desc: "College ID is mandatory for all participants.",
+  },
+  {
+    no: "02",
+    title: "Team Size",
+    desc: "Each team must consist of 2–3 members.",
+  },
+  {
+    no: "03",
+    title: "Problem Statement",
+    desc: "The problem statement will be announced on 9 September 2026.",
+  },
+  {
+    no: "04",
+    title: "Registration Deadline",
+    desc: "Interested participants must register through the official online portal on or before 13 September 2026.",
+  },
+  {
+    no: "05",
+    title: "Idea Submission",
+    desc: "Teams must submit their proposed solution as an A3-size abstract through the official online portal on or before 15 September 2026.\n\nA sample abstract format will be provided by the organizers.",
+  },
+  {
+    no: "06",
+    title: "Mandatory Requirement",
+    desc: "Teams are required to bring a hard copy of the A3-size abstract submitted online to the offline hackathon as a mandatory requirement.",
+  },
+  {
+    no: "07",
+    title: "Offline Rounds",
+    desc: "The offline hackathon consists of two rounds:\n\nRound 1: PPT-based idea presentation.\nRound 2: Technical development, prototype building, and final presentation.",
+  },
+  {
+    no: "08",
+    title: "Development Time",
+    desc: "Teams must be ready to enter the judging panel from the 6th hour of the hackathon.",
+  },
+  {
+    no: "09",
+    title: "Final Evaluation",
+    desc: "Judges will evaluate the idea, prototype, technical implementation, and presentation according to the official evaluation criteria.",
+  },
+  {
+    no: "10",
+    title: "Originality",
+    desc: "The submitted idea and developed solution must be original.\n\nPlagiarism, copying, cheating, or unauthorized use of another team's work will result in disqualification.",
+  },
+  {
+    no: "11",
+    title: "Mentorship & Resources",
+    desc: "Mentors may provide guidance, but the development and implementation must be done by the participating team.\n\nParticipants are responsible for their:\n• Devices\n• Software\n• Backups\n• Network connectivity\n\nVenue Wi-Fi will be provided, and personal mobile networks or dongles may be used as backup.",
+  },
+  {
+    no: "12",
+    title: "Winners & Certificates",
+    desc: "The top three teams will receive First, Second, and Third Cash Prizes. Winner and Participation certificates will be provided to participants.",
+  },
+  {
+    no: "13",
+    title: "Jury Decision",
+    desc: "The decision of the judging panel will be final and binding.",
   },
 ];
 
@@ -100,6 +207,7 @@ import jceCrest from "@/assets/jce-crest.png";
 import nexusLogo from "@/assets/nexus-logo.png";
 import algobizLogo from "@/assets/club-algobiz-logo.png";
 import ieiLogo from "@/assets/iei-logo.png";
+import sparkoraGuidelinesPdf from "@/assets/SPARKORA GUIDELINES.pdf";
 
 export const jceLogo = jceCrest;
 
@@ -123,10 +231,30 @@ export const presidents = [
 ];
 
 export const facultyCoordinators = [
-  { name: "Ms G PREETHI WILSON", designation: "AP, CS&BS", phone: "+91 8610301713", group: "FACULTY CO-ORDINATORS" },
-  { name: "Ms B LAKSHMI ROOPA", designation: "AP, CS&BS", phone: "+91 9985812700", group: "FACULTY CO-ORDINATORS" },
-  { name: "Ms A SINDHU DEVI", designation: "AP, CS&BS", phone: "+91 9176339602", group: "FACULTY CO-ORDINATORS" },
-  { name: "Ms B MALATHY", designation: "AP, CS&BS", phone: "+91 9677435875", group: "IE(I) CO-ORDINATOR" },
+  {
+    name: "Ms G PREETHI WILSON",
+    designation: "AP, CS&BS",
+    phone: "+91 8610301713",
+    group: "FACULTY CO-ORDINATORS",
+  },
+  {
+    name: "Ms B LAKSHMI ROOPA",
+    designation: "AP, CS&BS",
+    phone: "+91 9985812700",
+    group: "FACULTY CO-ORDINATORS",
+  },
+  {
+    name: "Ms A SINDHU DEVI",
+    designation: "AP, CS&BS",
+    phone: "+91 9176339602",
+    group: "FACULTY CO-ORDINATORS",
+  },
+  {
+    name: "Ms B MALATHY",
+    designation: "AP, CS&BS",
+    phone: "+91 9677435875",
+    group: "IE(I) CO-ORDINATOR",
+  },
 ];
 
 export const leadership = [
@@ -137,7 +265,10 @@ export const leadership = [
 
 // Replace with real handles when available.
 export const socials = [
-  { label: "Instagram", href: "https://www.instagram.com/jerusalem_csbs?igsi=bnd4ZGZtZ244Ynhw" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/jerusalem_csbs?igsi=bnd4ZGZtZ244Ynhw",
+  },
   { label: "LinkedIn", href: "#" },
 ];
 

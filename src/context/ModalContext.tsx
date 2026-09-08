@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Clock, Sparkles, X } from "lucide-react";
 
@@ -44,7 +50,8 @@ export function ModalProvider({ children }: { children: ReactNode }) {
       badge: "PROBLEM STATEMENTS",
       title: domainTitle,
       message: "Problem statement are not yet released",
-      subtext: "Problem statements will be officially revealed shortly. Prepare your team and get ready to innovate!",
+      subtext:
+        "Problem statements will be officially revealed shortly. Prepare your team and get ready to innovate!",
     });
   };
 
@@ -54,7 +61,8 @@ export function ModalProvider({ children }: { children: ReactNode }) {
       badge: "REGISTRATION STATUS",
       title: "SPARKORA'26",
       message: "Registration not yet started",
-      subtext: "Registration portal will be opened shortly. Stay connected with your team and keep your ideas ready!",
+      subtext:
+        "Registration portal will be opened shortly. Stay connected with your team and keep your ideas ready!",
     });
   };
 
@@ -76,7 +84,9 @@ export function ModalProvider({ children }: { children: ReactNode }) {
   }, [modal.isOpen]);
 
   return (
-    <ModalContext.Provider value={{ openModal, closeModal, openDomainModal, openRegisterModal }}>
+    <ModalContext.Provider
+      value={{ openModal, closeModal, openDomainModal, openRegisterModal }}
+    >
       {children}
       <AnimatePresence>
         {modal.isOpen && (
@@ -183,4 +193,3 @@ export function useModal(): ModalContextType {
   }
   return context;
 }
-

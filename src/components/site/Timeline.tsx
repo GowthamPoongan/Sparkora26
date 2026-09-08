@@ -1,8 +1,9 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   Award,
   ExternalLink,
+  FileText,
   Flag,
   MessagesSquare,
   Mic,
@@ -14,17 +15,44 @@ import {
 import { timeline } from "@/data/event";
 import { Reveal, Section, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
+import { PdfModal } from "./PdfModal";
 
-const icons: LucideIcon[] = [Flag, Mic, Rocket, MessagesSquare, UploadCloud, Terminal, Award];
+const icons: LucideIcon[] = [
+  Flag,
+  Mic,
+  Rocket,
+  MessagesSquare,
+  UploadCloud,
+  Terminal,
+  Award,
+];
 
-function Item({ item, index }: { item: (typeof timeline)[number]; index: number }) {
+function Item({
+  item,
+  index,
+  onOpenPdf,
+}: {
+  item: (typeof timeline)[number];
+  index: number;
+  onOpenPdf: (title: string, pdfUrl: string) => void;
+}) {
   const Icon = icons[index % icons.length]!;
   const left = index % 2 === 0;
   return (
     <li className="relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8">
-      <div className={cn("hidden md:row-start-1 md:block", left ? "md:col-start-1" : "md:col-start-3")}>
+      <div
+        className={cn(
+          "hidden md:row-start-1 md:block",
+          left ? "md:col-start-1" : "md:col-start-3",
+        )}
+      >
         <Reveal delay={0.05}>
-          <Card item={item} Icon={Icon} alignRight={left} />
+          <Card
+            item={item}
+            Icon={Icon}
+            alignRight={left}
+            onOpenPdf={onOpenPdf}
+          />
         </Reveal>
       </div>
 
@@ -42,7 +70,12 @@ function Item({ item, index }: { item: (typeof timeline)[number]; index: number 
       {/* mobile / single-sided */}
       <div className="pl-7 sm:pl-10 md:hidden md:row-start-1">
         <Reveal>
-          <Card item={item} Icon={Icon} alignRight={false} />
+          <Card
+            item={item}
+            Icon={Icon}
+            alignRight={false}
+            onOpenPdf={onOpenPdf}
+          />
         </Reveal>
       </div>
     </li>
@@ -53,10 +86,12 @@ function Card({
   item,
   Icon,
   alignRight,
+  onOpenPdf,
 }: {
   item: (typeof timeline)[number];
   Icon: LucideIcon;
   alignRight: boolean;
+  onOpenPdf: (title: string, pdfUrl: string) => void;
 }) {
   return (
     <article
@@ -71,7 +106,11 @@ function Card({
           alignRight && "md:flex-row-reverse md:justify-start",
         )}
       >
-        <Icon aria-hidden="true" strokeWidth={1.3} className="h-4 w-4 shrink-0 text-primary sm:h-5 sm:w-5" />
+        <Icon
+          aria-hidden="true"
+          strokeWidth={1.3}
+          className="h-4 w-4 shrink-0 text-primary sm:h-5 sm:w-5"
+        />
         <span className="font-display text-[0.62rem] tracking-[0.2em] text-ember uppercase sm:text-[0.65rem] sm:tracking-[0.28em]">
           {item.time}
         </span>
@@ -81,10 +120,16 @@ function Card({
           </span>
         )}
       </div>
-      <h3 className="mt-2 text-base font-bold tracking-tight sm:mt-3 sm:text-xl">{item.title}</h3>
-      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm">{item.description}</p>
+      <h3 className="mt-2 text-base font-bold tracking-tight sm:mt-3 sm:text-xl">
+        {item.title}
+      </h3>
+      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm">
+        {item.description}
+      </p>
       {item.link && (
-        <div className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}>
+        <div
+          className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}
+        >
           <a
             href={item.link}
             target="_blank"
@@ -94,6 +139,20 @@ function Card({
             <span>{item.linkText || "Register Now"}</span>
             <ExternalLink className="h-4 w-4" />
           </a>
+        </div>
+      )}
+      {item.pdfUrl && (
+        <div
+          className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}
+        >
+          <button
+            type="button"
+            onClick={() => onOpenPdf(item.title, item.pdfUrl!)}
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 px-6 py-2.5 text-xs font-bold tracking-wider text-black uppercase shadow-[0_0_20px_rgba(245,158,11,0.35)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(245,158,11,0.55)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <FileText className="h-4 w-4 shrink-0" />
+            <span>{item.pdfText || "View Rules & Guidelines"}</span>
+          </button>
         </div>
       )}
       <span
@@ -106,12 +165,30 @@ function Card({
 
 export function Timeline() {
   const ref = useRef<HTMLDivElement>(null);
+  const [pdfModal, setPdfModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    pdfUrl: string;
+  }>({
+    isOpen: false,
+    title: "",
+    pdfUrl: "",
+  });
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 75%", "end 60%"],
   });
   const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 26 });
   const height = useTransform(progress, [0, 1], ["0%", "100%"]);
+
+  const handleOpenPdf = (title: string, pdfUrl: string) => {
+    setPdfModal({ isOpen: true, title, pdfUrl });
+  };
+
+  const handleClosePdf = () => {
+    setPdfModal((prev) => ({ ...prev, isOpen: false }));
+  };
 
   return (
     <Section id="timeline" className="bg-navy/40">
@@ -135,11 +212,22 @@ export function Timeline() {
 
         <ol className="relative space-y-5 sm:space-y-6">
           {timeline.map((item, i) => (
-            <Item key={item.title} item={item} index={i} />
+            <Item
+              key={item.title}
+              item={item}
+              index={i}
+              onOpenPdf={handleOpenPdf}
+            />
           ))}
         </ol>
       </div>
 
+      <PdfModal
+        isOpen={pdfModal.isOpen}
+        onClose={handleClosePdf}
+        title={pdfModal.title}
+        pdfUrl={pdfModal.pdfUrl}
+      />
     </Section>
   );
 }
