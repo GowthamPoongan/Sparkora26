@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { event } from "@/data/event";
 
-const TARGET = new Date(`${event.dateISO}T09:00:00+05:30`).getTime();
+const TARGET = new Date(`${event.dateISO}T08:30:00+05:30`).getTime();
 
 function diff() {
   const ms = Math.max(0, TARGET - Date.now());
@@ -18,11 +18,9 @@ function diff() {
 const pad = (n: number) => String(n).padStart(2, "0");
 
 export function Countdown() {
-  const [mounted, setMounted] = useState(false);
   const [t, setT] = useState(diff);
 
   useEffect(() => {
-    setMounted(true);
     setT(diff());
     const id = setInterval(() => setT(diff()), 1000);
     return () => clearInterval(id);
@@ -56,8 +54,11 @@ export function Countdown() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_65%)] opacity-70"
           />
-          <p className="relative font-display text-3xl leading-none font-bold tabular-nums sm:text-6xl">
-            {mounted ? pad(c.value) : "00"}
+          <p
+            suppressHydrationWarning
+            className="relative font-display text-3xl leading-none font-bold tabular-nums sm:text-6xl"
+          >
+            {pad(c.value)}
           </p>
           <p className="relative mt-2 font-display text-[0.55rem] tracking-[0.14em] text-muted-foreground uppercase sm:mt-2.5 sm:text-xs sm:tracking-[0.28em]">
             {c.label}
