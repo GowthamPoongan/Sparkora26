@@ -9,7 +9,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { hackathonRules, rulesAndGuidelines } from "@/data/event";
+import { hackathonRules, rulesAndGuidelines, domains } from "@/data/event";
 import { ShieldCheck } from "lucide-react";
 
 interface PdfModalProps {
@@ -143,7 +143,8 @@ export function PdfModal({ isOpen, onClose, title, pdfUrl }: PdfModalProps) {
             {/* Modal Body */}
             <div className="relative mt-3 flex-1 overflow-y-auto rounded-xl border border-white/10 bg-zinc-900/90 p-4 sm:p-6 shadow-inner">
               {activeTab === "structured" ? (
-                <div className="space-y-6 sm:space-y-8">
+                title === "RULES & GUIDELINES" ? (
+                  <div className="space-y-6 sm:space-y-8">
                   {rulesAndGuidelines.map((round) => (
                     <div
                       key={round.round}
@@ -215,7 +216,37 @@ export function PdfModal({ isOpen, onClose, title, pdfUrl }: PdfModalProps) {
                     </div>
                   </div>
                 </div>
+              ) : title === "Revealing of Problem Statements" ? (
+                <div className="space-y-6 sm:space-y-8">
+                  {domains.map((domain) => (
+                    <div
+                      key={domain.no}
+                      className="group relative overflow-hidden rounded-2xl border border-amber-500/25 bg-zinc-950/80 p-5 sm:p-6 shadow-[0_0_25px_rgba(245,158,11,0.08)] transition-all hover:border-amber-500/50"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+                        <div className="flex items-center gap-3">
+                          <span className="rounded-md bg-amber-500 px-2.5 py-1 font-mono text-xs font-black text-black uppercase">
+                            DOMAIN {domain.no}
+                          </span>
+                          <h4 className="font-display text-base sm:text-xl font-bold tracking-tight text-white uppercase">
+                            {domain.title}
+                          </h4>
+                        </div>
+                      </div>
+                      <p className="mt-4 text-sm leading-relaxed text-zinc-300">
+                        {domain.problemStatement}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               ) : (
+                <div className="flex h-[60vh] flex-col items-center justify-center text-center">
+                  <FileText className="mb-4 h-12 w-12 text-zinc-600" />
+                  <h4 className="font-display text-lg font-bold text-zinc-300">Overview Not Available</h4>
+                  <p className="mt-2 text-sm text-zinc-500">Please view the PDF for more details.</p>
+                </div>
+              )
+            ) : (
                 <div className="h-full w-full min-h-[65vh] overflow-hidden rounded-lg bg-zinc-950">
                   <object
                     data={`${pdfUrl}#toolbar=1&navpanes=0`}

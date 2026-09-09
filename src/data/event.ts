@@ -30,14 +30,30 @@ export const stats = [
 ];
 
 export const domains = [
-  { no: "01", title: "HEALTHCARE", line: "Code that saves lives." },
-  { no: "02", title: "EDTECH", line: "Reimagine how we learn." },
+  { 
+    no: "01", 
+    title: "HEALTHCARE", 
+    line: "Code that saves lives.",
+    problemStatement: "In emergencies, patients may be unconscious, unable to communicate, or unaware of their critical medical information. Responders may therefore lack immediate access to important details such as allergies, medications, existing conditions, or emergency contacts. Design and develop a privacy-first emergency information system that provides authorized responders with essential medical information within seconds while ensuring that access is temporary, controlled, and under the patient's control."
+  },
+  { 
+    no: "02", 
+    title: "EDTECH", 
+    line: "Reimagine how we learn.",
+    problemStatement: "Develop a platform that bridges the gap between academic curricula and industry requirements by identifying skill gaps and recommending job-ready training paths for students."
+  },
   {
     no: "03",
     title: "AI FOR BUSINESS",
     line: "Intelligence meets enterprise.",
+    problemStatement: "Build a system that analyzes transaction patterns and assigns a risk score to identify potentially fraudulent transactions."
   },
-  { no: "04", title: "FINTECH", line: "Build the future of finance." },
+  { 
+    no: "04", 
+    title: "FINTECH", 
+    line: "Build the future of finance.",
+    problemStatement: "Scammers show shopkeepers and vendors fake \"payment successful\" screenshots to dodge paying for goods, since these screenshots closely mimic real UPI apps (GPay, PhonePe, Paytm) and are hard to tell apart at a glance. Implement a solution where a vendor flags the screenshot as Genuine, Suspicious, or Fake with a reason."
+  },
 ];
 
 /**
@@ -67,6 +83,8 @@ export const timeline = [
     description:
       "Problem statements will be revealed on 09/09/2026. Choose a challenge from your domain and understand the problem.",
     date: "09/09/2026",
+    pdfUrl: sparkoraProblemStatementPdf,
+    pdfText: "View Problem Statements",
   },
   {
     time: "stage 4",
@@ -210,6 +228,7 @@ import nexusLogo from "@/assets/nexus-logo.png";
 import algobizLogo from "@/assets/club-algobiz-logo.png";
 import ieiLogo from "@/assets/iei-logo.png";
 import sparkoraGuidelinesPdf from "@/assets/SPARKORA GUIDELINES.pdf";
+import sparkoraProblemStatementPdf from "@/assets/SPARKORA PROBLEM STATEMENT.pdf";
 
 export const jceLogo = jceCrest;
 

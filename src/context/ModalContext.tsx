@@ -8,6 +8,11 @@ import React, {
 import { AnimatePresence, motion } from "motion/react";
 import { Clock, Sparkles, X } from "lucide-react";
 
+import imgHealthcarePS from "@/assets/HealthCare.jpeg";
+import imgEdtechPS from "@/assets/EDTech.jpeg";
+import imgAIPS from "@/assets/AI for business.jpeg";
+import imgFintechPS from "@/assets/FinTech.jpeg";
+
 type ModalType = "domain" | "register";
 
 interface ModalData {
@@ -17,6 +22,7 @@ interface ModalData {
   message: string;
   subtext?: string;
   badge?: string;
+  image?: string;
 }
 
 interface ModalContextType {
@@ -45,13 +51,18 @@ export function ModalProvider({ children }: { children: ReactNode }) {
   };
 
   const openDomainModal = (domainTitle: string) => {
+    let psImage = undefined;
+    if (domainTitle === "HEALTHCARE") psImage = imgHealthcarePS;
+    else if (domainTitle === "EDTECH") psImage = imgEdtechPS;
+    else if (domainTitle === "AI FOR BUSINESS") psImage = imgAIPS;
+    else if (domainTitle === "FINTECH") psImage = imgFintechPS;
+
     openModal({
       type: "domain",
-      badge: "PROBLEM STATEMENTS",
+      badge: "PROBLEM STATEMENT",
       title: domainTitle,
-      message: "Problem statement are not yet released",
-      subtext:
-        "Problem statements will be officially revealed shortly. Prepare your team and get ready to innovate!",
+      message: "Here is your problem statement:",
+      image: psImage,
     });
   };
 
@@ -111,7 +122,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", stiffness: 380, damping: 26 }}
-              className="relative z-10 w-full max-w-md overflow-hidden rounded-3xl border border-amber-500/35 bg-gradient-to-b from-zinc-900/98 via-zinc-950/98 to-black/98 p-6 text-center shadow-[0_0_60px_rgba(245,158,11,0.25)] backdrop-blur-2xl sm:p-8"
+              className={`relative z-10 w-full max-h-[90vh] overflow-y-auto overflow-x-hidden rounded-3xl border border-amber-500/35 bg-gradient-to-b from-zinc-900/98 via-zinc-950/98 to-black/98 p-6 text-center shadow-[0_0_60px_rgba(245,158,11,0.25)] backdrop-blur-2xl sm:p-8 ${modal.image ? "max-w-4xl" : "max-w-md"}`}
             >
               {/* Top ambient glow */}
               <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-44 w-44 rounded-full bg-amber-500/20 blur-3xl" />
@@ -150,11 +161,20 @@ export function ModalProvider({ children }: { children: ReactNode }) {
               </h3>
 
               {/* Main Notification Box */}
-              <div className="my-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-5 py-3.5 shadow-inner">
-                <p className="font-display text-base sm:text-lg font-black tracking-wide text-amber-300 drop-shadow-sm">
-                  {modal.message}
-                </p>
-              </div>
+              {!modal.image && (
+                <div className="my-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-5 py-3.5 shadow-inner">
+                  <p className="font-display text-base sm:text-lg font-black tracking-wide text-amber-300 drop-shadow-sm">
+                    {modal.message}
+                  </p>
+                </div>
+              )}
+
+              {/* Image Box */}
+              {modal.image && (
+                <div className="my-4 sm:my-6 overflow-hidden rounded-xl border border-amber-500/30 shadow-[0_0_20px_rgba(245,158,11,0.15)] bg-black/50">
+                  <img src={modal.image} alt={modal.title} className="w-full max-h-[60vh] object-contain mx-auto" />
+                </div>
+              )}
 
               {/* Additional Context Subtext */}
               {modal.subtext && (
