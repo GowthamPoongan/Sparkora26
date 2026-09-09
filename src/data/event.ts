@@ -8,6 +8,8 @@ export const event = {
   tagline: "SPARK. BUILD. IMPACT.",
   date: "18 SEPTEMBER 2026",
   dateISO: "2026-09-18",
+  time: "8:30 A.M. ONWARDS",
+  startTimeISO: "08:30:00+05:30",
   venue: "Jerusalem College of Engineering",
   city: "Chennai",
   mode: "Offline",

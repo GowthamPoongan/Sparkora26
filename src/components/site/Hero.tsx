@@ -124,7 +124,7 @@ export function Hero() {
         <div className="mt-2 flex items-center justify-center gap-2 font-display text-xs font-bold tracking-[0.12em] uppercase whitespace-nowrap drop-shadow-sm sm:text-base md:text-lg sm:tracking-[0.2em]">
           <Clock className="h-4 w-4 shrink-0 animate-pulse text-ember sm:h-5 sm:w-5" />
           <span className="text-foreground">TIME : </span>
-          <span className="font-black text-ember">8:30 A.M. ONWARDS</span>
+          <span className="font-black text-ember">{event.time}</span>
         </div>
       </motion.div>
 

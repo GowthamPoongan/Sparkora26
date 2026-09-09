@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { event } from "@/data/event";
 
-const TARGET = new Date(`${event.dateISO}T08:30:00+05:30`).getTime();
+const TARGET = new Date(`${event.dateISO}T${event.startTimeISO ?? "08:30:00+05:30"}`).getTime();
 
 function diff() {
   const ms = Math.max(0, TARGET - Date.now());
@@ -21,9 +21,24 @@ export function Countdown() {
   const [t, setT] = useState(diff);
 
   useEffect(() => {
-    setT(diff());
-    const id = setInterval(() => setT(diff()), 1000);
-    return () => clearInterval(id);
+    const update = () => setT(diff());
+    update();
+    const id = setInterval(update, 1000);
+
+    const onSync = () => {
+      if (!document.hidden) {
+        update();
+      }
+    };
+
+    document.addEventListener("visibilitychange", onSync);
+    window.addEventListener("focus", onSync);
+
+    return () => {
+      clearInterval(id);
+      document.removeEventListener("visibilitychange", onSync);
+      window.removeEventListener("focus", onSync);
+    };
   }, []);
 
   const cells = [

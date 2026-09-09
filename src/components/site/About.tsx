@@ -84,7 +84,7 @@ const eventDetails = [
     icon: CalendarDays,
     label: "Event Date",
     value: event.date,
-    subtext: "8:30 AM Onwards",
+    subtext: event.time,
     iconColor: "text-purple-400",
     badgeClass: "border-purple-500/40 bg-purple-500/10 text-purple-300",
     iconBoxClass:
