@@ -134,8 +134,8 @@ function Card({
         {item.description}
       </p>
       {"deadlineAlert" in item && item.deadlineAlert && (
-        <div className="mt-4 flex flex-row items-center gap-2 w-full overflow-x-auto whitespace-nowrap">
-          <span className="font-display text-[0.65rem] sm:text-xs md:text-sm font-bold text-white tracking-tight sm:tracking-wide whitespace-nowrap">
+        <div className="mt-4 flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-2 sm:gap-3 w-full">
+          <span className="font-display text-xs md:text-sm font-bold text-white tracking-tight sm:tracking-wide whitespace-normal sm:whitespace-nowrap leading-snug">
             🚨 {(item.deadlineAlert as string).split(": ")[0]}:
           </span>
           <span className="inline-block shrink-0 rounded-md border-2 border-red-500 bg-red-500/20 px-2 sm:px-3 py-1 shadow-[0_0_20px_rgba(220,38,38,0.6)] animate-pulse whitespace-nowrap">
