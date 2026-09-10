@@ -93,6 +93,10 @@ export const timeline = [
     deadlineAlert: "Both Registration & Idea Submission Deadline: 15 September 2026",
     date: "15/09/2026",
     importantDate: true,
+    pdfUrl: ideaSubmissionTemplatePdf,
+    pdfText: "Submission Template",
+    link: "https://forms.gle/niCFTwCE4Pg57qxc7",
+    linkText: "Submit Idea",
   },
   {
     time: "stage 5",
@@ -140,6 +144,29 @@ export const rulesAndGuidelines = [
     ],
   },
 ];
+
+export const ideaSubmissionDetails = {
+  description: "All participating teams must bring a hard copy (color) of this abstract in the prescribed A3 template to the hackathon. The abstract content must be strictly limited to one page.",
+  sections: [
+    { title: "IDEA TITLE", items: [] },
+    { title: "TEAM DETAILS", items: [
+      "Team Name",
+      "Team Lead's Details (Name, Year & Branch, College, Mail-Id, Contact Number)",
+      "Team Member's Details (Name, Year & Branch, College, Mail-Id, Contact Number)"
+    ]},
+    { title: "DOMAIN SELECTED", items: [] },
+    { title: "PROBLEM STATEMENT", items: [
+      "Include the problem statement of the domain you have chosen."
+    ]},
+    { title: "NOVELTY & INNOVATION (Max 150 words)", items: [
+      "Explain the proposed solution and the uniqueness of your approach.",
+      "How does it differ from existing solutions?"
+    ]},
+    { title: "ARCHITECTURE OF THE IMPLEMENTED IDEA", items: [
+      "Provide a clear visual representation of your proposed architecture."
+    ]}
+  ]
+};
 
 export const hackathonRules = [
   {
@@ -229,6 +256,7 @@ import algobizLogo from "@/assets/club-algobiz-logo.png";
 import ieiLogo from "@/assets/iei-logo.png";
 import sparkoraGuidelinesPdf from "@/assets/SPARKORA GUIDELINES.pdf";
 import sparkoraProblemStatementPdf from "@/assets/SPARKORA PROBLEM STATEMENT.pdf";
+import ideaSubmissionTemplatePdf from "@/assets/Idea submission Template.pdf";
 
 export const jceLogo = jceCrest;
 

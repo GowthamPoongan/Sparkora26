@@ -134,44 +134,40 @@ function Card({
         {item.description}
       </p>
       {"deadlineAlert" in item && item.deadlineAlert && (
-        <div className="mt-4 flex flex-wrap items-center gap-2">
-          <span className="font-display text-sm font-bold text-white tracking-wide">
+        <div className="mt-4 flex flex-row items-center gap-2 w-full overflow-x-auto whitespace-nowrap">
+          <span className="font-display text-[0.65rem] sm:text-xs md:text-sm font-bold text-white tracking-tight sm:tracking-wide whitespace-nowrap">
             🚨 {(item.deadlineAlert as string).split(": ")[0]}:
           </span>
-          <div className="inline-block rounded-md border-2 border-red-500 bg-red-500/20 px-3 py-1 shadow-[0_0_20px_rgba(220,38,38,0.6)] animate-pulse">
-            <span className="font-display text-sm font-bold text-white tracking-wide" style={{ textShadow: "0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5)" }}>
+          <span className="inline-block shrink-0 rounded-md border-2 border-red-500 bg-red-500/20 px-2 sm:px-3 py-1 shadow-[0_0_20px_rgba(220,38,38,0.6)] animate-pulse whitespace-nowrap">
+            <span className="font-display text-[0.65rem] sm:text-xs md:text-sm font-bold text-white tracking-wide" style={{ textShadow: "0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5)" }}>
               {(item.deadlineAlert as string).split(": ")[1]}
             </span>
-          </div>
+          </span>
         </div>
       )}
-      {item.link && (
-        <div
-          className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}
-        >
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ember px-7 py-2.5 text-xs font-bold tracking-wider text-ember-foreground uppercase shadow-[0_0_20px_rgba(255,140,40,0.35)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(255,140,40,0.55)] hover:scale-[1.02] active:scale-[0.98]"
-          >
-            <span>{item.linkText || "Register Now"}</span>
-            <ExternalLink className="h-4 w-4" />
-          </a>
-        </div>
-      )}
-      {item.pdfUrl && (
-        <div
-          className={cn("mt-4 sm:mt-5", alignRight && "md:flex md:justify-end")}
-        >
-          <button
-            type="button"
-            onClick={() => onOpenPdf(item.title, item.pdfUrl!)}
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 px-6 py-2.5 text-xs font-bold tracking-wider text-black uppercase shadow-[0_0_20px_rgba(245,158,11,0.35)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(245,158,11,0.55)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-          >
-            <FileText className="h-4 w-4 shrink-0" />
-            <span>{item.pdfText || "View Rules & Guidelines"}</span>
-          </button>
+      {(item.link || item.pdfUrl) && (
+        <div className={cn("mt-4 sm:mt-5 flex flex-col sm:flex-row flex-wrap gap-3", alignRight && "md:justify-end")}>
+          {item.pdfUrl && (
+            <button
+              type="button"
+              onClick={() => onOpenPdf(item.title, item.pdfUrl!)}
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 px-6 py-2.5 text-xs font-bold tracking-wider text-black uppercase shadow-[0_0_20px_rgba(245,158,11,0.35)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(245,158,11,0.55)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            >
+              <FileText className="h-4 w-4 shrink-0" />
+              <span>{item.pdfText || "View Document"}</span>
+            </button>
+          )}
+          {item.link && (
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ember px-7 py-2.5 text-xs font-bold tracking-wider text-ember-foreground uppercase shadow-[0_0_20px_rgba(255,140,40,0.35)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(255,140,40,0.55)] hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span>{item.linkText || "Register Now"}</span>
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          )}
         </div>
       )}
       <span

@@ -24,9 +24,6 @@ export function CustomCursor() {
     const enableMouseCursor = () => {
       if (!hasMouseMoved) {
         hasMouseMoved = true;
-        if (window.matchMedia("(pointer: fine)").matches) {
-          document.body.classList.add("custom-cursor-active");
-        }
       }
     };
 
@@ -88,7 +85,7 @@ export function CustomCursor() {
       dx: number,
       dy: number,
     ) => {
-      const maxParticles = isTouchDevice ? 80 : 120;
+      const maxParticles = isTouchDevice ? 15 : 25; // Heavily reduced for performance
 
       // ── Type 1: Flying sparks (fast, small, sharp) ──
       const sparkCount = Math.min(
@@ -114,8 +111,8 @@ export function CustomCursor() {
       }
 
       // ── Type 2: Floating embers (slow, medium, glow) ──
-      if (frame % (isTouchDevice ? 4 : 3) === 0) {
-        const emberCount = isTouchDevice ? 1 : 2;
+      if (frame % (isTouchDevice ? 8 : 6) === 0) {
+        const emberCount = 1;
         for (let i = 0; i < emberCount; i++) {
           if (particles.length > maxParticles) break;
           particles.push({
@@ -134,7 +131,7 @@ export function CustomCursor() {
       }
 
       // ── Type 3: Flame wisps (behind cursor, larger, softer) ──
-      if (speed > 1.5 && frame % 2 === 0) {
+      if (speed > 2.5 && frame % 4 === 0) {
         if (particles.length < maxParticles) {
           particles.push({
             x: cx - dx * 0.5 + (Math.random() - 0.5) * 14,
@@ -217,8 +214,8 @@ export function CustomCursor() {
       const isTracking = (hasMouseMoved && !isTouchDevice) || isTouchActive;
 
       if (isTracking && mouse.x > -50 && mouse.y > -50) {
-        // Smooth follow
-        const lerp = isTouchActive ? 0.35 : 0.15;
+        // Fast, highly responsive follow (snappy)
+        const lerp = isTouchActive ? 0.6 : 0.45;
         cursor.x += (mouse.x - cursor.x) * lerp;
         cursor.y += (mouse.y - cursor.y) * lerp;
 
@@ -369,7 +366,6 @@ export function CustomCursor() {
 
     return () => {
       cancelAnimationFrame(raf);
-      document.body.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);

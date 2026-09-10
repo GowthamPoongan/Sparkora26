@@ -9,7 +9,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { hackathonRules, rulesAndGuidelines, domains } from "@/data/event";
+import { hackathonRules, rulesAndGuidelines, domains, ideaSubmissionDetails } from "@/data/event";
 import { ShieldCheck } from "lucide-react";
 
 interface PdfModalProps {
@@ -236,6 +236,40 @@ export function PdfModal({ isOpen, onClose, title, pdfUrl }: PdfModalProps) {
                       <p className="mt-4 text-sm leading-relaxed text-zinc-300">
                         {domain.problemStatement}
                       </p>
+                    </div>
+                  ))}
+                </div>
+              ) : title === "Registration Deadline & Idea Submission" ? (
+                <div className="space-y-6 sm:space-y-8">
+                  <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 shadow-sm">
+                    <p className="text-sm font-semibold text-amber-200">
+                      {ideaSubmissionDetails.description}
+                    </p>
+                  </div>
+                  {ideaSubmissionDetails.sections.map((section, idx) => (
+                    <div
+                      key={idx}
+                      className="group relative overflow-hidden rounded-2xl border border-amber-500/25 bg-zinc-950/80 p-5 sm:p-6 shadow-[0_0_25px_rgba(245,158,11,0.08)] transition-all hover:border-amber-500/50"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+                        <div className="flex items-center gap-3">
+                          <h4 className="font-display text-base sm:text-lg font-bold tracking-tight text-white uppercase">
+                            {section.title}
+                          </h4>
+                        </div>
+                      </div>
+                      {section.items.length > 0 ? (
+                        <ul className="mt-4 space-y-3">
+                          {section.items.map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-sm text-zinc-300">
+                              <CheckCircle2 className="h-4 w-4 shrink-0 text-amber-400 mt-0.5" />
+                              <span className="leading-relaxed">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                         <p className="mt-4 text-xs italic text-zinc-500">Provide details here as required.</p>
+                      )}
                     </div>
                   ))}
                 </div>
