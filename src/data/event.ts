@@ -65,10 +65,8 @@ export const domains = [
 export const timeline = [
   {
     time: "stage 1",
-    title: "Registration & Domain Selection",
-    description: "Form your team and Choose your Domain",
-    link: event.registrationUrl,
-    linkText: "Register Now",
+    title: "Registration Closed & Domain Selection",
+    description: "Registration is now closed. Registered teams can continue to choose their domain.",
   },
   {
     time: "stage 2",
@@ -90,9 +88,9 @@ export const timeline = [
   },
   {
     time: "stage 4",
-    title: "Registration Deadline & Idea Submission",
-    description: "Register online and submit your A3-size abstract. A sample format will be provided.",
-    deadlineAlert: "Both Registration & Idea Submission Deadline: 15 September 2026",
+    title: "Registration Closed & Idea Submission",
+    description: "Registration for Sparkora '26 is now closed. Registered teams must submit their A3-size abstract by the deadline.",
+    deadlineAlert: "Idea Submission Deadline: 15 September 2026",
     date: "15/09/2026",
     importantDate: true,
     pdfUrl: ideaSubmissionTemplatePdf,
