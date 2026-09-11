@@ -109,6 +109,17 @@ export function Hero() {
         AN INTER-COLLEGIATE HACKATHON
       </motion.p>
 
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.85 }}
+        className="mt-6 flex items-center justify-center"
+      >
+        <span className="inline-block rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 font-display text-xs sm:text-sm font-bold tracking-widest text-red-400 uppercase shadow-[0_0_15px_rgba(220,38,38,0.2)] backdrop-blur-md">
+          Sparkora'26 Registration is closed
+        </span>
+      </motion.div>
+
       <Countdown />
 
       <motion.div
@@ -134,18 +145,11 @@ export function Hero() {
         transition={{ duration: 0.7, delay: 1.05 }}
         className="mt-11 flex w-full max-w-sm flex-col items-center gap-4 sm:max-w-none sm:flex-row sm:justify-center"
       >
-        <a
-          href={event.registrationUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-ember px-9 py-4 font-display text-sm font-semibold tracking-[0.2em] text-ember-foreground uppercase glow-ember transition-all duration-300 hover:brightness-110 sm:w-auto cursor-pointer active:scale-[0.98]"
+        <div
+          className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-zinc-800/50 border border-zinc-700 px-9 py-4 font-display text-sm font-semibold tracking-[0.2em] text-zinc-400 uppercase transition-all duration-300 sm:w-auto cursor-not-allowed"
         >
-          <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-          <span className="relative">Register Now</span>
-          <span className="relative transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-        </a>
+          <span className="relative">Registration Closed</span>
+        </div>
         <a
           href="#domains"
           className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-border px-9 py-4 font-display text-sm tracking-[0.2em] uppercase transition-colors duration-300 hover:border-primary hover:text-primary sm:w-auto"

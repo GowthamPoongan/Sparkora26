@@ -132,7 +132,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:block lg:ml-4">
-          <RegisterButton label="Register" />
+          <RegisterButton />
         </div>
 
         <button

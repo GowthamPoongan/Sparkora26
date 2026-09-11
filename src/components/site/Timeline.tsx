@@ -164,7 +164,7 @@ function Card({
               rel="noreferrer"
               className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ember px-7 py-2.5 text-xs font-bold tracking-wider text-ember-foreground uppercase shadow-[0_0_20px_rgba(255,140,40,0.35)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(255,140,40,0.55)] hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>{item.linkText || "Register Now"}</span>
+              <span>{item.linkText || "Registration Closed"}</span>
               <ExternalLink className="h-4 w-4" />
             </a>
           )}

@@ -106,7 +106,7 @@ export function SectionHeading({
 
 export function RegisterButton({
   className,
-  label = "REGISTER NOW",
+  label = "REGISTRATION CLOSED",
   size = "md",
 }: {
   className?: string;
@@ -114,24 +114,17 @@ export function RegisterButton({
   size?: "md" | "lg";
 }) {
   return (
-    <a
-      href={event.registrationUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${label} — register on Google Form`}
+    <div
+      aria-label="Registration Closed"
       className={cn(
-        "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-ember font-display font-semibold tracking-[0.18em] text-ember-foreground uppercase transition-all duration-300 hover:glow-ember hover:brightness-110 focus-visible:glow-ember cursor-pointer active:scale-[0.98]",
+        "inline-flex items-center justify-center gap-3 rounded-full bg-zinc-800/50 border border-zinc-700 font-display font-semibold tracking-[0.18em] text-zinc-400 uppercase transition-all duration-300 cursor-not-allowed",
         size === "lg"
           ? "px-10 py-5 text-sm sm:text-base"
           : "px-7 py-3.5 text-xs sm:text-sm",
         className,
       )}
     >
-      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
       <span className="relative">{label}</span>
-      <span className="relative transition-transform duration-300 group-hover:translate-x-1">
-        →
-      </span>
-    </a>
+    </div>
   );
 }

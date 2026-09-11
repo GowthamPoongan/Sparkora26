@@ -88,7 +88,7 @@ export const timeline = [
   },
   {
     time: "stage 4",
-    title: "Registration Closed & Idea Submission",
+    title: "Idea Submission",
     description: "Registration for Sparkora '26 is now closed. Registered teams must submit their A3-size abstract by the deadline.",
     deadlineAlert: "Idea Submission Deadline: 15 September 2026",
     date: "15/09/2026",
