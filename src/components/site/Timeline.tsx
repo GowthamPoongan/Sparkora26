@@ -157,7 +157,13 @@ function Card({
               <span>{item.pdfText || "View Document"}</span>
             </button>
           )}
-          {item.link && (
+          {item.link === "#" ? (
+            <div
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ember px-7 py-2.5 text-xs font-bold tracking-wider text-ember-foreground uppercase shadow-[0_0_20px_rgba(255,140,40,0.35)] cursor-default"
+            >
+              <span>{item.linkText || "Registration Closed"}</span>
+            </div>
+          ) : item.link ? (
             <a
               href={item.link}
               target="_blank"
@@ -167,7 +173,7 @@ function Card({
               <span>{item.linkText || "Registration Closed"}</span>
               <ExternalLink className="h-4 w-4" />
             </a>
-          )}
+          ) : null}
         </div>
       )}
       <span
