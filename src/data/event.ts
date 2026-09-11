@@ -67,6 +67,8 @@ export const timeline = [
     time: "stage 1",
     title: "Registration Closed & Domain Selection",
     description: "Registration is now closed. Registered teams can continue to choose their domain.",
+    link: "#",
+    linkText: "Registration Closed",
   },
   {
     time: "stage 2",

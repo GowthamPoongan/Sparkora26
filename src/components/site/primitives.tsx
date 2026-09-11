@@ -117,13 +117,14 @@ export function RegisterButton({
     <div
       aria-label="Registration Closed"
       className={cn(
-        "inline-flex items-center justify-center gap-3 rounded-full bg-zinc-800/50 border border-zinc-700 font-display font-semibold tracking-[0.18em] text-zinc-400 uppercase transition-all duration-300 cursor-not-allowed",
+        "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-ember font-display font-semibold tracking-[0.18em] text-ember-foreground uppercase transition-all duration-300 hover:glow-ember hover:brightness-110 focus-visible:glow-ember cursor-pointer active:scale-[0.98]",
         size === "lg"
           ? "px-10 py-5 text-sm sm:text-base"
           : "px-7 py-3.5 text-xs sm:text-sm",
         className,
       )}
     >
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
       <span className="relative">{label}</span>
     </div>
   );
