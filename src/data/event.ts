@@ -65,7 +65,7 @@ export const domains = [
 export const timeline = [
   {
     time: "stage 1",
-    title: "Registration Closed & Domain Selection",
+    title: "Registration & Domain Selection",
     description: "Registration is now closed. Registered teams can continue to choose their domain.",
     link: "#",
     linkText: "Registration Closed",
@@ -103,7 +103,12 @@ export const timeline = [
   {
     time: "stage 5",
     title: "FINAL PITCH",
-    description: "Teams present their solutions to the judges.",
+    description: "Teams can now download the final pitch hackathon template and present their solutions to the judges.",
+    pdfUrl: finalPitchPdf,
+    pdfText: "View PDF Template",
+    downloads: [
+      { url: finalPitchPpt, text: "Download PPT", filename: "Sparkora26_Final_Pitch_Template.pptx" },
+    ],
   },
   {
     time: "stage 6",
@@ -259,6 +264,8 @@ import ieiLogo from "@/assets/iei-logo.png";
 import sparkoraGuidelinesPdf from "@/assets/SPARKORA GUIDELINES.pdf";
 import sparkoraProblemStatementPdf from "@/assets/SPARKORA PROBLEM STATEMENT.pdf";
 import ideaSubmissionTemplatePdf from "@/assets/Idea submission Template.pdf";
+import finalPitchPpt from "@/assets/Hackathon PPT Template.pptx";
+import finalPitchPdf from "@/assets/Hackathon PPT Template pdf.pdf";
 
 export const jceLogo = jceCrest;
 

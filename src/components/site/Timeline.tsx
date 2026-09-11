@@ -2,6 +2,7 @@ import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import {
   Award,
+  Download,
   ExternalLink,
   FileText,
   Flag,
@@ -130,22 +131,7 @@ function Card({
       <h3 className="mt-2 text-base font-bold tracking-tight sm:mt-3 sm:text-xl">
         {item.title}
       </h3>
-      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm whitespace-pre-line">
-        {item.description}
-      </p>
-      {"deadlineAlert" in item && item.deadlineAlert && (
-        <div className="mt-4 flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-2 sm:gap-3 w-full">
-          <span className="font-display text-xs md:text-sm font-bold text-white tracking-tight sm:tracking-wide whitespace-normal sm:whitespace-nowrap leading-snug">
-            🚨 {(item.deadlineAlert as string).split(": ")[0]}:
-          </span>
-          <span className="inline-block shrink-0 rounded-md border-2 border-red-500 bg-red-500/20 px-2 sm:px-3 py-1 shadow-[0_0_20px_rgba(220,38,38,0.6)] animate-pulse whitespace-nowrap">
-            <span className="font-display text-[0.65rem] sm:text-xs md:text-sm font-bold text-white tracking-wide" style={{ textShadow: "0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5)" }}>
-              {(item.deadlineAlert as string).split(": ")[1]}
-            </span>
-          </span>
-        </div>
-      )}
-      {(item.link || item.pdfUrl) && (
+      {(item.link || item.pdfUrl || ("downloads" in item && item.downloads)) && (
         <div className={cn("mt-4 sm:mt-5 flex flex-col sm:flex-row flex-wrap gap-3", alignRight && "md:justify-end")}>
           {item.pdfUrl && (
             <button
@@ -174,6 +160,32 @@ function Card({
               <ExternalLink className="h-4 w-4" />
             </a>
           ) : null}
+          {"downloads" in item && item.downloads && (item.downloads as any[]).map((download, i) => (
+            <a
+              key={i}
+              href={download.url}
+              download={download.filename || true}
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ember px-7 py-2.5 text-xs font-bold tracking-wider text-ember-foreground uppercase shadow-[0_0_20px_rgba(255,140,40,0.35)] transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_25px_rgba(255,140,40,0.55)] hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Download className="h-4 w-4 shrink-0" />
+              <span>{download.text}</span>
+            </a>
+          ))}
+        </div>
+      )}
+      <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2 sm:text-sm whitespace-pre-line">
+        {item.description}
+      </p>
+      {"deadlineAlert" in item && item.deadlineAlert && (
+        <div className="mt-4 flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-2 sm:gap-3 w-full">
+          <span className="font-display text-xs md:text-sm font-bold text-white tracking-tight sm:tracking-wide whitespace-normal sm:whitespace-nowrap leading-snug">
+            🚨 {(item.deadlineAlert as string).split(": ")[0]}:
+          </span>
+          <span className="inline-block shrink-0 rounded-md border-2 border-red-500 bg-red-500/20 px-2 sm:px-3 py-1 shadow-[0_0_20px_rgba(220,38,38,0.6)] animate-pulse whitespace-nowrap">
+            <span className="font-display text-[0.65rem] sm:text-xs md:text-sm font-bold text-white tracking-wide" style={{ textShadow: "0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5)" }}>
+              {(item.deadlineAlert as string).split(": ")[1]}
+            </span>
+          </span>
         </div>
       )}
       <span
