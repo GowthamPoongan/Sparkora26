@@ -65,10 +65,8 @@ export const domains = [
 export const timeline = [
   {
     time: "stage 1",
-    title: "Registration & Domain Selection",
-    description: "Registration is now closed. Registered teams can continue to choose their domain.",
-    link: "#",
-    linkText: "Registration Closed",
+    title: "Domain Selection",
+    description: "Registered teams can continue to choose their domain.",
   },
   {
     time: "stage 2",
@@ -76,7 +74,7 @@ export const timeline = [
     description:
       "Rules & guidelines are available. Know the submission requirements, judging criteria, and important instructions.",
     date: "08/09/2026",
-    pdfUrl: sparkoraGuidelinesPdf,
+    pdfUrl: "#",
     pdfText: "View Rules & Guidelines",
   },
   {
@@ -91,7 +89,7 @@ export const timeline = [
   {
     time: "stage 4",
     title: "Idea Submission",
-    description: "Registration for Sparkora '26 is now closed. Registered teams must submit their A3-size abstract by the deadline.",
+    description: "Registered teams must submit their A3-size abstract by the deadline.",
     deadlineAlert: "Idea Submission Deadline: 15 September 2026",
     date: "15/09/2026",
     importantDate: true,
@@ -193,51 +191,46 @@ export const hackathonRules = [
   },
   {
     no: "04",
-    title: "Registration Deadline",
-    desc: "Interested participants must register through the official online portal on or before 15 September 2026.",
-  },
-  {
-    no: "05",
     title: "Idea Submission",
     desc: "Teams must submit their proposed solution as an A3-size abstract through the official online portal on or before 15 September 2026.\n\nA sample abstract format will be provided by the organizers.",
   },
   {
-    no: "06",
+    no: "05",
     title: "Mandatory Requirement",
     desc: "Teams are required to bring a hard copy of the A3-size abstract submitted online to the offline hackathon as a mandatory requirement.",
   },
   {
-    no: "07",
+    no: "06",
     title: "Offline Rounds",
     desc: "The offline hackathon consists of two rounds:\n\nRound 1: PPT-based idea presentation.\nRound 2: Technical development, prototype building, and final presentation.",
   },
   {
-    no: "08",
+    no: "07",
     title: "Development Time",
     desc: "Teams must be ready to enter the judging panel from the 6th hour of the hackathon.",
   },
   {
-    no: "09",
+    no: "08",
     title: "Final Evaluation",
     desc: "Judges will evaluate the idea, prototype, technical implementation, and presentation according to the official evaluation criteria.",
   },
   {
-    no: "10",
+    no: "09",
     title: "Originality",
     desc: "The submitted idea and developed solution must be original.\n\nPlagiarism, copying, cheating, or unauthorized use of another team's work will result in disqualification.",
   },
   {
-    no: "11",
+    no: "10",
     title: "Mentorship & Resources",
     desc: "Mentors may provide guidance, but the development and implementation must be done by the participating team.\n\nParticipants are responsible for their:\n• Devices\n• Software\n• Backups\n• Network connectivity\n\nVenue Wi-Fi will be provided, and personal mobile networks or dongles may be used as backup.",
   },
   {
-    no: "12",
+    no: "11",
     title: "Winners & Certificates",
     desc: "The top three teams will receive First, Second, and Third Cash Prizes. Winner and Participation certificates will be provided to participants.",
   },
   {
-    no: "13",
+    no: "12",
     title: "Jury Decision",
     desc: "The decision of the judging panel will be final and binding.",
   },

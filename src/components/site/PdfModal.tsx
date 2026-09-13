@@ -20,7 +20,15 @@ interface PdfModalProps {
 }
 
 export function PdfModal({ isOpen, onClose, title, pdfUrl }: PdfModalProps) {
-  const [activeTab, setActiveTab] = useState<"structured" | "pdf">("pdf");
+  const [activeTab, setActiveTab] = useState<"structured" | "pdf">(
+    pdfUrl === "#" ? "structured" : "pdf"
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      setActiveTab(pdfUrl === "#" ? "structured" : "pdf");
+    }
+  }, [isOpen, pdfUrl]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -96,38 +104,44 @@ export function PdfModal({ isOpen, onClose, title, pdfUrl }: PdfModalProps) {
                     <span>Overview</span>
                   </button>
 
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab("pdf")}
-                    className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
-                      activeTab === "pdf"
-                        ? "bg-amber-500 text-black shadow-md"
-                        : "text-zinc-400 hover:text-white"
-                    }`}
-                  >
-                    <FileText className="h-3.5 w-3.5" />
-                    <span>PDF View</span>
-                  </button>
+                  {pdfUrl !== "#" && (
+                    <button
+                      type="button"
+                      onClick={() => setActiveTab("pdf")}
+                      className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+                        activeTab === "pdf"
+                          ? "bg-amber-500 text-black shadow-md"
+                          : "text-zinc-400 hover:text-white"
+                      }`}
+                    >
+                      <FileText className="h-3.5 w-3.5" />
+                      <span>PDF View</span>
+                    </button>
+                  )}
                 </div>
 
-                <a
-                  href={pdfUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Open PDF in new tab"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-zinc-900/80 text-zinc-300 transition-colors hover:border-amber-500/50 hover:text-white"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </a>
+                {pdfUrl !== "#" && (
+                  <>
+                    <a
+                      href={pdfUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      title="Open PDF in new tab"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-zinc-900/80 text-zinc-300 transition-colors hover:border-amber-500/50 hover:text-white"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
 
-                <a
-                  href={pdfUrl}
-                  download
-                  title="Download PDF"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-zinc-900/80 text-zinc-300 transition-colors hover:border-amber-500/50 hover:text-white"
-                >
-                  <Download className="h-4 w-4" />
-                </a>
+                    <a
+                      href={pdfUrl}
+                      download
+                      title="Download PDF"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-zinc-900/80 text-zinc-300 transition-colors hover:border-amber-500/50 hover:text-white"
+                    >
+                      <Download className="h-4 w-4" />
+                    </a>
+                  </>
+                )}
 
                 <button
                   type="button"

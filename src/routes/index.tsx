@@ -7,7 +7,6 @@ import { Domains } from "@/components/site/Domains";
 import { Timeline } from "@/components/site/Timeline";
 import { Prizes } from "@/components/site/Prizes";
 import { Organizers } from "@/components/site/Organizers";
-import { RegistrationCTA } from "@/components/site/RegistrationCTA";
 import { Footer } from "@/components/site/Footer";
 import { CustomCursor } from "@/components/site/CustomCursor";
 import { ParticleField } from "@/components/site/ParticleField";
@@ -77,7 +76,6 @@ function Index() {
             <Timeline />
             <Prizes />
             <Organizers />
-            <RegistrationCTA />
           </main>
           <Footer />
         </div>
