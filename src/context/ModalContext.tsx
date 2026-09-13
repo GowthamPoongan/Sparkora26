@@ -21,8 +21,8 @@ interface ModalData {
   title: string;
   message: string;
   subtext?: string;
-  badge?: string;
-  image?: string;
+  badge?: string | undefined;
+  image?: string | undefined;
 }
 
 interface ModalContextType {

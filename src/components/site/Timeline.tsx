@@ -11,6 +11,7 @@ import {
   Rocket,
   Terminal,
   UploadCloud,
+  Info,
   type LucideIcon,
 } from "lucide-react";
 import { timeline } from "@/data/event";
@@ -188,6 +189,15 @@ function Card({
               {(item.deadlineAlert as string).split(": ")[1]}
             </span>
           </span>
+        </div>
+      )}
+      {"importantNote" in item && item.importantNote && (
+        <div className="mt-3 flex items-start gap-2 rounded-lg border border-amber-500/20 bg-amber-500/10 px-3 py-2 text-amber-200 shadow-sm">
+          <Info className="h-4 w-4 shrink-0 mt-0.5" />
+          <p className="text-xs sm:text-sm font-medium leading-relaxed">
+            <span className="font-bold text-amber-400 mr-1">Note:</span>
+            {item.importantNote as string}
+          </p>
         </div>
       )}
       <span

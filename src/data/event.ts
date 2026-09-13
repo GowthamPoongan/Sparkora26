@@ -91,6 +91,7 @@ export const timeline = [
     title: "Idea Submission",
     description: "Registered teams must submit their A3-size abstract by the deadline.",
     deadlineAlert: "Idea Submission Deadline: 15 September 2026",
+    importantNote: "Only Registered teams can submit the idea submission",
     date: "15/09/2026",
     importantDate: true,
     pdfUrl: ideaSubmissionTemplatePdf,
@@ -102,6 +103,7 @@ export const timeline = [
     time: "stage 5",
     title: "FINAL PITCH",
     description: "Teams can now download the final pitch hackathon template and present their solutions to the judges.",
+    importantNote: "Only Registered teams can submit the final pitch ppt",
     pdfUrl: finalPitchPdf,
     pdfText: "View PDF Template",
     downloads: [

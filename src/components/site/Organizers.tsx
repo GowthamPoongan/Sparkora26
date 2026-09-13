@@ -176,18 +176,20 @@ export function Organizers() {
               </p>
               <div className="mt-6 flex flex-col items-center px-3 py-2 text-center sm:mt-8">
                 <p className="font-display text-sm font-bold tracking-wider text-foreground uppercase sm:text-base">
-                  {facultyCoordinators[3].name}
+                  {facultyCoordinators[3]?.name}
                 </p>
                 <p className="mt-1 font-display text-xs font-semibold tracking-widest text-muted-foreground uppercase sm:text-sm sm:mt-1.5">
-                  {facultyCoordinators[3].designation}
+                  {facultyCoordinators[3]?.designation}
                 </p>
-                <a
-                  href={`tel:${facultyCoordinators[3].phone.replace(/\s/g, "")}`}
-                  className="mt-3 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 font-display text-xs sm:text-sm font-semibold tracking-wider text-primary transition-colors hover:bg-primary/20"
-                >
-                  <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-primary" />
-                  {facultyCoordinators[3].phone}
-                </a>
+                {facultyCoordinators[3]?.phone && (
+                  <a
+                    href={`tel:${facultyCoordinators[3]?.phone.replace(/\s/g, "")}`}
+                    className="mt-3 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 font-display text-xs sm:text-sm font-semibold tracking-wider text-primary transition-colors hover:bg-primary/20"
+                  >
+                    <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-primary" />
+                    {facultyCoordinators[3]?.phone}
+                  </a>
+                )}
               </div>
             </div>
           </div>

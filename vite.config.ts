@@ -11,7 +11,7 @@ export default defineConfig({
     assetsInclude: ["**/*.pptx"],
   },
   nitro: {
-    preset: process.env.NITRO_PRESET || "vercel",
+    preset: process.env["NITRO_PRESET"] || "vercel",
   },
   tanstackStart: {
     prerender: {

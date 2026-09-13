@@ -11,6 +11,7 @@ import { RegistrationCTA } from "@/components/site/RegistrationCTA";
 import { Footer } from "@/components/site/Footer";
 import { CustomCursor } from "@/components/site/CustomCursor";
 import { ParticleField } from "@/components/site/ParticleField";
+import { AnnouncementBanner } from "@/components/site/AnnouncementBanner";
 import { ModalProvider } from "@/context/ModalContext";
 
 const title = "SPARKORA'26 — Spark. Build. Impact. | Hackathon at JCE Chennai";
@@ -69,6 +70,7 @@ function Index() {
 
         {/* ═══ CONTENT — flows seamlessly over the static background ═══ */}
         <div className="relative z-10">
+          <AnnouncementBanner />
           <Navbar />
           <main>
             <Hero />
