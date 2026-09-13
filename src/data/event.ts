@@ -103,7 +103,7 @@ export const timeline = [
     time: "stage 5",
     title: "FINAL PITCH",
     description: "Teams can now download the final pitch hackathon template and present their solutions to the judges.",
-    importantNote: "Only Registered teams can submit the final pitch ppt",
+    importantNote: "Only Registered teams can present their final pitch ppt",
     pdfUrl: finalPitchPdf,
     pdfText: "View PDF Template",
     downloads: [
