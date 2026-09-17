@@ -90,7 +90,7 @@ export const timeline = [
     time: "stage 4",
     title: "Idea Submission",
     description: "Registered teams must submit their A3-size abstract by the deadline.",
-    deadlineAlert: "Idea Submission Deadline: 15 September 2026",
+    deadlineAlert: "Status: Idea submission closed",
     importantNote: "Only Registered teams can submit the idea submission",
     date: "15/09/2026",
     importantDate: true,
